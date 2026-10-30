@@ -18,10 +18,37 @@
   body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; padding: 20px; }
   .container { max-width: 1100px; margin: 0 auto; }
   
-  header { text-align: center; margin-bottom: 40px; border-bottom: 2px solid var(--accent); padding-bottom: 25px; }
-  h1 { font-size: 3rem; color: var(--text-main); letter-spacing: 2px; margin-bottom: 10px; }
+  header { text-align: center; margin-bottom: 30px; border-bottom: 2px solid var(--accent); padding-bottom: 20px; }
+  h1 { font-size: 2.8rem; color: var(--text-main); letter-spacing: 2px; margin-bottom: 5px; }
   h1 span { color: var(--accent); }
-  p.subtitle { color: var(--text-muted); font-size: 1.2rem; font-weight: 500; }
+  p.subtitle { color: var(--text-muted); font-size: 1.1rem; font-weight: 500; }
+
+  /* Navegación por solapas */
+  .tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+  }
+  .tab-btn {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+  .tab-btn.active, .tab-btn:hover {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+  }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
   
   .card {
     background: var(--bg-card);
@@ -83,7 +110,7 @@
   }
   
   .streamer-info h3 {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     color: var(--text-main);
   }
   
@@ -129,9 +156,15 @@
     font-weight: bold;
     transition: background 0.2s;
   }
-  
-  .btn-twitch:hover {
-    background: var(--accent-hover);
+  .btn-twitch:hover { background: var(--accent-hover); }
+
+  .obs-guide ul {
+    margin-left: 20px;
+    color: var(--text-muted);
+    margin-bottom: 15px;
+  }
+  .obs-guide li {
+    margin-bottom: 8px;
   }
 </style>
 </head>
@@ -143,150 +176,202 @@
     <p class="subtitle">Twitch Team Oficial • Familia Latinoamericana (Argentina, Bolivia, México)</p>
   </header>
 
-  <div class="card manifesto-box">
-    <h2>Nuestra Esencia</h2>
-    <p>Somos LOS S3X-MEN, un Twitch Team oficial. Una familia latinoamericana de colegas de plataforma de Argentina, Bolivia y México. Nos une que nos gustan los mismos juegos y que priorizamos la colaboración y el crecimiento en conjunto.</p>
-    <p>No somos un grupo de apoyo, somos compañeros de camino dentro de Twitch. Nos juntamos porque disfrutamos jugar juntos y crear contenido que nos representa, manteniendo siempre la independencia de cada canal.</p>
-    
-    <div class="schedule-highlight">
-      📅 Horario central sugerido ideal: Sábados 21:00 ARG / 20:00 BOL / 18:00 MX (CDMX) — Un punto de referencia para coincidir y hacer contenido en equipo, sin obligaciones rígidas.
+  <!-- Navegación de Solapas -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab(event, 'tab-inicio')">Inicio / Familia</button>
+    <button class="tab-btn" onclick="switchTab(event, 'tab-streamers')">Streamers</button>
+    <button class="tab-btn" onclick="switchTab(event, 'tab-coop')">Juegos Coop & Keys</button>
+    <button class="tab-btn" onclick="switchTab(event, 'tab-obs')">Config OBS</button>
+  </div>
+
+  <!-- SOLAPA 1: INICIO -->
+  <div id="tab-inicio" class="tab-content active">
+    <div class="card manifesto-box">
+      <h2>Nuestra Esencia como Twitch Team</h2>
+      <p>Somos <strong>LOS S3X-MEN</strong>, un Twitch Team oficial. Una familia latinoamericana de colegas de plataforma de Argentina, Bolivia y México. Nos une que nos gustan los mismos juegos y que priorizamos la colaboración y el crecimiento en conjunto.</p>
+      <p>No somos un grupo de apoyo ni una agencia fría; somos compañeros de camino dentro de Twitch. Nos juntamos porque disfrutamos jugar juntos y crear contenido que nos representa, manteniendo siempre la independencia de cada canal.</p>
+      
+      <div class="schedule-highlight">
+        📅 Horario central sugerido e ideal: Sábados 21:00 ARG / 20:00 BOL / 18:00 MX (CDMX) — Un punto de referencia voluntario y flexible para coincidir y hacer contenido en equipo, sin obligaciones rígidas.
+      </div>
     </div>
   </div>
 
-  <div class="card">
-    <h2>Integrantes del Team</h2>
-    <div class="grid-team">
-      
-      <!-- LosMoriartys -->
-      <div class="streamer-card">
-        <div>
-          <div class="streamer-header">
-            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/4a2982d6-419b-436d-96e0-2ea6f3f009f4-profile_image-300x300.png" alt="LosMoriartys" class="streamer-avatar">
-            <div class="streamer-info">
-              <h3>LosMoriartys</h3>
-              <span class="badge">ARG • Afiliado</span>
+  <!-- SOLAPA 2: STREAMERS -->
+  <div id="tab-streamers" class="tab-content">
+    <div class="card">
+      <h2>Perfiles del Team</h2>
+      <div class="grid-team">
+        
+        <!-- LosMoriartys -->
+        <div class="streamer-card">
+          <div>
+            <div class="streamer-header">
+              <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/4a2982d6-419b-436d-96e0-2ea6f3f009f4-profile_image-300x300.png" alt="LosMoriartys" class="streamer-avatar">
+              <div class="streamer-info">
+                <h3>LosMoriartys</h3>
+                <span class="badge">ARG • Afiliado</span>
+              </div>
             </div>
+            <p>Pareja gamer y videoclub nerd caótico con humor VHS, pelis, cómics y mucha charla.</p>
+            <ul class="stats-list">
+              <li><span>Seguidores:</span> <strong>1,143</strong></li>
+              <li><span>Media (30d):</span> <strong>22 viewers</strong></li>
+              <li><span>Pico Histórico:</span> <strong>101 viewers</strong></li>
+              <li><span>Juego Principal:</span> <strong>Fortnite / Sims</strong></li>
+            </ul>
           </div>
-          <p>Pareja gamer y videoclub nerd caótico con humor VHS, pelis, cómics y mucha charla.</p>
-          <ul class="stats-list">
-            <li><span>Seguidores:</span> <strong>1,143</strong></li>
-            <li><span>Media (30d):</span> <strong>22 viewers</strong></li>
-            <li><span>Pico Histórico:</span> <strong>101 viewers</strong></li>
-            <li><span>Juego Principal:</span> <strong>Fortnite / Sims</strong></li>
-          </ul>
+          <a href="https://twitch.tv/losmoriartys" target="_blank" class="btn-twitch">Visitar Canal</a>
         </div>
-        <a href="https://twitch.tv/losmoriartys" target="_blank" class="btn-twitch">Visitar Canal</a>
-      </div>
 
-      <!-- TheR0D3R1K -->
-      <div class="streamer-card">
-        <div>
-          <div class="streamer-header">
-            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/ther0d3r1k-profile_image-300x300.png" alt="TheR0D3R1K" class="streamer-avatar" onerror="this.src='https://via.placeholder.com/70'">
-            <div class="streamer-info">
-              <h3>TheR0D3R1K</h3>
-              <span class="badge">BOL • Partner</span>
+        <!-- TheR0D3R1K -->
+        <div class="streamer-card">
+          <div>
+            <div class="streamer-header">
+              <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/ther0d3r1k-profile_image-300x300.png" alt="TheR0D3R1K" class="streamer-avatar" onerror="this.src='https://via.placeholder.com/70'">
+              <div class="streamer-info">
+                <h3>TheR0D3R1K</h3>
+                <span class="badge">BOL • Partner</span>
+              </div>
             </div>
+            <p>Músico boliviano, pilar competitivo y ancla del Team. Código de creador Fortnite.</p>
+            <ul class="stats-list">
+              <li><span>Seguidores:</span> <strong>5,181</strong></li>
+              <li><span>Media (30d):</span> <strong>23 viewers</strong></li>
+              <li><span>Pico Histórico:</span> <strong>78 viewers</strong></li>
+              <li><span>Juego Principal:</span> <strong>Fortnite / Valorant</strong></li>
+            </ul>
           </div>
-          <p>Músico boliviano, pilar competitivo y ancla del Team. Código de creador Fortnite.</p>
-          <ul class="stats-list">
-            <li><span>Seguidores:</span> <strong>5,181</strong></li>
-            <li><span>Media (30d):</span> <strong>23 viewers</strong></li>
-            <li><span>Pico Histórico:</span> <strong>78 viewers</strong></li>
-            <li><span>Juego Principal:</span> <strong>Fortnite / Valorant</strong></li>
-          </ul>
+          <a href="https://twitch.tv/ther0d3r1k" target="_blank" class="btn-twitch">Visitar Canal</a>
         </div>
-        <a href="https://twitch.tv/ther0d3r1k" target="_blank" class="btn-twitch">Visitar Canal</a>
-      </div>
 
-      <!-- Capyunaplay -->
-      <div class="streamer-card">
-        <div>
-          <div class="streamer-header">
-            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/capyunaplay-profile_image-300x300.png" alt="Capyunaplay" class="streamer-avatar" onerror="this.src='https://via.placeholder.com/70'">
-            <div class="streamer-info">
-              <h3>Capyunaplay</h3>
-              <span class="badge">ARG • Afiliado</span>
+        <!-- Capyunaplay -->
+        <div class="streamer-card">
+          <div>
+            <div class="streamer-header">
+              <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/capyunaplay-profile_image-300x300.png" alt="Capyunaplay" class="streamer-avatar" onerror="this.src='https://via.placeholder.com/70'">
+              <div class="streamer-info">
+                <h3>Capyunaplay</h3>
+                <span class="badge">ARG • Afiliado</span>
+              </div>
             </div>
+            <p>Especialista en horror asimétrico y Dead by Daylight. Vibe relajada e intensa a la vez.</p>
+            <ul class="stats-list">
+              <li><span>Seguidores:</span> <strong>682</strong></li>
+              <li><span>Media (30d):</span> <strong>9 viewers</strong></li>
+              <li><span>Pico Histórico:</span> <strong>28 viewers</strong></li>
+              <li><span>Juego Principal:</span> <strong>Dead by Daylight</strong></li>
+            </ul>
           </div>
-          <p>Especialista en horror asimétrico y Dead by Daylight. Vibe relajada e intensa a la vez.</p>
-          <ul class="stats-list">
-            <li><span>Seguidores:</span> <strong>682</strong></li>
-            <li><span>Media (30d):</span> <strong>9 viewers</strong></li>
-            <li><span>Pico Histórico:</span> <strong>28 viewers</strong></li>
-            <li><span>Juego Principal:</span> <strong>Dead by Daylight</strong></li>
-          </ul>
+          <a href="https://twitch.tv/capyunaplay" target="_blank" class="btn-twitch">Visitar Canal</a>
         </div>
-        <a href="https://twitch.tv/capyunaplay" target="_blank" class="btn-twitch">Visitar Canal</a>
-      </div>
 
-      <!-- ArdiPii -->
-      <div class="streamer-card">
-        <div>
-          <div class="streamer-header">
-            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/ardipii-profile_image-300x300.png" alt="ArdiPii" class="streamer-avatar" onerror="this.src='https://via.placeholder.com/70'">
-            <div class="streamer-info">
-              <h3>ArdiPii</h3>
-              <span class="badge">MX • Afiliado</span>
+        <!-- ArdiPii -->
+        <div class="streamer-card">
+          <div>
+            <div class="streamer-header">
+              <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/ardipii-profile_image-300x300.png" alt="ArdiPii" class="streamer-avatar" onerror="this.src='https://via.placeholder.com/70'">
+              <div class="streamer-info">
+                <h3>ArdiPii</h3>
+                <span class="badge">MX • Afiliado</span>
+              </div>
             </div>
+            <p>Artista y cosplayer, puente mexicano del grupo. Gran crecimiento y comunidad anime.</p>
+            <ul class="stats-list">
+              <li><span>Seguidores:</span> <strong>425</strong></li>
+              <li><span>Media (30d):</span> <strong>8 viewers</strong></li>
+              <li><span>Pico Histórico:</span> <strong>24 viewers</strong></li>
+              <li><span>Juego Principal:</span> <strong>Just Chatting / Valorant</strong></li>
+            </ul>
           </div>
-          <p>Artista y cosplayer, puente mexicano del grupo. Gran crecimiento y comunidad anime.</p>
-          <ul class="stats-list">
-            <li><span>Seguidores:</span> <strong>425</strong></li>
-            <li><span>Media (30d):</span> <strong>8 viewers</strong></li>
-            <li><span>Pico Histórico:</span> <strong>24 viewers</strong></li>
-            <li><span>Juego Principal:</span> <strong>Just Chatting / Valorant</strong></li>
-          </ul>
+          <a href="https://twitch.tv/ardipii" target="_blank" class="btn-twitch">Visitar Canal</a>
         </div>
-        <a href="https://twitch.tv/ardipii" target="_blank" class="btn-twitch">Visitar Canal</a>
-      </div>
 
-      <!-- Akumazoldyck -->
-      <div class="streamer-card">
-        <div>
-          <div class="streamer-header">
-            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/akumazoldyck-profile_image-300x300.png" alt="Akumazoldyck" class="streamer-avatar" onerror="this.src='https://via.placeholder.com/70'">
-            <div class="streamer-info">
-              <h3>Akumazoldyck</h3>
-              <span class="badge">MX • Afiliado</span>
+        <!-- Akumazoldyck -->
+        <div class="streamer-card">
+          <div>
+            <div class="streamer-header">
+              <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/akumazoldyck-profile_image-300x300.png" alt="Akumazoldyck" class="streamer-avatar" onerror="this.src='https://via.placeholder.com/70'">
+              <div class="streamer-info">
+                <h3>Akumazoldyck</h3>
+                <span class="badge">MX • Afiliado</span>
+              </div>
             </div>
+            <p>Especialista en coop de terror y gran constancia en directos de sustos y risas.</p>
+            <ul class="stats-list">
+              <li><span>Seguidores:</span> <strong>140</strong></li>
+              <li><span>Media (30d):</span> <strong>3 viewers</strong></li>
+              <li><span>Pico Histórico:</span> <strong>41 viewers</strong></li>
+              <li><span>Juego Principal:</span> <strong>Lethal Company / Horror</strong></li>
+            </ul>
           </div>
-          <p>Especialista en coop de terror y gran constancia en directos de sustos y risas.</p>
-          <ul class="stats-list">
-            <li><span>Seguidores:</span> <strong>140</strong></li>
-            <li><span>Media (30d):</span> <strong>3 viewers</strong></li>
-            <li><span>Pico Histórico:</span> <strong>41 viewers</strong></li>
-            <li><span>Juego Principal:</span> <strong>Lethal Company / Horror</strong></li>
-          </ul>
+          <a href="https://twitch.tv/akumazoldyck" target="_blank" class="btn-twitch">Visitar Canal</a>
         </div>
-        <a href="https://twitch.tv/akumazoldyck" target="_blank" class="btn-twitch">Visitar Canal</a>
-      </div>
 
-      <!-- elgabii090 -->
-      <div class="streamer-card">
-        <div>
-          <div class="streamer-header">
-            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/elgabii090-profile_image-300x300.png" alt="elgabii090" class="streamer-avatar" onerror="this.src='https://via.placeholder.com/70'">
-            <div class="streamer-info">
-              <h3>elgabii090</h3>
-              <span class="badge">ARG • Afiliado</span>
+        <!-- elgabii090 -->
+        <div class="streamer-card">
+          <div>
+            <div class="streamer-header">
+              <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/elgabii090-profile_image-300x300.png" alt="elgabii090" class="streamer-avatar" onerror="this.src='https://via.placeholder.com/70'">
+              <div class="streamer-info">
+                <h3>elgabii090</h3>
+                <span class="badge">ARG • Afiliado</span>
+              </div>
             </div>
+            <p>Mecánicas y control. Rocket League y simuladores con versatilidad para el Team.</p>
+            <ul class="stats-list">
+              <li><span>Seguidores:</span> <strong>594</strong></li>
+              <li><span>Media (30d):</span> <strong>11 viewers</strong></li>
+              <li><span>Pico Histórico:</span> <strong>19 viewers</strong></li>
+              <li><span>Juego Principal:</span> <strong>Rocket League</strong></li>
+            </ul>
           </div>
-          <p>Mecánicas y control. Rocket League y simuladores con versatilidad para el Team.</p>
-          <ul class="stats-list">
-            <li><span>Seguidores:</span> <strong>594</strong></li>
-            <li><span>Media (30d):</span> <strong>11 viewers</strong></li>
-            <li><span>Pico Histórico:</span> <strong>19 viewers</strong></li>
-            <li><span>Juego Principal:</span> <strong>Rocket League</strong></li>
-          </ul>
+          <a href="https://twitch.tv/elgabii090" target="_blank" class="btn-twitch">Visitar Canal</a>
         </div>
-        <a href="https://twitch.tv/elgabii090" target="_blank" class="btn-twitch">Visitar Canal</a>
-      </div>
 
+      </div>
+    </div>
+  </div>
+
+  <!-- SOLAPA 3: JUEGOS COOP -->
+  <div id="tab-coop" class="tab-content">
+    <div class="card">
+      <h2>Juegos Cooperativos & Solicitud de Keys</h2>
+      <p>Espacio reservado para coordinar juegos de 4 a 7 jugadores a través de plataformas de creadores como <strong>Lurkit</strong> y <strong>Keymailer</strong>. Ideal para conseguir accesos y organizar dinámicas conjuntas.</p>
+      <p><em>Revisar solapa de Google Sheets interna para ver qué integrantes cumplen con el requisito de media para programas de partners directos (THQ Nordic, Raw Fury, etc.).</em></p>
+    </div>
+  </div>
+
+  <!-- SOLAPA 4: OBS -->
+  <div id="tab-obs" class="tab-content">
+    <div class="card obs-guide">
+      <h2>Configuración Sugerida para OBS (Colaboraciones)</h2>
+      <p>Para asegurar que todos los directos en equipo (4 a 7 participantes) fluyan sin cortes y con excelente calidad visual y de audio:</p>
+      <ul>
+        <li><strong>Codificador:</strong> NVIDIA NVENC H.264 (si usás placa gráfica dedicada) o x264.</li>
+        <li><strong>Control de Frecuencia:</strong> CBR (Bitrate constante).</li>
+        <li><strong>Bitrate:</strong> 6000 Kbps (óptimo para 720p/1080p estables).</li>
+        <li><strong>Preset de Rendimiento:</strong> P5 o Slower (Calidad equilibrada).</li>
+        <li><strong>Resolución de Salida:</strong> 720p a 60fps (ideal para evitar caídas de frames en collabs multitudinarias).</li>
+        <li><strong>Audio:</strong> Pista de 160 kbps para mantener las voces nítidas en Discord durante el streaming.</li>
+      </ul>
     </div>
   </div>
 
 </div>
+
+<script>
+  function switchTab(evt, tabId) {
+    const contents = document.querySelectorAll('.tab-content');
+    contents.forEach(c => c.classList.remove('active'));
+    
+    const buttons = document.querySelectorAll('.tab-btn');
+    buttons.forEach(b => b.classList.remove('active'));
+    
+    document.getElementById(tabId).classList.add('active');
+    evt.currentTarget.classList.add('active');
+  }
+</script>
 
 </body>
 </html>
