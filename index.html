@@ -340,6 +340,7 @@
   .obs-guide ul { margin-left: 20px; color: var(--text-muted); }
   .obs-guide li { margin-bottom: 10px; }
 </style>
+<link rel="stylesheet" href="assets/css/command-center.css">
 </head>
 <body>
 
@@ -351,13 +352,87 @@
     <p>Twitch Team Oficial • Escuadrón Internacional LATAM</p>
   </div>
 
-  <!-- Menú de Solapas -->
-  <div class="tabs">
-    <button class="tab-btn active" onclick="switchTab('tab-inicio')">Inicio / Familia</button>
-    <button class="tab-btn" onclick="switchTab('tab-streamers')">Streamers</button>
-    <button class="tab-btn" onclick="switchTab('tab-tutorial')">Lurkit & Keymailer</button>
-    <button class="tab-btn" onclick="switchTab('tab-partners')">Partners & Requisitos</button>
-    <button class="tab-btn" onclick="switchTab('tab-obs')">Config OBS</button>
+  <!-- Navegación Command Center 2.0 -->
+  <div class="tabs" role="tablist" aria-label="Navegación principal">
+    <button class="tab-btn active" type="button" data-tab="tab-dashboard" role="tab" aria-selected="true">Command Center</button>
+    <button class="tab-btn" type="button" data-tab="tab-inicio" role="tab" aria-selected="false">El equipo</button>
+    <button class="tab-btn" type="button" data-tab="tab-streamers" role="tab" aria-selected="false">Roster</button>
+    <button class="tab-btn" type="button" data-tab="tab-analytics" role="tab" aria-selected="false">Analíticas</button>
+    <button class="tab-btn" type="button" data-tab="tab-games" role="tab" aria-selected="false">Gaming Trends</button>
+    <button class="tab-btn" type="button" data-tab="tab-tutorial" role="tab" aria-selected="false">Campañas</button>
+    <button class="tab-btn" type="button" data-tab="tab-partners" role="tab" aria-selected="false">Programas</button>
+    <button class="tab-btn" type="button" data-tab="tab-join" role="tab" aria-selected="false">Sumate</button>
+    <button class="tab-btn" type="button" data-tab="tab-obs" role="tab" aria-selected="false">Recursos OBS</button>
+  </div>
+
+  <!-- COMMAND CENTER 2.0 -->
+  <div id="tab-dashboard" class="tab-content active">
+    <section class="card">
+      <span class="cc-kicker">Command Center / Overview</span>
+      <h2>Un equipo. Ocho creadores. Una propuesta multicanal.</h2>
+      <p>LOS S3X-MEN conecta creadores independientes de Latinoamérica para colaborar con estudios, publishers y comunidades gaming. Este portfolio prioriza datos transparentes, perfiles verificables y coordinación profesional.</p>
+      <div class="cc-grid">
+        <div class="cc-stat"><small>Creadores en roster</small><strong>08</strong><em>Perfiles identificados</em></div>
+        <div class="cc-stat"><small>Países representados</small><strong>03</strong><em>Argentina · Bolivia · México</em></div>
+        <div class="cc-stat"><small>Estadísticas verificadas</small><strong>En integración</strong><em>No se publican cifras sin fuente</em></div>
+        <div class="cc-stat"><small>Campañas</small><strong>Coordinación</strong><em>Solicitudes y colaboraciones</em></div>
+      </div>
+      <div class="cc-note"><strong>Transparencia de métricas:</strong> los números que figuraban manualmente en perfiles anteriores no se consideran datos actuales. Se retirarán de los indicadores públicos hasta contar con una integración verificable, período definido y fecha de actualización.</div>
+      <div class="cc-actions"><button class="cc-btn" type="button" data-go-tab="tab-streamers">Conocer integrantes</button><button class="cc-btn secondary" type="button" data-go-tab="tab-join">Postularme al equipo</button></div>
+    </section>
+    <section class="card">
+      <span class="cc-kicker">Propuesta para la industria</span><h2>Qué ofrecemos</h2>
+      <div class="cc-list">
+        <article><strong>Campañas multicanal</strong><span class="cc-muted">Cobertura coordinada y contenidos desde distintos perfiles.</span></article>
+        <article><strong>Variedad de géneros</strong><span class="cc-muted">Gaming, cooperativos, simulación, terror, competitivo y contenido conversacional, sujeto a actividad actual.</span></article>
+        <article><strong>Alcance LATAM</strong><span class="cc-muted">Creadores de Argentina, Bolivia y México.</span></article>
+        <article><strong>Seguimiento profesional</strong><span class="cc-muted">Registro de solicitudes, entregables, enlaces y resultados de campañas.</span></article>
+      </div>
+    </section>
+  </div>
+  <div id="tab-analytics" class="tab-content">
+    <section class="card"><span class="cc-kicker">Audience intelligence</span><h2>Analíticas del equipo</h2>
+      <p>Esta sección se reserva para métricas obtenidas de Twitch o de un proveedor identificado, con el mismo período de medición para todos los canales.</p>
+      <div class="cc-note"><strong>Estado: integración pendiente.</strong> No mostramos seguidores, suscriptores, espectadores promedio, horas vistas ni horas transmitidas como cifras actuales porque el HTML anterior contiene valores manuales sin trazabilidad temporal suficiente.</div>
+      <div class="cc-list">
+        <article><strong>Seguidores</strong><span class="cc-muted">Total actual por canal y fecha de consulta. No equivale a suscriptores pagos.</span></article>
+        <article><strong>Suscriptores</strong><span class="cc-muted">Dato privado o autorizado del canal; no siempre disponible públicamente.</span></article>
+        <article><strong>Audiencia promedio</strong><span class="cc-muted">Promedio de espectadores concurrentes durante un período definido.</span></article>
+        <article><strong>Horas transmitidas</strong><span class="cc-muted">Duración acumulada de directos dentro del período.</span></article>
+        <article><strong>Horas vistas</strong><span class="cc-muted">Métrica distinta de horas transmitidas; se informará con fuente.</span></article>
+        <article><strong>Fecha y fuente</strong><span class="cc-muted">Cada conjunto de datos mostrará proveedor, período y última actualización.</span></article>
+      </div>
+    </section>
+  </div>
+  <div id="tab-games" class="tab-content">
+    <section class="card"><span class="cc-kicker">Content & category intelligence</span><h2>Juegos y actividad reciente</h2>
+      <p>El ranking se calculará a partir de categorías realmente transmitidas por los integrantes, no de etiquetas históricas de sus perfiles.</p>
+      <div class="cc-note"><strong>Datos pendientes de sincronización.</strong> Para identificar los juegos más consumidos o solicitados separaremos dos indicadores: actividad real del roster y demanda de campañas recibidas.</div>
+      <div class="cc-list">
+        <article><strong>Juegos más transmitidos</strong><span class="cc-muted">Horas por título, cantidad de directos y creadores participantes.</span></article>
+        <article><strong>Juegos más solicitados</strong><span class="cc-muted">Solicitudes de keys y campañas registradas por el equipo.</span></article>
+        <article><strong>Oportunidades recomendadas</strong><span class="cc-muted">Cruce entre interés del roster, géneros y campañas disponibles.</span></article>
+      </div>
+    </section>
+  </div>
+  <div id="tab-join" class="tab-content">
+    <section class="card"><span class="cc-kicker">Join the team</span><h2>Solicitud para integrar LOS S3X-MEN</h2>
+      <p>Este formulario permite preparar una postulación con información relevante para evaluar afinidad, constancia y posibilidades de colaboración. Completarlo no garantiza la incorporación.</p>
+      <form id="join-form" class="cc-form">
+        <div class="cc-field"><label for="join-name">Nombre o alias *</label><input id="join-name" name="name" required maxlength="80" autocomplete="name"></div>
+        <div class="cc-field"><label for="join-channel">Canal de Twitch *</label><input id="join-channel" name="channel" type="url" required placeholder="https://twitch.tv/tu-canal"></div>
+        <div class="cc-field"><label for="join-country">País *</label><select id="join-country" name="country" required><option value="">Seleccionar</option><option>Argentina</option><option>Bolivia</option><option>México</option><option>Otro país de LATAM</option></select></div>
+        <div class="cc-field"><label for="join-email">Email de contacto *</label><input id="join-email" name="email" type="email" required maxlength="120" autocomplete="email"></div>
+        <div class="cc-field"><label for="join-hours">Horas aproximadas de directo por semana</label><select id="join-hours" name="hours"><option value="">Seleccionar</option><option>Menos de 5</option><option>5 a 10</option><option>10 a 20</option><option>Más de 20</option></select></div>
+        <div class="cc-field"><label for="join-games">Juegos o categorías principales *</label><input id="join-games" name="games" required maxlength="180" placeholder="Ej.: survival, terror, simuladores"></div>
+        <div class="cc-field full"><label for="join-about">Contanos sobre tu contenido y qué aportarías al equipo *</label><textarea id="join-about" name="about" rows="4" required maxlength="1200"></textarea></div>
+        <div class="cc-field full"><label for="join-links">Otras redes o portfolio (opcional)</label><input id="join-links" name="links" maxlength="300" placeholder="YouTube, Instagram, TikTok..."></div>
+        <div class="cc-field full"><label><input type="checkbox" id="join-consent" required style="width:auto"> Autorizo que los administradores del equipo utilicen estos datos para evaluar esta postulación.</label></div>
+        <div class="cc-field full"><button class="cc-btn" type="submit">Preparar mi postulación</button><p class="cc-muted">Aviso: esta primera versión no envía ni almacena datos en un servidor. Genera un resumen para copiar y enviar por el canal de contacto que el equipo defina.</p></div>
+      </form>
+      <div id="join-result" class="cc-status" hidden aria-live="polite"></div>
+      <div class="cc-actions" id="join-actions" hidden><button class="cc-btn secondary" type="button" id="copy-application">Copiar postulación</button></div>
+    </section>
   </div>
 
   <!-- SOLAPA 1: INICIO -->
@@ -382,7 +457,7 @@
     <div id="streamers-list-view">
       <div class="card">
         <h2>Integrantes del Escuadrón</h2>
-        <p>Hacé clic en la tarjeta de cualquier creador para acceder a su ficha individual completa, biografía de Twitch, métricas verificadas de SullyGnome y propuesta para la industria.</p>
+        <p>Abrí cada ficha para conocer su presentación y especialidades. Las métricas actuales se incorporarán únicamente cuando estén sincronizadas con una fuente verificable y un período de medición común.</p>
         
         <div class="grid-team">
           <!-- 1. LosMoriartys -->
@@ -1053,8 +1128,9 @@
 
 </div>
 
+<script src="assets/js/command-center.js" defer></script>
 <script>
-  function switchTab(tabId) {
+  function switchTab(tabId, trigger) {
     closeProfile();
     const contents = document.querySelectorAll('.tab-content');
     contents.forEach(c => c.classList.remove('active'));
@@ -1063,7 +1139,8 @@
     buttons.forEach(b => b.classList.remove('active'));
     
     document.getElementById(tabId).classList.add('active');
-    event.currentTarget.classList.add('active');
+    const activeButton = trigger || document.querySelector('[data-tab="' + tabId + '"]');
+    if (activeButton) activeButton.classList.add('active');
   }
 
   function openProfile(profileId) {
