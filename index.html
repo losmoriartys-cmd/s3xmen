@@ -8,7 +8,6 @@
   :root {
     --bg-dark: #0f0f11;
     --bg-card: #18181b;
-    --bg-card-hover: #202024;
     --accent: #9146ff;
     --accent-hover: #772ce8;
     --text-main: #f3f4f6;
@@ -19,10 +18,10 @@
   body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; padding: 20px; }
   .container { max-width: 1200px; margin: 0 auto; }
   
-  /* Banner Principal de Impacto */
+  /* Banner Principal */
   .hero-banner {
     width: 100%;
-    height: 280px;
+    height: 260px;
     background: linear-gradient(135deg, rgba(145, 70, 255, 0.4), rgba(15, 15, 17, 0.9)), url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
     border-radius: 16px;
     border: 1px solid var(--border);
@@ -35,11 +34,11 @@
     margin-bottom: 30px;
     box-shadow: 0 8px 30px rgba(0,0,0,0.6);
   }
-  .hero-banner h1 { font-size: 3.2rem; color: #fff; letter-spacing: 2px; text-shadow: 0 2px 10px rgba(0,0,0,0.8); margin-bottom: 5px; }
-  .hero-banner h1 span { color: var(--accent); text-shadow: 0 0 15px var(--accent); }
-  .hero-banner p { color: #d1d5db; font-size: 1.2rem; font-weight: 600; text-shadow: 0 1px 5px rgba(0,0,0,0.8); }
+  .hero-banner h1 { font-size: 3rem; color: #fff; letter-spacing: 2px; margin-bottom: 5px; }
+  .hero-banner h1 span { color: var(--accent); }
+  .hero-banner p { color: #d1d5db; font-size: 1.1rem; font-weight: 600; }
 
-  /* Navegación por solapas */
+  /* Menú de Solapas */
   .tabs {
     display: flex;
     justify-content: center;
@@ -62,7 +61,6 @@
     background: var(--accent);
     color: white;
     border-color: var(--accent);
-    box-shadow: 0 0 15px rgba(145, 70, 255, 0.4);
   }
 
   .tab-content { display: none; }
@@ -86,7 +84,7 @@
     border-left: 5px solid var(--accent);
   }
 
-  /* Grid de Streamers (Vista General) */
+  /* Cuadrícula de Streamers */
   .grid-team {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -101,12 +99,11 @@
     padding: 25px;
     text-align: center;
     cursor: pointer;
-    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    transition: transform 0.2s, border-color 0.2s;
   }
   .streamer-preview-card:hover {
     border-color: var(--accent);
     transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(145, 70, 255, 0.2);
   }
   
   .preview-avatar {
@@ -148,17 +145,11 @@
     font-weight: 600;
     transition: background 0.2s;
   }
-  .streamer-preview-card:hover .btn-detail {
-    background: var(--accent);
-  }
+  .streamer-preview-card:hover .btn-detail { background: var(--accent); }
 
-  /* Ficha Individual Profunda */
-  .single-profile {
-    display: none;
-  }
-  .single-profile.active {
-    display: block;
-  }
+  /* Fichas Individuales */
+  .single-profile { display: none; }
+  .single-profile.active { display: block; }
 
   .back-btn {
     background: var(--bg-card);
@@ -188,12 +179,7 @@
     object-fit: cover;
     background: #27272a;
   }
-  .profile-info h2 {
-    margin: 0;
-    border: none;
-    padding: 0;
-    font-size: 2.2rem;
-  }
+  .profile-info h2 { margin: 0; border: none; padding: 0; font-size: 2.2rem; }
 
   .bio-panel {
     background: rgba(255, 255, 255, 0.03);
@@ -222,11 +208,7 @@
   }
   .profile-box h4 { color: var(--accent); margin-bottom: 12px; font-size: 1.1rem; }
 
-  .stats-list {
-    list-style: none;
-    font-size: 0.98rem;
-    color: var(--text-muted);
-  }
+  .stats-list { list-style: none; font-size: 0.98rem; color: var(--text-muted); }
   .stats-list li {
     display: flex;
     justify-content: space-between;
@@ -236,11 +218,7 @@
   }
   .stats-list strong { color: var(--text-main); }
 
-  .socials-row {
-    display: flex;
-    gap: 12px;
-    margin-top: 15px;
-  }
+  .socials-row { display: flex; gap: 12px; margin-top: 15px; }
   .socials-row a {
     background: rgba(145, 70, 255, 0.15);
     color: #b892ff;
@@ -268,14 +246,13 @@
   }
   .btn-twitch-lg:hover { background: var(--accent-hover); }
 
-  /* Tablas pro */
+  /* Tablas y OBS */
   .table-container { overflow-x: auto; margin-top: 20px; }
   table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.98rem; }
   th, td { padding: 14px 18px; border-bottom: 1px solid var(--border); color: var(--text-muted); }
   th { background: #121215; color: var(--text-main); font-weight: 600; }
   td strong { color: var(--text-main); }
-
-  .obs-guide ul { margin-left: 20px; color: var(--text-muted); margin-bottom: 15px; }
+  .obs-guide ul { margin-left: 20px; color: var(--text-muted); }
   .obs-guide li { margin-bottom: 10px; }
 </style>
 </head>
@@ -283,19 +260,19 @@
 
 <div class="container">
   
-  <!-- Banner Principal de Impacto -->
+  <!-- Banner Principal -->
   <div class="hero-banner">
     <h1>LOS S3X-<span>MEN</span></h1>
     <p>Twitch Team Oficial • Escuadrón Internacional LATAM</p>
   </div>
 
-  <!-- Navegación por Solapas -->
+  <!-- Menú de Solapas -->
   <div class="tabs">
-    <button class="tab-btn active" onclick="switchTab(event, 'tab-inicio')">Inicio / Familia</button>
-    <button class="tab-btn" onclick="switchTab(event, 'tab-streamers')">Streamers</button>
-    <button class="tab-btn" onclick="switchTab(event, 'tab-tutorial')">Lurkit & Keymailer</button>
-    <button class="tab-btn" onclick="switchTab(event, 'tab-partners')">Partners & Requisitos</button>
-    <button class="tab-btn" onclick="switchTab(event, 'tab-obs')">Config OBS</button>
+    <button class="tab-btn active" onclick="switchTab('tab-inicio')">Inicio / Familia</button>
+    <button class="tab-btn" onclick="switchTab('tab-streamers')">Streamers</button>
+    <button class="tab-btn" onclick="switchTab('tab-tutorial')">Lurkit & Keymailer</button>
+    <button class="tab-btn" onclick="switchTab('tab-partners')">Partners & Requisitos</button>
+    <button class="tab-btn" onclick="switchTab('tab-obs')">Config OBS</button>
   </div>
 
   <!-- SOLAPA 1: INICIO -->
@@ -313,10 +290,10 @@
     </div>
   </div>
 
-  <!-- SOLAPA 2: STREAMERS (VISTA GENERAL + FICHAS INDIVIDUALES) -->
+  <!-- SOLAPA 2: STREAMERS -->
   <div id="tab-streamers" class="tab-content">
     
-    <!-- VISTA GENERAL (LISTA DE LOS 8) -->
+    <!-- Vista general de los 8 streamers -->
     <div id="streamers-list-view">
       <div class="card">
         <h2>Integrantes del Escuadrón</h2>
@@ -390,11 +367,11 @@
       </div>
     </div>
 
-    <!-- FICHAS INDIVIDUALES (OCULTAS HASTA HACER CLIC) -->
+    <!-- Fichas Individuales (Se abren al hacer clic) -->
     
     <!-- 1. LosMoriartys -->
     <div id="profile-moriartys" class="single-profile card">
-      <button class="back-btn" onclick="closeProfile()">← Volver al Staff</button>
+      <button class="back-btn" onclick="closeProfile()">← Volver al listado de Streamers</button>
       <div class="profile-header">
         <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/4a2982d6-419b-436d-96e0-2ea6f3f009f4-profile_image-300x300.png" alt="LosMoriartys" class="profile-avatar" onerror="this.src='https://via.placeholder.com/110/9146ff/ffffff?text=LM'">
         <div class="profile-info">
@@ -434,7 +411,7 @@
 
     <!-- 2. LadyMoriarty01 -->
     <div id="profile-ladymoriarty" class="single-profile card">
-      <button class="back-btn" onclick="closeProfile()">← Volver al Staff</button>
+      <button class="back-btn" onclick="closeProfile()">← Volver al listado de Streamers</button>
       <div class="profile-header">
         <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/ladymoriarty01-profile_image-300x300.png" alt="LadyMoriarty01" class="profile-avatar" onerror="this.src='https://via.placeholder.com/110/9146ff/ffffff?text=LMD'">
         <div class="profile-info">
@@ -473,7 +450,7 @@
 
     <!-- 3. TheR0D3R1K -->
     <div id="profile-roderik" class="single-profile card">
-      <button class="back-btn" onclick="closeProfile()">← Volver al Staff</button>
+      <button class="back-btn" onclick="closeProfile()">← Volver al listado de Streamers</button>
       <div class="profile-header">
         <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/ther0d3r1k-profile_image-300x300.png" alt="TheR0D3R1K" class="profile-avatar" onerror="this.src='https://via.placeholder.com/110/9146ff/ffffff?text=ROD'">
         <div class="profile-info">
@@ -512,7 +489,7 @@
 
     <!-- 4. Capyunaplay -->
     <div id="profile-capy" class="single-profile card">
-      <button class="back-btn" onclick="closeProfile()">← Volver al Staff</button>
+      <button class="back-btn" onclick="closeProfile()">← Volver al listado de Streamers</button>
       <div class="profile-header">
         <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/capyunaplay-profile_image-300x300.png" alt="Capyunaplay" class="profile-avatar" onerror="this.src='https://via.placeholder.com/110/9146ff/ffffff?text=CAP'">
         <div class="profile-info">
@@ -551,7 +528,7 @@
 
     <!-- 5. ArdiPii -->
     <div id="profile-ardipii" class="single-profile card">
-      <button class="back-btn" onclick="closeProfile()">← Volver al Staff</button>
+      <button class="back-btn" onclick="closeProfile()">← Volver al listado de Streamers</button>
       <div class="profile-header">
         <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/ardipii-profile_image-300x300.png" alt="ArdiPii" class="profile-avatar" onerror="this.src='https://via.placeholder.com/110/9146ff/ffffff?text=ARD'">
         <div class="profile-info">
@@ -590,7 +567,7 @@
 
     <!-- 6. Akumazoldyck -->
     <div id="profile-akuma" class="single-profile card">
-      <button class="back-btn" onclick="closeProfile()">← Volver al Staff</button>
+      <button class="back-btn" onclick="closeProfile()">← Volver al listado de Streamers</button>
       <div class="profile-header">
         <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/akumazoldyck-profile_image-300x300.png" alt="Akumazoldyck" class="profile-avatar" onerror="this.src='https://via.placeholder.com/110/9146ff/ffffff?text=AKU'">
         <div class="profile-info">
@@ -629,7 +606,7 @@
 
     <!-- 7. elgabii090 -->
     <div id="profile-gabii" class="single-profile card">
-      <button class="back-btn" onclick="closeProfile()">← Volver al Staff</button>
+      <button class="back-btn" onclick="closeProfile()">← Volver al listado de Streamers</button>
       <div class="profile-header">
         <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/elgabii090-profile_image-300x300.png" alt="elgabii090" class="profile-avatar" onerror="this.src='https://via.placeholder.com/110/9146ff/ffffff?text=GAB'">
         <div class="profile-info">
@@ -668,7 +645,7 @@
 
     <!-- 8. habitos_atomicos -->
     <div id="profile-habitos" class="single-profile card">
-      <button class="back-btn" onclick="closeProfile()">← Volver al Staff</button>
+      <button class="back-btn" onclick="closeProfile()">← Volver al listado de Streamers</button>
       <div class="profile-header">
         <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/habitos_atomicos-profile_image-300x300.png" alt="habitos_atomicos" class="profile-avatar" onerror="this.src='https://via.placeholder.com/110/9146ff/ffffff?text=HAB'">
         <div class="profile-info">
@@ -707,7 +684,7 @@
 
   </div>
 
-  <!-- SOLAPA 3: TUTORIAL LURKIT & KEYMAILER -->
+  <!-- SOLAPA 3: LURKIT & KEYMAILER -->
   <div id="tab-tutorial" class="tab-content">
     <div class="card">
       <h2>Gestión de Campañas & Coordinación de Juegos</h2>
@@ -782,3 +759,85 @@
               <td><strong>Sea of Thieves Programme</strong></td>
               <td>10+</td>
               <td>300</td>
+              <td>elgabii090, LosMoriartys, TheR0D3R1K</td>
+            </tr>
+            <tr>
+              <td><strong>Funcom Creator Program (Dune / Conan)</strong></td>
+              <td>15 - 20+</td>
+              <td>500</td>
+              <td>LosMoriartys, TheR0D3R1K</td>
+            </tr>
+            <tr>
+              <td><strong>Kinetic Games (Phasmophobia)</strong></td>
+              <td>20 - 50+</td>
+              <td>500+</td>
+              <td>LosMoriartys, TheR0D3R1K (Ideal para duplas / equipo)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOLAPA 5: OBS -->
+  <div id="tab-obs" class="tab-content">
+    <div class="card obs-guide">
+      <h2>Estándares Técnicos de Transmisión</h2>
+      <p>Parámetros recomendados para asegurar directos en equipo fluidos, estables y con calidad visual profesional:</p>
+      <ul>
+        <li><strong>Codificador:</strong> NVIDIA NVENC H.264 (con placa dedicada) o x264.</li>
+        <li><strong>Control de Frecuencia:</strong> CBR (Bitrate constante).</li>
+        <li><strong>Bitrate:</strong> 6000 Kbps (óptimo para estabilidad en transmisiones simultáneas).</li>
+        <li><strong>Preset de Rendimiento:</strong> P5 o Slower (Calidad equilibrada).</li>
+        <li><strong>Resolución de Salida:</strong> 720p a 60fps (garantiza cero caídas de frames en colaboraciones multitudinarias).</li>
+        <li><strong>Audio:</strong> Pista de 160 kbps para mantener las voces nítidas en Discord y juego.</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function switchTab(tabId) {
+    // Cerrar perfiles individuales si estaban abiertos al cambiar de solapa
+    closeProfile();
+
+    // Ocultar todas las solapas
+    const contents = document.querySelectorAll('.tab-content');
+    contents.forEach(c => c.classList.remove('active'));
+    
+    // Quitar clase active a los botones
+    const buttons = document.querySelectorAll('.tab-btn');
+    buttons.forEach(b => b.classList.remove('active'));
+    
+    // Activar la solapa elegida y su botón correspondiente
+    document.getElementById(tabId).classList.add('active');
+    event.currentTarget.classList.add('active');
+  }
+
+  function openProfile(profileId) {
+    // Ocultar la cuadrícula general de streamers
+    document.getElementById('streamers-list-view').style.display = 'none';
+    
+    // Ocultar todas las fichas individuales
+    const profiles = document.querySelectorAll('.single-profile');
+    profiles.forEach(p => p.classList.remove('active'));
+    
+    // Mostrar la ficha seleccionada
+    document.getElementById(profileId).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function closeProfile() {
+    // Ocultar todas las fichas individuales
+    const profiles = document.querySelectorAll('.single-profile');
+    profiles.forEach(p => p.classList.remove('active'));
+    
+    // Mostrar nuevamente la lista general de streamers
+    const listView = document.getElementById('streamers-list-view');
+    if (listView) listView.style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
