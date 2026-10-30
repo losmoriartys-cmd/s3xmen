@@ -16,7 +16,7 @@
   }
   * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
   body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; padding: 20px; }
-  .container { max-width: 1100px; margin: 0 auto; }
+  .container { max-width: 1150px; margin: 0 auto; }
   
   header { text-align: center; margin-bottom: 30px; border-bottom: 2px solid var(--accent); padding-bottom: 20px; }
   h1 { font-size: 2.8rem; color: var(--text-main); letter-spacing: 2px; margin-bottom: 5px; }
@@ -79,8 +79,8 @@
 
   .grid-team {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 25px;
     margin-top: 20px;
   }
   
@@ -88,10 +88,15 @@
     background: #121215;
     border: 1px solid var(--border);
     border-radius: 10px;
-    padding: 20px;
+    padding: 22px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .streamer-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
   }
   
   .streamer-header {
@@ -102,15 +107,15 @@
   }
   
   .streamer-avatar {
-    width: 70px;
-    height: 70px;
+    width: 75px;
+    height: 75px;
     border-radius: 50%;
     border: 2px solid var(--accent);
     object-fit: cover;
   }
   
   .streamer-info h3 {
-    font-size: 1.3rem;
+    font-size: 1.35rem;
     color: var(--text-main);
   }
   
@@ -138,7 +143,7 @@
   .stats-list li {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 5px;
+    margin-bottom: 6px;
   }
   
   .stats-list strong {
@@ -179,7 +184,7 @@
   <!-- Navegación de Solapas -->
   <div class="tabs">
     <button class="tab-btn active" onclick="switchTab(event, 'tab-inicio')">Inicio / Familia</button>
-    <button class="tab-btn" onclick="switchTab(event, 'tab-streamers')">Streamers</button>
+    <button class="tab-btn" onclick="switchTab(event, 'tab-streamers')">Streamers (8)</button>
     <button class="tab-btn" onclick="switchTab(event, 'tab-coop')">Juegos Coop & Keys</button>
     <button class="tab-btn" onclick="switchTab(event, 'tab-obs')">Config OBS</button>
   </div>
@@ -188,8 +193,8 @@
   <div id="tab-inicio" class="tab-content active">
     <div class="card manifesto-box">
       <h2>Nuestra Esencia como Twitch Team</h2>
-      <p>Somos <strong>LOS S3X-MEN</strong>, un Twitch Team oficial. Una familia latinoamericana de colegas de plataforma de Argentina, Bolivia y México. Nos une que nos gustan los mismos juegos y que priorizamos la colaboración y el crecimiento en conjunto.</p>
-      <p>No somos un grupo de apoyo ni una agencia fría; somos compañeros de camino dentro de Twitch. Nos juntamos porque disfrutamos jugar juntos y crear contenido que nos representa, manteniendo siempre la independencia de cada canal.</p>
+      <p>Somos <strong>LOS S3X-MEN</strong>, un Twitch Team oficial. Una familia latinoamericana de colegas de plataforma de Argentina, Bolivia y México. Nos une que nos gustan los mismos juegos y que priorizamos la colaboración y el crecimiento genuino en conjunto.</p>
+      <p>No somos un grupo de apoyo ni una agencia fría; somos compañeros de camino dentro de Twitch. Nos juntamos porque disfrutamos jugar juntos y crear contenido que nos representa, manteniendo siempre la total independencia de cada canal.</p>
       
       <div class="schedule-highlight">
         📅 Horario central sugerido e ideal: Sábados 21:00 ARG / 20:00 BOL / 18:00 MX (CDMX) — Un punto de referencia voluntario y flexible para coincidir y hacer contenido en equipo, sin obligaciones rígidas.
@@ -200,7 +205,8 @@
   <!-- SOLAPA 2: STREAMERS -->
   <div id="tab-streamers" class="tab-content">
     <div class="card">
-      <h2>Perfiles del Team</h2>
+      <h2>Fichas Oficiales del Team</h2>
+      <p>Conocé a los integrantes que forman parte de nuestra familia de creadores en Twitch.</p>
       <div class="grid-team">
         
         <!-- LosMoriartys -->
@@ -224,11 +230,32 @@
           <a href="https://twitch.tv/losmoriartys" target="_blank" class="btn-twitch">Visitar Canal</a>
         </div>
 
+        <!-- LadyMoriarty01 (Yamila / 1ra Dama) -->
+        <div class="streamer-card">
+          <div>
+            <div class="streamer-header">
+              <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/ladymoriarty01-profile_image-300x300.png" alt="LadyMoriarty01" class="streamer-avatar" onerror="this.src='https://via.placeholder.com/75'">
+              <div class="streamer-info">
+                <h3>LadyMoriarty01</h3>
+                <span class="badge">ARG • Afiliado</span>
+              </div>
+            </div>
+            <p>La primera dama del Team y co-pilota de LosMoriartys. Minecraft, simuladores y calidez de hogar.</p>
+            <ul class="stats-list">
+              <li><span>Seguidores:</span> <strong>179</strong></li>
+              <li><span>Media (30d):</span> <strong>10 viewers</strong></li>
+              <li><span>Pico Histórico:</span> <strong>388 viewers</strong></li>
+              <li><span>Juego Principal:</span> <strong>Minecraft / Aniimo</strong></li>
+            </ul>
+          </div>
+          <a href="https://twitch.tv/ladymoriarty01" target="_blank" class="btn-twitch">Visitar Canal</a>
+        </div>
+
         <!-- TheR0D3R1K -->
         <div class="streamer-card">
           <div>
             <div class="streamer-header">
-              <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/ther0d3r1k-profile_image-300x300.png" alt="TheR0D3R1K" class="streamer-avatar" onerror="this.src='https://via.placeholder.com/70'">
+              <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/ther0d3r1k-profile_image-300x300.png" alt="TheR0D3R1K" class="streamer-avatar" onerror="this.src='https://via.placeholder.com/75'">
               <div class="streamer-info">
                 <h3>TheR0D3R1K</h3>
                 <span class="badge">BOL • Partner</span>
@@ -249,7 +276,7 @@
         <div class="streamer-card">
           <div>
             <div class="streamer-header">
-              <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/capyunaplay-profile_image-300x300.png" alt="Capyunaplay" class="streamer-avatar" onerror="this.src='https://via.placeholder.com/70'">
+              <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/capyunaplay-profile_image-300x300.png" alt="Capyunaplay" class="streamer-avatar" onerror="this.src='https://via.placeholder.com/75'">
               <div class="streamer-info">
                 <h3>Capyunaplay</h3>
                 <span class="badge">ARG • Afiliado</span>
@@ -270,7 +297,7 @@
         <div class="streamer-card">
           <div>
             <div class="streamer-header">
-              <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/ardipii-profile_image-300x300.png" alt="ArdiPii" class="streamer-avatar" onerror="this.src='https://via.placeholder.com/70'">
+              <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/ardipii-profile_image-300x300.png" alt="ArdiPii" class="streamer-avatar" onerror="this.src='https://via.placeholder.com/75'">
               <div class="streamer-info">
                 <h3>ArdiPii</h3>
                 <span class="badge">MX • Afiliado</span>
@@ -291,7 +318,7 @@
         <div class="streamer-card">
           <div>
             <div class="streamer-header">
-              <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/akumazoldyck-profile_image-300x300.png" alt="Akumazoldyck" class="streamer-avatar" onerror="this.src='https://via.placeholder.com/70'">
+              <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/akumazoldyck-profile_image-300x300.png" alt="Akumazoldyck" class="streamer-avatar" onerror="this.src='https://via.placeholder.com/75'">
               <div class="streamer-info">
                 <h3>Akumazoldyck</h3>
                 <span class="badge">MX • Afiliado</span>
@@ -312,7 +339,7 @@
         <div class="streamer-card">
           <div>
             <div class="streamer-header">
-              <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/elgabii090-profile_image-300x300.png" alt="elgabii090" class="streamer-avatar" onerror="this.src='https://via.placeholder.com/70'">
+              <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/elgabii090-profile_image-300x300.png" alt="elgabii090" class="streamer-avatar" onerror="this.src='https://via.placeholder.com/75'">
               <div class="streamer-info">
                 <h3>elgabii090</h3>
                 <span class="badge">ARG • Afiliado</span>
@@ -329,6 +356,27 @@
           <a href="https://twitch.tv/elgabii090" target="_blank" class="btn-twitch">Visitar Canal</a>
         </div>
 
+        <!-- habitos_atomicos -->
+        <div class="streamer-card">
+          <div>
+            <div class="streamer-header">
+              <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/habitos_atomicos-profile_image-300x300.png" alt="habitos_atomicos" class="streamer-avatar" onerror="this.src='https://via.placeholder.com/75'">
+              <div class="streamer-info">
+                <h3>habitos_atomicos</h3>
+                <span class="badge">ARG • Afiliado</span>
+              </div>
+            </div>
+            <p>Lifestyle, productividad y el 1% diario. Uniendo el gaming con el desarrollo personal.</p>
+            <ul class="stats-list">
+              <li><span>Seguidores:</span> <strong>300+</strong></li>
+              <li><span>Media (30d):</span> <strong>7 viewers</strong></li>
+              <li><span>Pico Histórico:</span> <strong>26 viewers</strong></li>
+              <li><span>Juego Principal:</span> <strong>Minecraft / Just Chatting</strong></li>
+            </ul>
+          </div>
+          <a href="https://twitch.tv/habitos_atomicos" target="_blank" class="btn-twitch">Visitar Canal</a>
+        </div>
+
       </div>
     </div>
   </div>
@@ -337,8 +385,7 @@
   <div id="tab-coop" class="tab-content">
     <div class="card">
       <h2>Juegos Cooperativos & Solicitud de Keys</h2>
-      <p>Espacio reservado para coordinar juegos de 4 a 7 jugadores a través de plataformas de creadores como <strong>Lurkit</strong> y <strong>Keymailer</strong>. Ideal para conseguir accesos y organizar dinámicas conjuntas.</p>
-      <p><em>Revisar solapa de Google Sheets interna para ver qué integrantes cumplen con el requisito de media para programas de partners directos (THQ Nordic, Raw Fury, etc.).</em></p>
+      <p>Espacio reservado para coordinar juegos cooperativos a través de plataformas de creadores como <strong>Lurkit</strong> y <strong>Keymailer</strong>. Ideal para conseguir accesos y organizar dinámicas conjuntas en familia.</p>
     </div>
   </div>
 
@@ -346,7 +393,7 @@
   <div id="tab-obs" class="tab-content">
     <div class="card obs-guide">
       <h2>Configuración Sugerida para OBS (Colaboraciones)</h2>
-      <p>Para asegurar que todos los directos en equipo (4 a 7 participantes) fluyan sin cortes y con excelente calidad visual y de audio:</p>
+      <p>Para asegurar que todos los directos en equipo fluyan sin cortes y con excelente calidad visual y de audio:</p>
       <ul>
         <li><strong>Codificador:</strong> NVIDIA NVENC H.264 (si usás placa gráfica dedicada) o x264.</li>
         <li><strong>Control de Frecuencia:</strong> CBR (Bitrate constante).</li>
