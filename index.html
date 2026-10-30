@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LOS S3X-MEN | Twitch Team Oficial & Media Kit</title>
+<title>LOS S3X-MEN | Twitch Team Oficial</title>
 <style>
   :root {
     --bg-dark: #0f0f11;
@@ -86,521 +86,187 @@
     border-left: 5px solid var(--accent);
   }
 
-  /* Grid de Fichas Individuales Profundas */
+  /* Grid de Streamers (Vista General) */
   .grid-team {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
     margin-top: 25px;
   }
   
-  .streamer-card {
+  .streamer-preview-card {
     background: #121215;
     border: 1px solid var(--border);
     border-radius: 12px;
     padding: 25px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: transform 0.2s, border-color 0.2s;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
   }
-  .streamer-card:hover {
+  .streamer-preview-card:hover {
     border-color: var(--accent);
-    transform: translateY(-4px);
-    box-shadow: 0 6px 25px rgba(145, 70, 255, 0.15);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(145, 70, 255, 0.2);
   }
   
-  .streamer-header {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 15px;
-  }
-  
-  .streamer-avatar-box {
-    width: 70px;
-    height: 70px;
+  .preview-avatar {
+    width: 90px;
+    height: 90px;
     border-radius: 50%;
-    background: var(--accent);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    font-weight: bold;
-    border: 2px solid #fff;
-    flex-shrink: 0;
-    box-shadow: 0 0 10px rgba(145,70,255,0.5);
+    border: 3px solid var(--accent);
+    object-fit: cover;
+    margin: 0 auto 15px auto;
+    background: #27272a;
   }
-  
-  .streamer-info h3 {
-    font-size: 1.4rem;
+
+  .preview-name {
+    font-size: 1.3rem;
     color: var(--text-main);
-    margin: 0;
+    font-weight: bold;
+    margin-bottom: 5px;
   }
-  
-  .badge {
+
+  .preview-country {
     display: inline-block;
-    background: rgba(145, 70, 255, 0.25);
+    background: rgba(145, 70, 255, 0.2);
     color: #b892ff;
     padding: 3px 10px;
     border-radius: 6px;
     font-size: 0.8rem;
     font-weight: bold;
-    margin-top: 5px;
-  }
-  
-  .bio-box {
-    background: rgba(255, 255, 255, 0.03);
-    border-left: 3px solid var(--accent);
-    padding: 10px 12px;
-    font-style: italic;
-    color: #d1d5db;
-    font-size: 0.92rem;
-    border-radius: 0 6px 6px 0;
     margin-bottom: 15px;
   }
 
-  .socials-links {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 15px;
-    font-size: 0.85rem;
-  }
-  .socials-links a {
-    color: var(--accent);
-    text-decoration: none;
-    background: rgba(145, 70, 255, 0.1);
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-weight: 600;
-  }
-  .socials-links a:hover { background: rgba(145, 70, 255, 0.3); }
-
-  .stats-list {
-    list-style: none;
-    font-size: 0.92rem;
-    color: var(--text-muted);
-    margin: 12px 0;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    padding: 12px 0;
-  }
-  
-  .stats-list li {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 6px;
-  }
-  
-  .stats-list strong {
+  .btn-detail {
+    display: inline-block;
+    background: transparent;
+    border: 1px solid var(--accent);
     color: var(--text-main);
-  }
-
-  .team-value-box {
-    background: rgba(145, 70, 255, 0.08);
-    border: 1px dashed var(--accent);
-    padding: 12px;
+    padding: 8px 16px;
+    border-radius: 6px;
     font-size: 0.9rem;
-    color: var(--text-main);
-    border-radius: 8px;
-    margin: 12px 0;
-  }
-  
-  .btn-twitch {
-    display: block;
-    text-align: center;
-    background: var(--accent);
-    color: white;
-    text-decoration: none;
-    padding: 11px;
-    border-radius: 8px;
-    font-weight: bold;
+    font-weight: 600;
     transition: background 0.2s;
-    margin-top: 15px;
   }
-  .btn-twitch:hover { background: var(--accent-hover); }
-
-  /* Tablas pro */
-  .table-container { overflow-x: auto; margin-top: 20px; }
-  table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.98rem; }
-  th, td { padding: 14px 18px; border-bottom: 1px solid var(--border); color: var(--text-muted); }
-  th { background: #121215; color: var(--text-main); font-weight: 600; }
-  td strong { color: var(--text-main); }
-
-  .obs-guide ul { margin-left: 20px; color: var(--text-muted); margin-bottom: 15px; }
-  .obs-guide li { margin-bottom: 10px; }
-</style>
-</head>
-<body>
-
-<div class="container">
-  
-  <!-- Banner Principal de Impacto -->
-  <div class="hero-banner">
-    <h1>LOS S3X-<span>MEN</span></h1>
-    <p>Twitch Team Oficial & Media Kit • Escuadrón Internacional LATAM</p>
-  </div>
-
-  <!-- Navegación por Solapas -->
-  <div class="tabs">
-    <button class="tab-btn active" onclick="switchTab(event, 'tab-inicio')">Presentación / Familia</button>
-    <button class="tab-btn" onclick="switchTab(event, 'tab-streamers')">Streamers (Fichas 1x1)</button>
-    <button class="tab-btn" onclick="switchTab(event, 'tab-tutorial')">Lurkit & Keymailer</button>
-    <button class="tab-btn" onclick="switchTab(event, 'tab-partners')">Partners & Requisitos</button>
-    <button class="tab-btn" onclick="switchTab(event, 'tab-obs')">Config OBS</button>
-  </div>
-
-  <!-- SOLAPA 1: INICIO -->
-  <div id="tab-inicio" class="tab-content active">
-    <div class="card manifesto-box">
-      <h2>Nuestra Esencia & Carta de Presentación</h2>
-      <p>Una noche cualquiera de directos y charlas de medianoche, tiramos sobre la mesa una idea casi de película: ¿y si cruzamos las fronteras y armamos nuestro propio escuadrón? Una especie de <strong>Avengers internacionales</strong> unidos no para salvar el mundo de Thanos, sino para traer diversión, risas y entretenimiento de altísima calidad a la pantalla cada semana. Así nació <strong>LOS S3X-MEN</strong>, un puente directo entre <strong>Argentina, Bolivia y México</strong>.</p>
-      
-      <h3>Manifiesto: Quiénes somos y cómo trabajamos</h3>
-      <p>Dejemos algo en claro desde el vamos: <strong>esto no es un grupo de apoyo, ni una agencia fría, ni un rejunte por compromiso (cero F4F, cero toxicidad).</strong> Somos un Twitch Team oficial compuesto por 8 creadores independientes, maduros y profesionales que eligen caminar a la par.</p>
-      <p>Cada integrante se toma su canal con absoluta seriedad. Aunque la amistad y la buena onda son nuestro motor, lo que ofrecemos a la industria es un estándar profesional de colaboración genuina.</p>
-
-      <h3>Valor Estratégico para Marcas y Desarrolladores</h3>
-      <p>La gran fortaleza de nuestro equipo radica en la <strong>diversidad temática</strong>. Cada uno de los 8 streamers domina un nicho diferente (horror asimétrico, competitivo, simuladores, arte, lifestyle y retro). Esto le permite a cualquier estudio de videojuegos, publisher o plataforma de keys contar con un partner multicanal capaz de cubrir lanzamientos y campañas masivas con llegada orgánica real en toda Latinoamérica.</p>
-    </div>
-  </div>
-
-  <!-- SOLAPA 2: STREAMERS (FICHAS 1X1 PROFUNDAS) -->
-  <div id="tab-streamers" class="tab-content">
-    <div class="card">
-      <h2>Dossier de Creadores: Fichas Oficiales del Team</h2>
-      <p>Conocé a fondo el perfil, las estadísticas verificadas de SullyGnome, los paneles de Twitch y el aporte estratégico de cada uno de los 8 integrantes.</p>
-      
-      <div class="grid-team">
-        
-        <!-- 1. LosMoriartys -->
-        <div class="streamer-card">
-          <div>
-            <div class="streamer-header">
-              <div class="streamer-avatar-box">LM</div>
-              <div class="streamer-info">
-                <h3>LosMoriartys</h3>
-                <span class="badge">ARG • Afiliado</span>
-              </div>
-            </div>
-            <div class="bio-box">"Pareja gamer y videoclub nerd caótico con humor VHS, pelis, cómics y mucha charla."</div>
-            <div class="socials-links">
-              <a href="https://twitch.tv/losmoriartys" target="_blank">Twitch</a>
-              <a href="#" target="_blank">Instagram</a>
-              <a href="#" target="_blank">YouTube</a>
-            </div>
-            <ul class="stats-list">
-              <li><span>Seguidores:</span> <strong>1,143</strong></li>
-              <li><span>Media (30d):</span> <strong>22 viewers</strong></li>
-              <li><span>Pico Histórico:</span> <strong>101 viewers</strong></li>
-              <li><span>Juego Principal:</span> <strong>Fortnite / Sims / Retro</strong></li>
-            </ul>
-            <div class="team-value-box">
-              <strong>Aporte al Grupo:</strong> Dirección creativa, liderazgo de comunidad y cobertura de juegos narrativos con enfoque nostálgico.
-            </div>
-          </div>
-          <a href="https://twitch.tv/losmoriartys" target="_blank" class="btn-twitch">Visitar Canal Oficial</a>
-        </div>
-
-        <!-- 2. LadyMoriarty01 -->
-        <div class="streamer-card">
-          <div>
-            <div class="streamer-header">
-              <div class="streamer-avatar-box">LMD</div>
-              <div class="streamer-info">
-                <h3>LadyMoriarty01</h3>
-                <span class="badge">ARG • Afiliado</span>
-              </div>
-            </div>
-            <div class="bio-box">"La primera dama del Team. Minecraft, simuladores de gestión y calidez de hogar."</div>
-            <div class="socials-links">
-              <a href="https://twitch.tv/ladymoriarty01" target="_blank">Twitch</a>
-              <a href="#" target="_blank">Instagram</a>
-            </div>
-            <ul class="stats-list">
-              <li><span>Seguidores:</span> <strong>179</strong></li>
-              <li><span>Media (30d):</span> <strong>10 viewers</strong></li>
-              <li><span>Pico Histórico:</span> <strong>388 viewers</strong></li>
-              <li><span>Juego Principal:</span> <strong>Minecraft / Simulators</strong></li>
-            </ul>
-            <div class="team-value-box">
-              <strong>Aporte al Grupo:</strong> Especialista en mundos abiertos, construcción cooperativa y gestión con gran fidelidad de chat.
-            </div>
-          </div>
-          <a href="https://twitch.tv/ladymoriarty01" target="_blank" class="btn-twitch">Visitar Canal Oficial</a>
-        </div>
-
-        <!-- 3. TheR0D3R1K -->
-        <div class="streamer-card">
-          <div>
-            <div class="streamer-header">
-              <div class="streamer-avatar-box">ROD</div>
-              <div class="streamer-info">
-                <h3>TheR0D3R1K</h3>
-                <span class="badge">BOL • Partner</span>
-              </div>
-            </div>
-            <div class="bio-box">"Músico boliviano, pilar competitivo y ancla del Team. Código de creador Fortnite."</div>
-            <div class="socials-links">
-              <a href="https://twitch.tv/ther0d3r1k" target="_blank">Twitch</a>
-              <a href="#" target="_blank">Twitter/X</a>
-            </div>
-            <ul class="stats-list">
-              <li><span>Seguidores:</span> <strong>5,181</strong></li>
-              <li><span>Media (30d):</span> <strong>23 viewers</strong></li>
-              <li><span>Pico Histórico:</span> <strong>78 viewers</strong></li>
-              <li><span>Juego Principal:</span> <strong>Fortnite / Valorant</strong></li>
-            </ul>
-            <div class="team-value-box">
-              <strong>Aporte al Grupo:</strong> Solidez competitiva, estatus de Partner en plataformas y tracción en títulos de alta exigencia mecánica.
-            </div>
-          </div>
-          <a href="https://twitch.tv/ther0d3r1k" target="_blank" class="btn-twitch">Visitar Canal Oficial</a>
-        </div>
-
-        <!-- 4. Capyunaplay -->
-        <div class="streamer-card">
-          <div>
-            <div class="streamer-header">
-              <div class="streamer-avatar-box">CAP</div>
-              <div class="streamer-info">
-                <h3>Capyunaplay</h3>
-                <span class="badge">ARG • Afiliado</span>
-              </div>
-            </div>
-            <div class="bio-box">"Especialista en horror asimétrico y Dead by Daylight. Vibe relajada e intensa."</div>
-            <div class="socials-links">
-              <a href="https://twitch.tv/capyunaplay" target="_blank">Twitch</a>
-              <a href="#" target="_blank">Instagram</a>
-            </div>
-            <ul class="stats-list">
-              <li><span>Seguidores:</span> <strong>682</strong></li>
-              <li><span>Media (30d):</span> <strong>9 viewers</strong></li>
-              <li><span>Pico Histórico:</span> <strong>28 viewers</strong></li>
-              <li><span>Juego Principal:</span> <strong>Dead by Daylight / Horror</strong></li>
-            </ul><!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LOS S3X-MEN | Twitch Team Oficial & Media Kit</title>
-<style>
-  :root {
-    --bg-dark: #0f0f11;
-    --bg-card: #18181b;
-    --bg-card-hover: #202024;
-    --accent: #9146ff;
-    --accent-hover: #772ce8;
-    --text-main: #f3f4f6;
-    --text-muted: #9ca3af;
-    --border: #27272a;
+  .streamer-preview-card:hover .btn-detail {
+    background: var(--accent);
   }
-  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
-  body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; padding: 20px; }
-  .container { max-width: 1200px; margin: 0 auto; }
-  
-  /* Banner Principal de Impacto */
-  .hero-banner {
-    width: 100%;
-    height: 280px;
-    background: linear-gradient(135deg, rgba(145, 70, 255, 0.4), rgba(15, 15, 17, 0.9)), url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
-    border-radius: 16px;
-    border: 1px solid var(--border);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-    margin-bottom: 30px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.6);
-  }
-  .hero-banner h1 { font-size: 3.2rem; color: #fff; letter-spacing: 2px; text-shadow: 0 2px 10px rgba(0,0,0,0.8); margin-bottom: 5px; }
-  .hero-banner h1 span { color: var(--accent); text-shadow: 0 0 15px var(--accent); }
-  .hero-banner p { color: #d1d5db; font-size: 1.2rem; font-weight: 600; text-shadow: 0 1px 5px rgba(0,0,0,0.8); }
 
-  /* Navegación por solapas */
-  .tabs {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 35px;
-    flex-wrap: wrap;
+  /* Ficha Individual Profunda */
+  .single-profile {
+    display: none;
   }
-  .tab-btn {
+  .single-profile.active {
+    display: block;
+  }
+
+  .back-btn {
     background: var(--bg-card);
     border: 1px solid var(--border);
-    color: var(--text-muted);
-    padding: 12px 20px;
-    border-radius: 10px;
+    color: var(--text-main);
+    padding: 8px 16px;
+    border-radius: 8px;
     cursor: pointer;
     font-weight: 600;
-    font-size: 1rem;
-    transition: all 0.2s;
+    margin-bottom: 20px;
+    transition: background 0.2s;
   }
-  .tab-btn.active, .tab-btn:hover {
-    background: var(--accent);
-    color: white;
-    border-color: var(--accent);
-    box-shadow: 0 0 15px rgba(145, 70, 255, 0.4);
-  }
+  .back-btn:hover { background: var(--border); }
 
-  .tab-content { display: none; }
-  .tab-content.active { display: block; }
-  
-  .card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 35px;
+  .profile-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
     margin-bottom: 25px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    flex-wrap: wrap;
   }
-  
-  h2 { color: var(--accent); margin-bottom: 20px; font-size: 2rem; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
-  h3 { color: var(--text-main); margin: 20px 0 10px 0; font-size: 1.4rem; }
-  p { margin-bottom: 15px; color: var(--text-muted); font-size: 1.05rem; }
-  
-  .manifesto-box {
-    background: linear-gradient(135deg, #18181b, #202028);
-    border-left: 5px solid var(--accent);
+  .profile-avatar {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    border: 3px solid var(--accent);
+    object-fit: cover;
+    background: #27272a;
+  }
+  .profile-info h2 {
+    margin: 0;
+    border: none;
+    padding: 0;
+    font-size: 2.2rem;
   }
 
-  /* Grid de Fichas Individuales Profundas */
-  .grid-team {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-    gap: 30px;
-    margin-top: 25px;
+  .bio-panel {
+    background: rgba(255, 255, 255, 0.03);
+    border-left: 4px solid var(--accent);
+    padding: 15px 20px;
+    font-style: italic;
+    color: #e5e7eb;
+    font-size: 1.1rem;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 25px;
   }
-  
-  .streamer-card {
+
+  .profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-bottom: 25px;
+  }
+  @media(max-width: 768px) { .profile-grid { grid-template-columns: 1fr; } }
+
+  .profile-box {
     background: #121215;
     border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 25px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: transform 0.2s, border-color 0.2s;
+    border-radius: 10px;
+    padding: 20px;
   }
-  .streamer-card:hover {
-    border-color: var(--accent);
-    transform: translateY(-4px);
-    box-shadow: 0 6px 25px rgba(145, 70, 255, 0.15);
-  }
-  
-  .streamer-header {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 15px;
-  }
-  
-  .streamer-avatar-box {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    background: var(--accent);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    font-weight: bold;
-    border: 2px solid #fff;
-    flex-shrink: 0;
-    box-shadow: 0 0 10px rgba(145,70,255,0.5);
-  }
-  
-  .streamer-info h3 {
-    font-size: 1.4rem;
-    color: var(--text-main);
-    margin: 0;
-  }
-  
-  .badge {
-    display: inline-block;
-    background: rgba(145, 70, 255, 0.25);
-    color: #b892ff;
-    padding: 3px 10px;
-    border-radius: 6px;
-    font-size: 0.8rem;
-    font-weight: bold;
-    margin-top: 5px;
-  }
-  
-  .bio-box {
-    background: rgba(255, 255, 255, 0.03);
-    border-left: 3px solid var(--accent);
-    padding: 10px 12px;
-    font-style: italic;
-    color: #d1d5db;
-    font-size: 0.92rem;
-    border-radius: 0 6px 6px 0;
-    margin-bottom: 15px;
-  }
-
-  .socials-links {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 15px;
-    font-size: 0.85rem;
-  }
-  .socials-links a {
-    color: var(--accent);
-    text-decoration: none;
-    background: rgba(145, 70, 255, 0.1);
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-weight: 600;
-  }
-  .socials-links a:hover { background: rgba(145, 70, 255, 0.3); }
+  .profile-box h4 { color: var(--accent); margin-bottom: 12px; font-size: 1.1rem; }
 
   .stats-list {
     list-style: none;
-    font-size: 0.92rem;
+    font-size: 0.98rem;
     color: var(--text-muted);
-    margin: 12px 0;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    padding: 12px 0;
   }
-  
   .stats-list li {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    padding-bottom: 4px;
   }
-  
-  .stats-list strong {
-    color: var(--text-main);
-  }
+  .stats-list strong { color: var(--text-main); }
 
-  .team-value-box {
-    background: rgba(145, 70, 255, 0.08);
-    border: 1px dashed var(--accent);
-    padding: 12px;
-    font-size: 0.9rem;
-    color: var(--text-main);
-    border-radius: 8px;
-    margin: 12px 0;
+  .socials-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 15px;
   }
-  
-  .btn-twitch {
+  .socials-row a {
+    background: rgba(145, 70, 255, 0.15);
+    color: #b892ff;
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: 1px solid rgba(145, 70, 255, 0.3);
+  }
+  .socials-row a:hover { background: var(--accent); color: white; }
+
+  .btn-twitch-lg {
     display: block;
     text-align: center;
     background: var(--accent);
     color: white;
     text-decoration: none;
-    padding: 11px;
-    border-radius: 8px;
+    padding: 14px;
+    border-radius: 10px;
     font-weight: bold;
+    font-size: 1.1rem;
     transition: background 0.2s;
-    margin-top: 15px;
+    margin-top: 20px;
   }
-  .btn-twitch:hover { background: var(--accent-hover); }
+  .btn-twitch-lg:hover { background: var(--accent-hover); }
 
   /* Tablas pro */
   .table-container { overflow-x: auto; margin-top: 20px; }
@@ -620,13 +286,13 @@
   <!-- Banner Principal de Impacto -->
   <div class="hero-banner">
     <h1>LOS S3X-<span>MEN</span></h1>
-    <p>Twitch Team Oficial & Media Kit • Escuadrón Internacional LATAM</p>
+    <p>Twitch Team Oficial • Escuadrón Internacional LATAM</p>
   </div>
 
   <!-- Navegación por Solapas -->
   <div class="tabs">
-    <button class="tab-btn active" onclick="switchTab(event, 'tab-inicio')">Presentación / Familia</button>
-    <button class="tab-btn" onclick="switchTab(event, 'tab-streamers')">Streamers (Fichas 1x1)</button>
+    <button class="tab-btn active" onclick="switchTab(event, 'tab-inicio')">Inicio / Familia</button>
+    <button class="tab-btn" onclick="switchTab(event, 'tab-streamers')">Streamers</button>
     <button class="tab-btn" onclick="switchTab(event, 'tab-tutorial')">Lurkit & Keymailer</button>
     <button class="tab-btn" onclick="switchTab(event, 'tab-partners')">Partners & Requisitos</button>
     <button class="tab-btn" onclick="switchTab(event, 'tab-obs')">Config OBS</button>
@@ -638,126 +304,481 @@
       <h2>Nuestra Esencia & Carta de Presentación</h2>
       <p>Una noche cualquiera de directos y charlas de medianoche, tiramos sobre la mesa una idea casi de película: ¿y si cruzamos las fronteras y armamos nuestro propio escuadrón? Una especie de <strong>Avengers internacionales</strong> unidos no para salvar el mundo de Thanos, sino para traer diversión, risas y entretenimiento de altísima calidad a la pantalla cada semana. Así nació <strong>LOS S3X-MEN</strong>, un puente directo entre <strong>Argentina, Bolivia y México</strong>.</p>
       
-      <h3>Manifiesto: Quiénes somos y cómo trabajamos</h3>
-      <p>Dejemos algo en claro desde el vamos: <strong>esto no es un grupo de apoyo, ni una agencia fría, ni un rejunte por compromiso (cero F4F, cero toxicidad).</strong> Somos un Twitch Team oficial compuesto por 8 creadores independientes, maduros y profesionales que eligen caminar a la par.</p>
-      <p>Cada integrante se toma su canal con absoluta seriedad. Aunque la amistad y la buena onda son nuestro motor, lo que ofrecemos a la industria es un estándar profesional de colaboración genuina.</p>
+      <h3>Quiénes Somos y Cómo Trabajamos</h3>
+      <p>Dejemos algo en claro desde el vamos: esto no es un grupo de apoyo, ni una agencia fría, ni un rejunte por compromiso. Somos un Twitch Team oficial compuesto por 8 creadores independientes, maduros y profesionales que eligen caminar a la par.</p>
+      <p>Cada integrante se toma su canal con absoluta seriedad. Aunque la amistad y la buena onda son nuestro motor, lo que ofrecemos es un estándar profesional de colaboración genuina.</p>
 
-      <h3>Valor Estratégico para Marcas y Desarrolladores</h3>
-      <p>La gran fortaleza de nuestro equipo radica en la <strong>diversidad temática</strong>. Cada uno de los 8 streamers domina un nicho diferente (horror asimétrico, competitivo, simuladores, arte, lifestyle y retro). Esto le permite a cualquier estudio de videojuegos, publisher o plataforma de keys contar con un partner multicanal capaz de cubrir lanzamientos y campañas masivas con llegada orgánica real en toda Latinoamérica.</p>
+      <h3>Variedad y Alcance para la Industria</h3>
+      <p>La gran fortaleza de nuestro equipo radica en la <strong>diversidad temática</strong>. Cada uno de los 8 streamers domina un nicho diferente (horror asimétrico, competitivo, simuladores, arte, lifestyle y retro). Esto le permite a cualquier estudio de videojuegos, publisher o plataforma contar con un partner multicanal capaz de cubrir lanzamientos y campañas masivas con llegada orgánica real en toda Latinoamérica.</p>
     </div>
   </div>
 
-  <!-- SOLAPA 2: STREAMERS (FICHAS 1X1 PROFUNDAS) -->
+  <!-- SOLAPA 2: STREAMERS (VISTA GENERAL + FICHAS INDIVIDUALES) -->
   <div id="tab-streamers" class="tab-content">
-    <div class="card">
-      <h2>Dossier de Creadores: Fichas Oficiales del Team</h2>
-      <p>Conocé a fondo el perfil, las estadísticas verificadas de SullyGnome, los paneles de Twitch y el aporte estratégico de cada uno de los 8 integrantes.</p>
-      
-      <div class="grid-team">
+    
+    <!-- VISTA GENERAL (LISTA DE LOS 8) -->
+    <div id="streamers-list-view">
+      <div class="card">
+        <h2>Integrantes del Escuadrón</h2>
+        <p>Hacé clic en la tarjeta de cualquier creador para acceder a su ficha individual completa, estadísticas detalladas, biografía oficial y propuesta de valor para la industria.</p>
         
-        <!-- 1. LosMoriartys -->
-        <div class="streamer-card">
-          <div>
-            <div class="streamer-header">
-              <div class="streamer-avatar-box">LM</div>
-              <div class="streamer-info">
-                <h3>LosMoriartys</h3>
-                <span class="badge">ARG • Afiliado</span>
-              </div>
-            </div>
-            <div class="bio-box">"Pareja gamer y videoclub nerd caótico con humor VHS, pelis, cómics y mucha charla."</div>
-            <div class="socials-links">
-              <a href="https://twitch.tv/losmoriartys" target="_blank">Twitch</a>
-              <a href="#" target="_blank">Instagram</a>
-              <a href="#" target="_blank">YouTube</a>
-            </div>
-            <ul class="stats-list">
-              <li><span>Seguidores:</span> <strong>1,143</strong></li>
-              <li><span>Media (30d):</span> <strong>22 viewers</strong></li>
-              <li><span>Pico Histórico:</span> <strong>101 viewers</strong></li>
-              <li><span>Juego Principal:</span> <strong>Fortnite / Sims / Retro</strong></li>
-            </ul>
-            <div class="team-value-box">
-              <strong>Aporte al Grupo:</strong> Dirección creativa, liderazgo de comunidad y cobertura de juegos narrativos con enfoque nostálgico.
-            </div>
+        <div class="grid-team">
+          <!-- 1. LosMoriartys -->
+          <div class="streamer-preview-card" onclick="openProfile('profile-moriartys')">
+            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/4a2982d6-419b-436d-96e0-2ea6f3f009f4-profile_image-300x300.png" alt="LosMoriartys" class="preview-avatar" onerror="this.src='https://via.placeholder.com/90/9146ff/ffffff?text=LM'">
+            <div class="preview-name">LosMoriartys</div>
+            <span class="preview-country">ARG • Afiliado</span>
+            <div><span class="btn-detail">Ver Ficha Completa</span></div>
           </div>
-          <a href="https://twitch.tv/losmoriartys" target="_blank" class="btn-twitch">Visitar Canal Oficial</a>
-        </div>
 
-        <!-- 2. LadyMoriarty01 -->
-        <div class="streamer-card">
-          <div>
-            <div class="streamer-header">
-              <div class="streamer-avatar-box">LMD</div>
-              <div class="streamer-info">
-                <h3>LadyMoriarty01</h3>
-                <span class="badge">ARG • Afiliado</span>
-              </div>
-            </div>
-            <div class="bio-box">"La primera dama del Team. Minecraft, simuladores de gestión y calidez de hogar."</div>
-            <div class="socials-links">
-              <a href="https://twitch.tv/ladymoriarty01" target="_blank">Twitch</a>
-              <a href="#" target="_blank">Instagram</a>
-            </div>
-            <ul class="stats-list">
-              <li><span>Seguidores:</span> <strong>179</strong></li>
-              <li><span>Media (30d):</span> <strong>10 viewers</strong></li>
-              <li><span>Pico Histórico:</span> <strong>388 viewers</strong></li>
-              <li><span>Juego Principal:</span> <strong>Minecraft / Simulators</strong></li>
-            </ul>
-            <div class="team-value-box">
-              <strong>Aporte al Grupo:</strong> Especialista en mundos abiertos, construcción cooperativa y gestión con gran fidelidad de chat.
-            </div>
+          <!-- 2. LadyMoriarty01 -->
+          <div class="streamer-preview-card" onclick="openProfile('profile-ladymoriarty')">
+            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/ladymoriarty01-profile_image-300x300.png" alt="LadyMoriarty01" class="preview-avatar" onerror="this.src='https://via.placeholder.com/90/9146ff/ffffff?text=LMD'">
+            <div class="preview-name">LadyMoriarty01</div>
+            <span class="preview-country">ARG • Afiliado</span>
+            <div><span class="btn-detail">Ver Ficha Completa</span></div>
           </div>
-          <a href="https://twitch.tv/ladymoriarty01" target="_blank" class="btn-twitch">Visitar Canal Oficial</a>
-        </div>
 
-        <!-- 3. TheR0D3R1K -->
-        <div class="streamer-card">
-          <div>
-            <div class="streamer-header">
-              <div class="streamer-avatar-box">ROD</div>
-              <div class="streamer-info">
-                <h3>TheR0D3R1K</h3>
-                <span class="badge">BOL • Partner</span>
-              </div>
-            </div>
-            <div class="bio-box">"Músico boliviano, pilar competitivo y ancla del Team. Código de creador Fortnite."</div>
-            <div class="socials-links">
-              <a href="https://twitch.tv/ther0d3r1k" target="_blank">Twitch</a>
-              <a href="#" target="_blank">Twitter/X</a>
-            </div>
-            <ul class="stats-list">
-              <li><span>Seguidores:</span> <strong>5,181</strong></li>
-              <li><span>Media (30d):</span> <strong>23 viewers</strong></li>
-              <li><span>Pico Histórico:</span> <strong>78 viewers</strong></li>
-              <li><span>Juego Principal:</span> <strong>Fortnite / Valorant</strong></li>
-            </ul>
-            <div class="team-value-box">
-              <strong>Aporte al Grupo:</strong> Solidez competitiva, estatus de Partner en plataformas y tracción en títulos de alta exigencia mecánica.
-            </div>
+          <!-- 3. TheR0D3R1K -->
+          <div class="streamer-preview-card" onclick="openProfile('profile-roderik')">
+            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/ther0d3r1k-profile_image-300x300.png" alt="TheR0D3R1K" class="preview-avatar" onerror="this.src='https://via.placeholder.com/90/9146ff/ffffff?text=ROD'">
+            <div class="preview-name">TheR0D3R1K</div>
+            <span class="preview-country">BOL • Partner</span>
+            <div><span class="btn-detail">Ver Ficha Completa</span></div>
           </div>
-          <a href="https://twitch.tv/ther0d3r1k" target="_blank" class="btn-twitch">Visitar Canal Oficial</a>
-        </div>
 
-        <!-- 4. Capyunaplay -->
-        <div class="streamer-card">
-          <div>
-            <div class="streamer-header">
-              <div class="streamer-avatar-box">CAP</div>
-              <div class="streamer-info">
-                <h3>Capyunaplay</h3>
-                <span class="badge">ARG • Afiliado</span>
-              </div>
-            </div>
-            <div class="bio-box">"Especialista en horror asimétrico y Dead by Daylight. Vibe relajada e intensa."</div>
-            <div class="socials-links">
-              <a href="https://twitch.tv/capyunaplay" target="_blank">Twitch</a>
-              <a href="#" target="_blank">Instagram</a>
-            </div>
-            <ul class="stats-list">
-              <li><span>Seguidores:</span> <strong>682</strong></li>
-              <li><span>Media (30d):</span> <strong>9 viewers</strong></li>
-              <li><span>Pico Histórico:</span> <strong>28 viewers</strong></li>
-              <li><span>Juego Principal:</span> <strong>Dead by Daylight / Horror</strong></li>
-            </ul>
+          <!-- 4. Capyunaplay -->
+          <div class="streamer-preview-card" onclick="openProfile('profile-capy')">
+            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/capyunaplay-profile_image-300x300.png" alt="Capyunaplay" class="preview-avatar" onerror="this.src='https://via.placeholder.com/90/9146ff/ffffff?text=CAP'">
+            <div class="preview-name">Capyunaplay</div>
+            <span class="preview-country">ARG • Afiliado</span>
+            <div><span class="btn-detail">Ver Ficha Completa</span></div>
+          </div>
+
+          <!-- 5. ArdiPii -->
+          <div class="streamer-preview-card" onclick="openProfile('profile-ardipii')">
+            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/ardipii-profile_image-300x300.png" alt="ArdiPii" class="preview-avatar" onerror="this.src='https://via.placeholder.com/90/9146ff/ffffff?text=ARD'">
+            <div class="preview-name">ArdiPii</div>
+            <span class="preview-country">MX • Afiliado</span>
+            <div><span class="btn-detail">Ver Ficha Completa</span></div>
+          </div>
+
+          <!-- 6. Akumazoldyck -->
+          <div class="streamer-preview-card" onclick="openProfile('profile-akuma')">
+            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/akumazoldyck-profile_image-300x300.png" alt="Akumazoldyck" class="preview-avatar" onerror="this.src='https://via.placeholder.com/90/9146ff/ffffff?text=AKU'">
+            <div class="preview-name">Akumazoldyck</div>
+            <span class="preview-country">MX • Afiliado</span>
+            <div><span class="btn-detail">Ver Ficha Completa</span></div>
+          </div>
+
+          <!-- 7. elgabii090 -->
+          <div class="streamer-preview-card" onclick="openProfile('profile-gabii')">
+            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/elgabii090-profile_image-300x300.png" alt="elgabii090" class="preview-avatar" onerror="this.src='https://via.placeholder.com/90/9146ff/ffffff?text=GAB'">
+            <div class="preview-name">elgabii090</div>
+            <span class="preview-country">ARG • Afiliado</span>
+            <div><span class="btn-detail">Ver Ficha Completa</span></div>
+          </div>
+
+          <!-- 8. habitos_atomicos -->
+          <div class="streamer-preview-card" onclick="openProfile('profile-habitos')">
+            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/habitos_atomicos-profile_image-300x300.png" alt="habitos_atomicos" class="preview-avatar" onerror="this.src='https://via.placeholder.com/90/9146ff/ffffff?text=HAB'">
+            <div class="preview-name">habitos_atomicos</div>
+            <span class="preview-country">ARG • Afiliado</span>
+            <div><span class="btn-detail">Ver Ficha Completa</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FICHAS INDIVIDUALES (OCULTAS HASTA HACER CLIC) -->
+    
+    <!-- 1. LosMoriartys -->
+    <div id="profile-moriartys" class="single-profile card">
+      <button class="back-btn" onclick="closeProfile()">← Volver al Staff</button>
+      <div class="profile-header">
+        <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/4a2982d6-419b-436d-96e0-2ea6f3f009f4-profile_image-300x300.png" alt="LosMoriartys" class="profile-avatar" onerror="this.src='https://via.placeholder.com/110/9146ff/ffffff?text=LM'">
+        <div class="profile-info">
+          <h2>LosMoriartys</h2>
+          <span class="preview-country">Argentina • Afiliado</span>
+          <div class="socials-row">
+            <a href="https://twitch.tv/losmoriartys" target="_blank">Twitch</a>
+            <a href="#" target="_blank">Instagram</a>
+            <a href="#" target="_blank">YouTube</a>
+          </div>
+        </div>
+      </div>
+      <div class="bio-panel">"Pareja gamer y videoclub nerd caótico con humor VHS, pelis, cómics y mucha charla."</div>
+      <div class="profile-grid">
+        <div class="profile-box">
+          <h4>Métricas de Audiencia (SullyGnome)</h4>
+          <ul class="stats-list">
+            <li><span>Seguidores:</span> <strong>1,143</strong></li>
+            <li><span>Media (30d):</span> <strong>22 viewers</strong></li>
+            <li><span>Pico Histórico:</span> <strong>101 viewers</strong></li>
+          </ul>
+        </div>
+        <div class="profile-box">
+          <h4>Juegos & Contenido Destacado</h4>
+          <ul class="stats-list">
+            <li><span>Principal:</span> <strong>Fortnite / Sims / Retro</strong></li>
+            <li><span>Enfoque:</span> <strong>Narrativo y multijugador</strong></li>
+          </ul>
+        </div>
+      </div>
+      <div class="profile-box">
+        <h4>Aporte Estratégico al Grupo</h4>
+        <p>Dirección creativa, liderazgo de comunidad y cobertura de juegos narrativos con enfoque nostálgico para campañas conjuntas.</p>
+      </div>
+      <a href="https://twitch.tv/losmoriartys" target="_blank" class="btn-twitch-lg">Visitar Canal Oficial en Twitch</a>
+    </div>
+
+    <!-- 2. LadyMoriarty01 -->
+    <div id="profile-ladymoriarty" class="single-profile card">
+      <button class="back-btn" onclick="closeProfile()">← Volver al Staff</button>
+      <div class="profile-header">
+        <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/ladymoriarty01-profile_image-300x300.png" alt="LadyMoriarty01" class="profile-avatar" onerror="this.src='https://via.placeholder.com/110/9146ff/ffffff?text=LMD'">
+        <div class="profile-info">
+          <h2>LadyMoriarty01</h2>
+          <span class="preview-country">Argentina • Afiliado</span>
+          <div class="socials-row">
+            <a href="https://twitch.tv/ladymoriarty01" target="_blank">Twitch</a>
+            <a href="#" target="_blank">Instagram</a>
+          </div>
+        </div>
+      </div>
+      <div class="bio-panel">"La primera dama del Team. Minecraft, simuladores de gestión y calidez de hogar."</div>
+      <div class="profile-grid">
+        <div class="profile-box">
+          <h4>Métricas de Audiencia (SullyGnome)</h4>
+          <ul class="stats-list">
+            <li><span>Seguidores:</span> <strong>179</strong></li>
+            <li><span>Media (30d):</span> <strong>10 viewers</strong></li>
+            <li><span>Pico Histórico:</span> <strong>388 viewers</strong></li>
+          </ul>
+        </div>
+        <div class="profile-box">
+          <h4>Juegos & Contenido Destacado</h4>
+          <ul class="stats-list">
+            <li><span>Principal:</span> <strong>Minecraft / Simulators</strong></li>
+            <li><span>Enfoque:</span> <strong>Gestión y construcción</strong></li>
+          </ul>
+        </div>
+      </div>
+      <div class="profile-box">
+        <h4>Aporte Estratégico al Grupo</h4>
+        <p>Especialista en mundos abiertos, construcción cooperativa y gestión con gran fidelidad de chat.</p>
+      </div>
+      <a href="https://twitch.tv/ladymoriarty01" target="_blank" class="btn-twitch-lg">Visitar Canal Oficial en Twitch</a>
+    </div>
+
+    <!-- 3. TheR0D3R1K -->
+    <div id="profile-roderik" class="single-profile card">
+      <button class="back-btn" onclick="closeProfile()">← Volver al Staff</button>
+      <div class="profile-header">
+        <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/ther0d3r1k-profile_image-300x300.png" alt="TheR0D3R1K" class="profile-avatar" onerror="this.src='https://via.placeholder.com/110/9146ff/ffffff?text=ROD'">
+        <div class="profile-info">
+          <h2>TheR0D3R1K</h2>
+          <span class="preview-country">Bolivia • Partner</span>
+          <div class="socials-row">
+            <a href="https://twitch.tv/ther0d3r1k" target="_blank">Twitch</a>
+            <a href="#" target="_blank">Twitter/X</a>
+          </div>
+        </div>
+      </div>
+      <div class="bio-panel">"Músico boliviano, pilar competitivo y ancla del Team. Código de creador Fortnite."</div>
+      <div class="profile-grid">
+        <div class="profile-box">
+          <h4>Métricas de Audiencia (SullyGnome)</h4>
+          <ul class="stats-list">
+            <li><span>Seguidores:</span> <strong>5,181</strong></li>
+            <li><span>Media (30d):</span> <strong>23 viewers</strong></li>
+            <li><span>Pico Histórico:</span> <strong>78 viewers</strong></li>
+          </ul>
+        </div>
+        <div class="profile-box">
+          <h4>Juegos & Contenido Destacado</h4>
+          <ul class="stats-list">
+            <li><span>Principal:</span> <strong>Fortnite / Valorant</strong></li>
+            <li><span>Enfoque:</span> <strong>Alta exigencia mecánica</strong></li>
+          </ul>
+        </div>
+      </div>
+      <div class="profile-box">
+        <h4>Aporte Estratégico al Grupo</h4>
+        <p>Solidez competitiva, estatus de Partner en plataformas y tracción en títulos de alta exigencia.</p>
+      </div>
+      <a href="https://twitch.tv/ther0d3r1k" target="_blank" class="btn-twitch-lg">Visitar Canal Oficial en Twitch</a>
+    </div>
+
+    <!-- 4. Capyunaplay -->
+    <div id="profile-capy" class="single-profile card">
+      <button class="back-btn" onclick="closeProfile()">← Volver al Staff</button>
+      <div class="profile-header">
+        <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/capyunaplay-profile_image-300x300.png" alt="Capyunaplay" class="profile-avatar" onerror="this.src='https://via.placeholder.com/110/9146ff/ffffff?text=CAP'">
+        <div class="profile-info">
+          <h2>Capyunaplay</h2>
+          <span class="preview-country">Argentina • Afiliado</span>
+          <div class="socials-row">
+            <a href="https://twitch.tv/capyunaplay" target="_blank">Twitch</a>
+            <a href="#" target="_blank">Instagram</a>
+          </div>
+        </div>
+      </div>
+      <div class="bio-panel">"Especialista en horror asimétrico y Dead by Daylight. Vibe relajada e intensa."</div>
+      <div class="profile-grid">
+        <div class="profile-box">
+          <h4>Métricas de Audiencia (SullyGnome)</h4>
+          <ul class="stats-list">
+            <li><span>Seguidores:</span> <strong>682</strong></li>
+            <li><span>Media (30d):</span> <strong>9 viewers</strong></li>
+            <li><span>Pico Histórico:</span> <strong>28 viewers</strong></li>
+          </ul>
+        </div>
+        <div class="profile-box">
+          <h4>Juegos & Contenido Destacado</h4>
+          <ul class="stats-list">
+            <li><span>Principal:</span> <strong>Dead by Daylight / Horror</strong></li>
+            <li><span>Enfoque:</span> <strong>Supervivencia y tensión</strong></li>
+          </ul>
+        </div>
+      </div>
+      <div class="profile-box">
+        <h4>Aporte Estratégico al Grupo</h4>
+        <p>Experto en terror, aportando la cuota de tensión, adrenalina y dinámicas nocturnas de sustos.</p>
+      </div>
+      <a href="https://twitch.tv/capyunaplay" target="_blank" class="btn-twitch-lg">Visitar Canal Oficial en Twitch</a>
+    </div>
+
+    <!-- 5. ArdiPii -->
+    <div id="profile-ardipii" class="single-profile card">
+      <button class="back-btn" onclick="closeProfile()">← Volver al Staff</button>
+      <div class="profile-header">
+        <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/ardipii-profile_image-300x300.png" alt="ArdiPii" class="profile-avatar" onerror="this.src='https://via.placeholder.com/110/9146ff/ffffff?text=ARD'">
+        <div class="profile-info">
+          <h2>ArdiPii</h2>
+          <span class="preview-country">México • Afiliado</span>
+          <div class="socials-row">
+            <a href="https://twitch.tv/ardipii" target="_blank">Twitch</a>
+            <a href="#" target="_blank">Instagram</a>
+          </div>
+        </div>
+      </div>
+      <div class="bio-panel">"Artista y cosplayer, puente mexicano del grupo. Gran comunidad anime y creativa."</div>
+      <div class="profile-grid">
+        <div class="profile-box">
+          <h4>Métricas de Audiencia (SullyGnome)</h4>
+          <ul class="stats-list">
+            <li><span>Seguidores:</span> <strong>425</strong></li>
+            <li><span>Media (30d):</span> <strong>8 viewers</strong></li>
+            <li><span>Pico Histórico:</span> <strong>24 viewers</strong></li>
+          </ul>
+        </div>
+        <div class="profile-box">
+          <h4>Juegos & Contenido Destacado</h4>
+          <ul class="stats-list">
+            <li><span>Principal:</span> <strong>Just Chatting / Valorant</strong></li>
+            <li><span>Enfoque:</span> <strong>Arte, cosplay y comunidad</strong></li>
+          </ul>
+        </div>
+      </div>
+      <div class="profile-box">
+        <h4>Aporte Estratégico al Grupo</h4>
+        <p>Conexión internacional con México, estética visual, arte, cosplay y streams conversacionales.</p>
+      </div>
+      <a href="https://twitch.tv/ardipii" target="_blank" class="btn-twitch-lg">Visitar Canal Oficial en Twitch</a>
+    </div>
+
+    <!-- 6. Akumazoldyck -->
+    <div id="profile-akuma" class="single-profile card">
+      <button class="back-btn" onclick="closeProfile()">← Volver al Staff</button>
+      <div class="profile-header">
+        <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/akumazoldyck-profile_image-300x300.png" alt="Akumazoldyck" class="profile-avatar" onerror="this.src='https://via.placeholder.com/110/9146ff/ffffff?text=AKU'">
+        <div class="profile-info">
+          <h2>Akumazoldyck</h2>
+          <span class="preview-country">México • Afiliado</span>
+          <div class="socials-row">
+            <a href="https://twitch.tv/akumazoldyck" target="_blank">Twitch</a>
+            <a href="#" target="_blank">Twitter/X</a>
+          </div>
+        </div>
+      </div>
+      <div class="bio-panel">"Especialista en coop de terror y gran constancia en directos de sustos y risas."</div>
+      <div class="profile-grid">
+        <div class="profile-box">
+          <h4>Métricas de Audiencia (SullyGnome)</h4>
+          <ul class="stats-list">
+            <li><span>Seguidores:</span> <strong>140</strong></li>
+            <li><span>Media (30d):</span> <strong>3 viewers</strong></li>
+            <li><span>Pico Histórico:</span> <strong>41 viewers</strong></li>
+          </ul>
+        </div>
+        <div class="profile-box">
+          <h4>Juegos & Contenido Destacado</h4>
+          <ul class="stats-list">
+            <li><span>Principal:</span> <strong>Lethal Company / Co-op</strong></li>
+            <li><span>Enfoque:</span> <strong>Multijugador caótico</strong></li>
+          </ul>
+        </div>
+      </div>
+      <div class="profile-box">
+        <h4>Aporte Estratégico al Grupo</h4>
+        <p>Dinámicas multijugador caóticas, indies de supervivencia y humor fresco en equipo.</p>
+      </div>
+      <a href="https://twitch.tv/akumazoldyck" target="_blank" class="btn-twitch-lg">Visitar Canal Oficial en Twitch</a>
+    </div>
+
+    <!-- 7. elgabii090 -->
+    <div id="profile-gabii" class="single-profile card">
+      <button class="back-btn" onclick="closeProfile()">← Volver al Staff</button>
+      <div class="profile-header">
+        <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/elgabii090-profile_image-300x300.png" alt="elgabii090" class="profile-avatar" onerror="this.src='https://via.placeholder.com/110/9146ff/ffffff?text=GAB'">
+        <div class="profile-info">
+          <h2>elgabii090</h2>
+          <span class="preview-country">Argentina • Afiliado</span>
+          <div class="socials-row">
+            <a href="https://twitch.tv/elgabii090" target="_blank">Twitch</a>
+            <a href="#" target="_blank">Instagram</a>
+          </div>
+        </div>
+      </div>
+      <div class="bio-panel">"Mecánicas y control. Rocket League y simuladores con versatilidad para el Team."</div>
+      <div class="profile-grid">
+        <div class="profile-box">
+          <h4>Métricas de Audiencia (SullyGnome)</h4>
+          <ul class="stats-list">
+            <li><span>Seguidores:</span> <strong>594</strong></li>
+            <li><span>Media (30d):</span> <strong>11 viewers</strong></li>
+            <li><span>Pico Histórico:</span> <strong>19 viewers</strong></li>
+          </ul>
+        </div>
+        <div class="profile-box">
+          <h4>Juegos & Contenido Destacado</h4>
+          <ul class="stats-list">
+            <li><span>Principal:</span> <strong>Rocket League / Racing</strong></li>
+            <li><span>Enfoque:</span> <strong>Simulación y deportes</strong></li>
+          </ul>
+        </div>
+      </div>
+      <div class="profile-box">
+        <h4>Aporte Estratégico al Grupo</h4>
+        <p>Destreza en simuladores de conducción y deportes electrónicos, aportando torneos y dinamismo.</p>
+      </div>
+      <a href="https://twitch.tv/elgabii090" target="_blank" class="btn-twitch-lg">Visitar Canal Oficial en Twitch</a>
+    </div>
+
+    <!-- 8. habitos_atomicos -->
+    <div id="profile-habitos" class="single-profile card">
+      <button class="back-btn" onclick="closeProfile()">← Volver al Staff</button>
+      <div class="profile-header">
+        <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/habitos_atomicos-profile_image-300x300.png" alt="habitos_atomicos" class="profile-avatar" onerror="this.src='https://via.placeholder.com/110/9146ff/ffffff?text=HAB'">
+        <div class="profile-info">
+          <h2>habitos_atomicos</h2>
+          <span class="preview-country">Argentina • Afiliado</span>
+          <div class="socials-row">
+            <a href="https://twitch.tv/habitos_atomicos" target="_blank">Twitch</a>
+            <a href="#" target="_blank">Instagram</a>
+          </div>
+        </div>
+      </div>
+      <div class="bio-panel">"Lifestyle, productividad y el 1% diario. Uniendo el gaming con el desarrollo personal."</div>
+      <div class="profile-grid">
+        <div class="profile-box">
+          <h4>Métricas de Audiencia (SullyGnome)</h4>
+          <ul class="stats-list">
+            <li><span>Seguidores:</span> <strong>300+</strong></li>
+            <li><span>Media (30d):</span> <strong>7 viewers</strong></li>
+            <li><span>Pico Histórico:</span> <strong>26 viewers</strong></li>
+          </ul>
+        </div>
+        <div class="profile-box">
+          <h4>Juegos & Contenido Destacado</h4>
+          <ul class="stats-list">
+            <li><span>Principal:</span> <strong>Minecraft / Just Chatting</strong></li>
+            <li><span>Enfoque:</span> <strong>Bienestar y comunidad sana</strong></li>
+          </ul>
+        </div>
+      </div>
+      <div class="profile-box">
+        <h4>Aporte Estratégico al Grupo</h4>
+        <p>Enfoque reflexivo, charlas motivacionales y construcción de comunidades sanas unidas por el bienestar.</p>
+      </div>
+      <a href="https://twitch.tv/habitos_atomicos" target="_blank" class="btn-twitch-lg">Visitar Canal Oficial en Twitch</a>
+    </div>
+
+  </div>
+
+  <!-- SOLAPA 3: TUTORIAL LURKIT & KEYMAILER -->
+  <div id="tab-tutorial" class="tab-content">
+    <div class="card">
+      <h2>Gestión de Campañas & Coordinación de Juegos</h2>
+      <p>Proceso operativo interno para la gestión de accesos anticipados y claves de videojuegos a través de plataformas de creadores:</p>
+      
+      <h3>1. Lurkit (Plataforma de Partners y Campañas)</h3>
+      <p>• <strong>Registro y Vinculación:</strong> Conexión del canal de Twitch verificado en la plataforma.<br>
+      • <strong>Sincronización de Métricas:</strong> Actualización automática de estadísticas de audiencia.<br>
+      • <strong>Postulación Conjunta:</strong> Exploración del catálogo de publishers para aplicar de forma coordinada como equipo.</p>
+
+      <h3>2. Keymailer (Solicitud Directa de Keys)</h3>
+      <p>• <strong>Perfil de Creador:</strong> Sincronización de Steam y Twitch para validar el canal.<br>
+      • <strong>Preferencias de Género:</strong> Configuración de nichos para recibir alertas directas de lanzamientos.<br>
+      • <strong>Solicitud de Claves:</strong> Requerimientos a estudios basados en las métricas de audiencia.</p>
+    </div>
+  </div>
+
+  <!-- SOLAPA 4: PARTNERS & REQUISITOS -->
+  <div id="tab-partners" class="tab-content">
+    <div class="card">
+      <h2>Programas de Creadores & Requisitos de Audiencia</h2>
+      <p>Esquema de programas de desarrolladores según medias de espectadores, facilitando la selección rápida de integrantes para campañas:</p>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Programa / Desarrollador</th>
+              <th>Avg Requerido</th>
+              <th>Seguidores Min</th>
+              <th>Integrantes Habilitados</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>THQ Nordic Creator Portal</strong></td>
+              <td>0 - 5+</td>
+              <td>100</td>
+              <td><strong>TODOS</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Raw Fury Creator Program</strong></td>
+              <td>0 - 10+</td>
+              <td>100</td>
+              <td><strong>TODOS</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Solasta II Partner Program</strong></td>
+              <td>5+</td>
+              <td>200</td>
+              <td>ArdiPii, Capyunaplay, elgabii090, LosMoriartys, TheR0D3R1K</td>
+            </tr>
+            <tr>
+              <td><strong>LotR: Return to Moria</strong></td>
+              <td>5 - 10+</td>
+              <td>200</td>
+              <td>Capyunaplay, elgabii090, LosMoriartys, TheR0D3R1K</td>
+            </tr>
+            <tr>
+              <td><strong>DayZ Creator Program</strong></td>
+              <td>10+</td>
+              <td>300</td>
+              <td>elgabii090, LosMoriartys, TheR0D3R1K</td>
+            </tr>
+            <tr>
+              <td><strong>Ready or Not Creator Program</strong></td>
+              <td>10 - 15+</td>
+              <td>300</td>
+              <td>elgabii090, LosMoriartys, TheR0D3R1K</td>
+            </tr>
+            <tr>
+              <td><strong>Sea of Thieves Programme</strong></td>
+              <td>10+</td>
+              <td>300</td>
