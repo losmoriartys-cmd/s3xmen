@@ -45,6 +45,23 @@
       try{await navigator.clipboard.writeText(applicationText);copy.textContent="Copiado";}catch(err){result.textContent=applicationText;copy.textContent="Seleccioná y copiá el texto mostrado";}
     });
   }
+
+  // The legacy profile cards contain manually entered, undated metrics.
+  // Suppress those values until a source-backed Twitch/SullyGnome sync exists.
+  document.querySelectorAll(".single-profile").forEach(profile=>{
+    profile.querySelectorAll(".metrics-grid").forEach(grid=>{
+      const notice=document.createElement("div");
+      notice.className="cc-note";
+      notice.textContent="Métricas en revisión: los valores anteriores eran manuales y no tenían una fecha de actualización verificable. Se publicarán nuevamente cuando exista una fuente y un período de medición documentados.";
+      grid.replaceWith(notice);
+    });
+    profile.querySelectorAll(".profile-box").forEach(box=>{
+      const heading=box.querySelector("h4");
+      if(heading&&/Métricas de Audiencia/i.test(heading.textContent)){
+        box.innerHTML="<h4>Estado de métricas</h4><p class='cc-muted'>Datos históricos retirados de la vista pública hasta su validación con una fuente actualizada.</p>";
+      }
+    });
+  });
   const hash=location.hash.replace("#","");
   if(hash&&document.getElementById(hash)?.classList.contains("tab-content"))activateTab(hash);
 })();
