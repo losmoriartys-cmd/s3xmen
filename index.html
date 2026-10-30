@@ -22,7 +22,7 @@
   .hero-banner {
     width: 100%;
     height: 260px;
-    background: linear-gradient(135deg, rgba(145, 70, 255, 0.4), rgba(15, 15, 17, 0.9)), url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+    background: linear-gradient(135deg, rgba(145, 70, 255, 0.5), rgba(15, 15, 17, 0.95)), url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
     border-radius: 16px;
     border: 1px solid var(--border);
     display: flex;
@@ -34,9 +34,9 @@
     margin-bottom: 30px;
     box-shadow: 0 8px 30px rgba(0,0,0,0.6);
   }
-  .hero-banner h1 { font-size: 3rem; color: #fff; letter-spacing: 2px; margin-bottom: 5px; }
-  .hero-banner h1 span { color: var(--accent); }
-  .hero-banner p { color: #d1d5db; font-size: 1.1rem; font-weight: 600; }
+  .hero-banner h1 { font-size: 3rem; color: #fff; letter-spacing: 2px; margin-bottom: 5px; text-shadow: 0 2px 10px rgba(0,0,0,0.8); }
+  .hero-banner h1 span { color: var(--accent); text-shadow: 0 0 15px var(--accent); }
+  .hero-banner p { color: #d1d5db; font-size: 1.1rem; font-weight: 600; text-shadow: 0 1px 5px rgba(0,0,0,0.8); }
 
   /* Menú de Solapas */
   .tabs {
@@ -99,11 +99,12 @@
     padding: 25px;
     text-align: center;
     cursor: pointer;
-    transition: transform 0.2s, border-color 0.2s;
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
   }
   .streamer-preview-card:hover {
     border-color: var(--accent);
     transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(145, 70, 255, 0.25);
   }
   
   .preview-avatar {
@@ -114,6 +115,7 @@
     object-fit: cover;
     margin: 0 auto 15px auto;
     background: #27272a;
+    box-shadow: 0 0 15px rgba(145, 70, 255, 0.4);
   }
 
   .preview-name {
@@ -147,7 +149,7 @@
   }
   .streamer-preview-card:hover .btn-detail { background: var(--accent); }
 
-  /* Fichas Individuales */
+  /* Fichas Individuales Estilizadas con Banner Propio */
   .single-profile { display: none; }
   .single-profile.active { display: block; }
 
@@ -155,41 +157,77 @@
     background: var(--bg-card);
     border: 1px solid var(--border);
     color: var(--text-main);
-    padding: 8px 16px;
+    padding: 9px 18px;
     border-radius: 8px;
     cursor: pointer;
     font-weight: 600;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     transition: background 0.2s;
   }
   .back-btn:hover { background: var(--border); }
 
-  .profile-header {
-    display: flex;
-    align-items: center;
-    gap: 20px;
+  .profile-banner-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
     margin-bottom: 25px;
-    flex-wrap: wrap;
+    box-shadow: 0 6px 25px rgba(0,0,0,0.5);
   }
-  .profile-avatar {
-    width: 110px;
-    height: 110px;
+
+  .profile-channel-banner {
+    width: 100%;
+    height: 180px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    border-bottom: 2px solid var(--accent);
+  }
+  .profile-channel-banner::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(24,24,27,0.95));
+  }
+
+  .profile-header-content {
+    padding: 0 30px 25px 30px;
+    position: relative;
+    margin-top: -50px;
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .profile-avatar-lg {
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
-    border: 3px solid var(--accent);
+    border: 4px solid var(--accent);
     object-fit: cover;
     background: #27272a;
+    box-shadow: 0 0 20px rgba(145, 70, 255, 0.6);
+    position: relative;
+    z-index: 2;
   }
-  .profile-info h2 { margin: 0; border: none; padding: 0; font-size: 2.2rem; }
 
+  .profile-titles h2 { margin: 0; border: none; padding: 0; font-size: 2.2rem; color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.8); }
+  
   .bio-panel {
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(145, 70, 255, 0.08);
     border-left: 4px solid var(--accent);
     padding: 15px 20px;
     font-style: italic;
     color: #e5e7eb;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     border-radius: 0 8px 8px 0;
-    margin-bottom: 25px;
+    margin: 20px 30px;
+  }
+
+  .profile-body-section {
+    padding: 0 30px 30px 30px;
   }
 
   .profile-grid {
@@ -218,18 +256,35 @@
   }
   .stats-list strong { color: var(--text-main); }
 
-  .socials-row { display: flex; gap: 12px; margin-top: 15px; }
+  .socials-row { display: flex; gap: 10px; flex-wrap: wrap; }
   .socials-row a {
-    background: rgba(145, 70, 255, 0.15);
+    background: rgba(145, 70, 255, 0.2);
     color: #b892ff;
     text-decoration: none;
     padding: 6px 14px;
     border-radius: 6px;
     font-weight: 600;
     font-size: 0.9rem;
-    border: 1px solid rgba(145, 70, 255, 0.3);
+    border: 1px solid rgba(145, 70, 255, 0.4);
+    transition: background 0.2s;
   }
   .socials-row a:hover { background: var(--accent); color: white; }
+
+  .games-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .game-tag {
+    background: #27272a;
+    color: var(--text-main);
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
 
   .btn-twitch-lg {
     display: block;
@@ -242,7 +297,8 @@
     font-weight: bold;
     font-size: 1.1rem;
     transition: background 0.2s;
-    margin-top: 20px;
+    margin-top: 25px;
+    box-shadow: 0 4px 15px rgba(145, 70, 255, 0.4);
   }
   .btn-twitch-lg:hover { background: var(--accent-hover); }
 
@@ -297,389 +353,463 @@
     <div id="streamers-list-view">
       <div class="card">
         <h2>Integrantes del Escuadrón</h2>
-        <p>Hacé clic en la tarjeta de cualquier creador para acceder a su ficha individual completa, estadísticas detalladas, biografía oficial y propuesta de valor para la industria.</p>
+        <p>Hacé clic en la tarjeta de cualquier creador para acceder a su ficha individual completa, biografía de Twitch, métricas verificadas de SullyGnome y propuesta para la industria.</p>
         
         <div class="grid-team">
           <!-- 1. LosMoriartys -->
           <div class="streamer-preview-card" onclick="openProfile('profile-moriartys')">
-            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/4a2982d6-419b-436d-96e0-2ea6f3f009f4-profile_image-300x300.png" alt="LosMoriartys" class="preview-avatar" onerror="this.src='https://via.placeholder.com/90/9146ff/ffffff?text=LM'">
+            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/4a2982d6-419b-436d-96e0-2ea6f3f009f4-profile_image-300x300.png" alt="LosMoriartys" class="preview-avatar">
             <div class="preview-name">LosMoriartys</div>
             <span class="preview-country">ARG • Afiliado</span>
-            <div><span class="btn-detail">Ver Ficha Completa</span></div>
+            <div><span class="btn-detail">Ver Perfil Personalizado</span></div>
           </div>
 
           <!-- 2. LadyMoriarty01 -->
           <div class="streamer-preview-card" onclick="openProfile('profile-ladymoriarty')">
-            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/ladymoriarty01-profile_image-300x300.png" alt="LadyMoriarty01" class="preview-avatar" onerror="this.src='https://via.placeholder.com/90/9146ff/ffffff?text=LMD'">
+            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/ladymoriarty01-profile_image-300x300.png" alt="LadyMoriarty01" class="preview-avatar">
             <div class="preview-name">LadyMoriarty01</div>
             <span class="preview-country">ARG • Afiliado</span>
-            <div><span class="btn-detail">Ver Ficha Completa</span></div>
+            <div><span class="btn-detail">Ver Perfil Personalizado</span></div>
           </div>
 
           <!-- 3. TheR0D3R1K -->
           <div class="streamer-preview-card" onclick="openProfile('profile-roderik')">
-            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/ther0d3r1k-profile_image-300x300.png" alt="TheR0D3R1K" class="preview-avatar" onerror="this.src='https://via.placeholder.com/90/9146ff/ffffff?text=ROD'">
+            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/ther0d3r1k-profile_image-300x300.png" alt="TheR0D3R1K" class="preview-avatar">
             <div class="preview-name">TheR0D3R1K</div>
             <span class="preview-country">BOL • Partner</span>
-            <div><span class="btn-detail">Ver Ficha Completa</span></div>
+            <div><span class="btn-detail">Ver Perfil Personalizado</span></div>
           </div>
 
           <!-- 4. Capyunaplay -->
           <div class="streamer-preview-card" onclick="openProfile('profile-capy')">
-            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/capyunaplay-profile_image-300x300.png" alt="Capyunaplay" class="preview-avatar" onerror="this.src='https://via.placeholder.com/90/9146ff/ffffff?text=CAP'">
+            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/capyunaplay-profile_image-300x300.png" alt="Capyunaplay" class="preview-avatar">
             <div class="preview-name">Capyunaplay</div>
             <span class="preview-country">ARG • Afiliado</span>
-            <div><span class="btn-detail">Ver Ficha Completa</span></div>
+            <div><span class="btn-detail">Ver Perfil Personalizado</span></div>
           </div>
 
           <!-- 5. ArdiPii -->
           <div class="streamer-preview-card" onclick="openProfile('profile-ardipii')">
-            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/ardipii-profile_image-300x300.png" alt="ArdiPii" class="preview-avatar" onerror="this.src='https://via.placeholder.com/90/9146ff/ffffff?text=ARD'">
+            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/ardipii-profile_image-300x300.png" alt="ArdiPii" class="preview-avatar">
             <div class="preview-name">ArdiPii</div>
             <span class="preview-country">MX • Afiliado</span>
-            <div><span class="btn-detail">Ver Ficha Completa</span></div>
+            <div><span class="btn-detail">Ver Perfil Personalizado</span></div>
           </div>
 
           <!-- 6. Akumazoldyck -->
           <div class="streamer-preview-card" onclick="openProfile('profile-akuma')">
-            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/akumazoldyck-profile_image-300x300.png" alt="Akumazoldyck" class="preview-avatar" onerror="this.src='https://via.placeholder.com/90/9146ff/ffffff?text=AKU'">
+            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/akumazoldyck-profile_image-300x300.png" alt="Akumazoldyck" class="preview-avatar">
             <div class="preview-name">Akumazoldyck</div>
             <span class="preview-country">MX • Afiliado</span>
-            <div><span class="btn-detail">Ver Ficha Completa</span></div>
+            <div><span class="btn-detail">Ver Perfil Personalizado</span></div>
           </div>
 
           <!-- 7. elgabii090 -->
           <div class="streamer-preview-card" onclick="openProfile('profile-gabii')">
-            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/elgabii090-profile_image-300x300.png" alt="elgabii090" class="preview-avatar" onerror="this.src='https://via.placeholder.com/90/9146ff/ffffff?text=GAB'">
+            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/elgabii090-profile_image-300x300.png" alt="elgabii090" class="preview-avatar">
             <div class="preview-name">elgabii090</div>
             <span class="preview-country">ARG • Afiliado</span>
-            <div><span class="btn-detail">Ver Ficha Completa</span></div>
+            <div><span class="btn-detail">Ver Perfil Personalizado</span></div>
           </div>
 
           <!-- 8. habitos_atomicos -->
           <div class="streamer-preview-card" onclick="openProfile('profile-habitos')">
-            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/habitos_atomicos-profile_image-300x300.png" alt="habitos_atomicos" class="preview-avatar" onerror="this.src='https://via.placeholder.com/90/9146ff/ffffff?text=HAB'">
+            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/habitos_atomicos-profile_image-300x300.png" alt="habitos_atomicos" class="preview-avatar">
             <div class="preview-name">habitos_atomicos</div>
             <span class="preview-country">ARG • Afiliado</span>
-            <div><span class="btn-detail">Ver Ficha Completa</span></div>
+            <div><span class="btn-detail">Ver Perfil Personalizado</span></div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Fichas Individuales (Se abren al hacer clic) -->
-    
+    <!-- ================= FICHAS INDIVIDUALES PROFUNDAS ================= -->
+
     <!-- 1. LosMoriartys -->
-    <div id="profile-moriartys" class="single-profile card">
+    <div id="profile-moriartys" class="single-profile">
       <button class="back-btn" onclick="closeProfile()">← Volver al listado de Streamers</button>
-      <div class="profile-header">
-        <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/4a2982d6-419b-436d-96e0-2ea6f3f009f4-profile_image-300x300.png" alt="LosMoriartys" class="profile-avatar" onerror="this.src='https://via.placeholder.com/110/9146ff/ffffff?text=LM'">
-        <div class="profile-info">
-          <h2>LosMoriartys</h2>
-          <span class="preview-country">Argentina • Afiliado</span>
+      <div class="profile-banner-card">
+        <div class="profile-channel-banner" style="background-image: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&q=80');"></div>
+        <div class="profile-header-content">
+          <div style="display: flex; align-items: flex-end; gap: 20px; flex-wrap: wrap;">
+            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/4a2982d6-419b-436d-96e0-2ea6f3f009f4-profile_image-300x300.png" alt="LosMoriartys" class="profile-avatar-lg">
+            <div class="profile-titles">
+              <h2>LosMoriartys</h2>
+              <span class="preview-country">Argentina • Afiliado</span>
+            </div>
+          </div>
           <div class="socials-row">
             <a href="https://twitch.tv/losmoriartys" target="_blank">Twitch</a>
             <a href="#" target="_blank">Instagram</a>
             <a href="#" target="_blank">YouTube</a>
           </div>
         </div>
-      </div>
-      <div class="bio-panel">"Pareja gamer y videoclub nerd caótico con humor VHS, pelis, cómics y mucha charla."</div>
-      <div class="profile-grid">
-        <div class="profile-box">
-          <h4>Métricas de Audiencia (SullyGnome)</h4>
-          <ul class="stats-list">
-            <li><span>Seguidores:</span> <strong>1,143</strong></li>
-            <li><span>Media (30d):</span> <strong>22 viewers</strong></li>
-            <li><span>Pico Histórico:</span> <strong>101 viewers</strong></li>
-          </ul>
+        <div class="bio-panel">"Somos Demi y Ari - Los Moriartys, pareja gamer y orgullosos nerds. Simuladores de tienda + coop caótico, fails épicos y charlas de series, pelis y cómics sin filtro. ¡Bienvenidos al videoclub!"</div>
+        
+        <div class="profile-body-section">
+          <div class="profile-grid">
+            <div class="profile-box">
+              <h4>Métricas de Audiencia (SullyGnome)</h4>
+              <ul class="stats-list">
+                <li><span>Seguidores:</span> <strong>1,143</strong></li>
+                <li><span>Media (30d):</span> <strong>22 viewers</strong></li>
+                <li><span>Pico Histórico:</span> <strong>101 viewers</strong></li>
+              </ul>
+            </div>
+            <div class="profile-box">
+              <h4>Categorías & Juegos Frecuentes</h4>
+              <div class="games-tags">
+                <span class="game-tag">Fortnite</span>
+                <span class="game-tag">Los Sims</span>
+                <span class="game-tag">Minecraft</span>
+                <span class="game-tag">Simuladores de Tienda</span>
+                <span class="game-tag">Clásicos Retro</span>
+              </div>
+            </div>
+          </div>
+          <div class="profile-box" style="margin-bottom: 25px;">
+            <h4>Aporte Estratégico al Grupo</h4>
+            <p>Dirección creativa, liderazgo de comunidad y cobertura de juegos narrativos con enfoque nostálgico para campañas conjuntas.</p>
+          </div>
+          <a href="https://twitch.tv/losmoriartys" target="_blank" class="btn-twitch-lg">Visitar Canal Oficial en Twitch</a>
         </div>
-        <div class="profile-box">
-          <h4>Juegos & Contenido Destacado</h4>
-          <ul class="stats-list">
-            <li><span>Principal:</span> <strong>Fortnite / Sims / Retro</strong></li>
-            <li><span>Enfoque:</span> <strong>Narrativo y multijugador</strong></li>
-          </ul>
-        </div>
       </div>
-      <div class="profile-box">
-        <h4>Aporte Estratégico al Grupo</h4>
-        <p>Dirección creativa, liderazgo de comunidad y cobertura de juegos narrativos con enfoque nostálgico para campañas conjuntas.</p>
-      </div>
-      <a href="https://twitch.tv/losmoriartys" target="_blank" class="btn-twitch-lg">Visitar Canal Oficial en Twitch</a>
     </div>
 
     <!-- 2. LadyMoriarty01 -->
-    <div id="profile-ladymoriarty" class="single-profile card">
+    <div id="profile-ladymoriarty" class="single-profile">
       <button class="back-btn" onclick="closeProfile()">← Volver al listado de Streamers</button>
-      <div class="profile-header">
-        <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/ladymoriarty01-profile_image-300x300.png" alt="LadyMoriarty01" class="profile-avatar" onerror="this.src='https://via.placeholder.com/110/9146ff/ffffff?text=LMD'">
-        <div class="profile-info">
-          <h2>LadyMoriarty01</h2>
-          <span class="preview-country">Argentina • Afiliado</span>
+      <div class="profile-banner-card">
+        <div class="profile-channel-banner" style="background-image: url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=80');"></div>
+        <div class="profile-header-content">
+          <div style="display: flex; align-items: flex-end; gap: 20px; flex-wrap: wrap;">
+            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/ladymoriarty01-profile_image-300x300.png" alt="LadyMoriarty01" class="profile-avatar-lg">
+            <div class="profile-titles">
+              <h2>LadyMoriarty01</h2>
+              <span class="preview-country">Argentina • Afiliado</span>
+            </div>
+          </div>
           <div class="socials-row">
             <a href="https://twitch.tv/ladymoriarty01" target="_blank">Twitch</a>
             <a href="#" target="_blank">Instagram</a>
           </div>
         </div>
-      </div>
-      <div class="bio-panel">"La primera dama del Team. Minecraft, simuladores de gestión y calidez de hogar."</div>
-      <div class="profile-grid">
-        <div class="profile-box">
-          <h4>Métricas de Audiencia (SullyGnome)</h4>
-          <ul class="stats-list">
-            <li><span>Seguidores:</span> <strong>179</strong></li>
-            <li><span>Media (30d):</span> <strong>10 viewers</strong></li>
-            <li><span>Pico Histórico:</span> <strong>388 viewers</strong></li>
-          </ul>
+        <div class="bio-panel">"La primera dama del Team. Mundos abiertos, Minecraft, simuladores de gestión y calidez de hogar en cada directo."</div>
+        
+        <div class="profile-body-section">
+          <div class="profile-grid">
+            <div class="profile-box">
+              <h4>Métricas de Audiencia (SullyGnome)</h4>
+              <ul class="stats-list">
+                <li><span>Seguidores:</span> <strong>179</strong></li>
+                <li><span>Media (30d):</span> <strong>10 viewers</strong></li>
+                <li><span>Pico Histórico:</span> <strong>388 viewers</strong></li>
+              </ul>
+            </div>
+            <div class="profile-box">
+              <h4>Categorías & Juegos Frecuentes</h4>
+              <div class="games-tags">
+                <span class="game-tag">Minecraft</span>
+                <span class="game-tag">Simuladores de Gestión</span>
+                <span class="game-tag">Cozy Games</span>
+              </div>
+            </div>
+          </div>
+          <div class="profile-box" style="margin-bottom: 25px;">
+            <h4>Aporte Estratégico al Grupo</h4>
+            <p>Especialista en mundos abiertos, construcción cooperativa y gestión con gran fidelidad de chat.</p>
+          </div>
+          <a href="https://twitch.tv/ladymoriarty01" target="_blank" class="btn-twitch-lg">Visitar Canal Oficial en Twitch</a>
         </div>
-        <div class="profile-box">
-          <h4>Juegos & Contenido Destacado</h4>
-          <ul class="stats-list">
-            <li><span>Principal:</span> <strong>Minecraft / Simulators</strong></li>
-            <li><span>Enfoque:</span> <strong>Gestión y construcción</strong></li>
-          </ul>
-        </div>
       </div>
-      <div class="profile-box">
-        <h4>Aporte Estratégico al Grupo</h4>
-        <p>Especialista en mundos abiertos, construcción cooperativa y gestión con gran fidelidad de chat.</p>
-      </div>
-      <a href="https://twitch.tv/ladymoriarty01" target="_blank" class="btn-twitch-lg">Visitar Canal Oficial en Twitch</a>
     </div>
 
     <!-- 3. TheR0D3R1K -->
-    <div id="profile-roderik" class="single-profile card">
+    <div id="profile-roderik" class="single-profile">
       <button class="back-btn" onclick="closeProfile()">← Volver al listado de Streamers</button>
-      <div class="profile-header">
-        <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/ther0d3r1k-profile_image-300x300.png" alt="TheR0D3R1K" class="profile-avatar" onerror="this.src='https://via.placeholder.com/110/9146ff/ffffff?text=ROD'">
-        <div class="profile-info">
-          <h2>TheR0D3R1K</h2>
-          <span class="preview-country">Bolivia • Partner</span>
+      <div class="profile-banner-card">
+        <div class="profile-channel-banner" style="background-image: url('https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=1200&q=80');"></div>
+        <div class="profile-header-content">
+          <div style="display: flex; align-items: flex-end; gap: 20px; flex-wrap: wrap;">
+            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/ther0d3r1k-profile_image-300x300.png" alt="TheR0D3R1K" class="profile-avatar-lg">
+            <div class="profile-titles">
+              <h2>TheR0D3R1K</h2>
+              <span class="preview-country">Bolivia • Partner</span>
+            </div>
+          </div>
           <div class="socials-row">
             <a href="https://twitch.tv/ther0d3r1k" target="_blank">Twitch</a>
             <a href="#" target="_blank">Twitter/X</a>
           </div>
         </div>
-      </div>
-      <div class="bio-panel">"Músico boliviano, pilar competitivo y ancla del Team. Código de creador Fortnite."</div>
-      <div class="profile-grid">
-        <div class="profile-box">
-          <h4>Métricas de Audiencia (SullyGnome)</h4>
-          <ul class="stats-list">
-            <li><span>Seguidores:</span> <strong>5,181</strong></li>
-            <li><span>Media (30d):</span> <strong>23 viewers</strong></li>
-            <li><span>Pico Histórico:</span> <strong>78 viewers</strong></li>
-          </ul>
+        <div class="bio-panel">"Músico boliviano, pilar competitivo y ancla del Team. Jugador enfocado en alta exigencia y creador verificado."</div>
+        
+        <div class="profile-body-section">
+          <div class="profile-grid">
+            <div class="profile-box">
+              <h4>Métricas de Audiencia (SullyGnome)</h4>
+              <ul class="stats-list">
+                <li><span>Seguidores:</span> <strong>5,181</strong></li>
+                <li><span>Media (30d):</span> <strong>23 viewers</strong></li>
+                <li><span>Pico Histórico:</span> <strong>78 viewers</strong></li>
+              </ul>
+            </div>
+            <div class="profile-box">
+              <h4>Categorías & Juegos Frecuentes</h4>
+              <div class="games-tags">
+                <span class="game-tag">Fortnite</span>
+                <span class="game-tag">Valorant</span>
+                <span class="game-tag">Shooters Competitivos</span>
+              </div>
+            </div>
+          </div>
+          <div class="profile-box" style="margin-bottom: 25px;">
+            <h4>Aporte Estratégico al Grupo</h4>
+            <p>Solidez competitiva, estatus de Partner en plataformas y tracción en títulos de alta exigencia mecánica.</p>
+          </div>
+          <a href="https://twitch.tv/ther0d3r1k" target="_blank" class="btn-twitch-lg">Visitar Canal Oficial en Twitch</a>
         </div>
-        <div class="profile-box">
-          <h4>Juegos & Contenido Destacado</h4>
-          <ul class="stats-list">
-            <li><span>Principal:</span> <strong>Fortnite / Valorant</strong></li>
-            <li><span>Enfoque:</span> <strong>Alta exigencia mecánica</strong></li>
-          </ul>
-        </div>
       </div>
-      <div class="profile-box">
-        <h4>Aporte Estratégico al Grupo</h4>
-        <p>Solidez competitiva, estatus de Partner en plataformas y tracción en títulos de alta exigencia.</p>
-      </div>
-      <a href="https://twitch.tv/ther0d3r1k" target="_blank" class="btn-twitch-lg">Visitar Canal Oficial en Twitch</a>
     </div>
 
     <!-- 4. Capyunaplay -->
-    <div id="profile-capy" class="single-profile card">
+    <div id="profile-capy" class="single-profile">
       <button class="back-btn" onclick="closeProfile()">← Volver al listado de Streamers</button>
-      <div class="profile-header">
-        <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/capyunaplay-profile_image-300x300.png" alt="Capyunaplay" class="profile-avatar" onerror="this.src='https://via.placeholder.com/110/9146ff/ffffff?text=CAP'">
-        <div class="profile-info">
-          <h2>Capyunaplay</h2>
-          <span class="preview-country">Argentina • Afiliado</span>
+      <div class="profile-banner-card">
+        <div class="profile-channel-banner" style="background-image: url('https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1200&q=80');"></div>
+        <div class="profile-header-content">
+          <div style="display: flex; align-items: flex-end; gap: 20px; flex-wrap: wrap;">
+            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/capyunaplay-profile_image-300x300.png" alt="Capyunaplay" class="profile-avatar-lg">
+            <div class="profile-titles">
+              <h2>Capyunaplay</h2>
+              <span class="preview-country">Argentina • Afiliado</span>
+            </div>
+          </div>
           <div class="socials-row">
             <a href="https://twitch.tv/capyunaplay" target="_blank">Twitch</a>
             <a href="#" target="_blank">Instagram</a>
           </div>
         </div>
-      </div>
-      <div class="bio-panel">"Especialista en horror asimétrico y Dead by Daylight. Vibe relajada e intensa."</div>
-      <div class="profile-grid">
-        <div class="profile-box">
-          <h4>Métricas de Audiencia (SullyGnome)</h4>
-          <ul class="stats-list">
-            <li><span>Seguidores:</span> <strong>682</strong></li>
-            <li><span>Media (30d):</span> <strong>9 viewers</strong></li>
-            <li><span>Pico Histórico:</span> <strong>28 viewers</strong></li>
-          </ul>
+        <div class="bio-panel">"Especialista en horror asimétrico y Dead by Daylight. Directos nocturnos cargados de tensión, sustos y muy buena compañía."</div>
+        
+        <div class="profile-body-section">
+          <div class="profile-grid">
+            <div class="profile-box">
+              <h4>Métricas de Audiencia (SullyGnome)</h4>
+              <ul class="stats-list">
+                <li><span>Seguidores:</span> <strong>682</strong></li>
+                <li><span>Media (30d):</span> <strong>9 viewers</strong></li>
+                <li><span>Pico Histórico:</span> <strong>28 viewers</strong></li>
+              </ul>
+            </div>
+            <div class="profile-box">
+              <h4>Categorías & Juegos Frecuentes</h4>
+              <div class="games-tags">
+                <span class="game-tag">Dead by Daylight</span>
+                <span class="game-tag">Juegos de Horror</span>
+                <span class="game-tag">Survival Co-op</span>
+              </div>
+            </div>
+          </div>
+          <div class="profile-box" style="margin-bottom: 25px;">
+            <h4>Aporte Estratégico al Grupo</h4>
+            <p>Experto en terror, aportando la cuota de tensión, adrenalina y dinámicas nocturnas de sustos.</p>
+          </div>
+          <a href="https://twitch.tv/capyunaplay" target="_blank" class="btn-twitch-lg">Visitar Canal Oficial en Twitch</a>
         </div>
-        <div class="profile-box">
-          <h4>Juegos & Contenido Destacado</h4>
-          <ul class="stats-list">
-            <li><span>Principal:</span> <strong>Dead by Daylight / Horror</strong></li>
-            <li><span>Enfoque:</span> <strong>Supervivencia y tensión</strong></li>
-          </ul>
-        </div>
       </div>
-      <div class="profile-box">
-        <h4>Aporte Estratégico al Grupo</h4>
-        <p>Experto en terror, aportando la cuota de tensión, adrenalina y dinámicas nocturnas de sustos.</p>
-      </div>
-      <a href="https://twitch.tv/capyunaplay" target="_blank" class="btn-twitch-lg">Visitar Canal Oficial en Twitch</a>
     </div>
 
     <!-- 5. ArdiPii -->
-    <div id="profile-ardipii" class="single-profile card">
+    <div id="profile-ardipii" class="single-profile">
       <button class="back-btn" onclick="closeProfile()">← Volver al listado de Streamers</button>
-      <div class="profile-header">
-        <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/ardipii-profile_image-300x300.png" alt="ArdiPii" class="profile-avatar" onerror="this.src='https://via.placeholder.com/110/9146ff/ffffff?text=ARD'">
-        <div class="profile-info">
-          <h2>ArdiPii</h2>
-          <span class="preview-country">México • Afiliado</span>
+      <div class="profile-banner-card">
+        <div class="profile-channel-banner" style="background-image: url('https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=1200&q=80');"></div>
+        <div class="profile-header-content">
+          <div style="display: flex; align-items: flex-end; gap: 20px; flex-wrap: wrap;">
+            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/ardipii-profile_image-300x300.png" alt="ArdiPii" class="profile-avatar-lg">
+            <div class="profile-titles">
+              <h2>ArdiPii</h2>
+              <span class="preview-country">México • Afiliado</span>
+            </div>
+          </div>
           <div class="socials-row">
             <a href="https://twitch.tv/ardipii" target="_blank">Twitch</a>
             <a href="#" target="_blank">Instagram</a>
           </div>
         </div>
-      </div>
-      <div class="bio-panel">"Artista y cosplayer, puente mexicano del grupo. Gran comunidad anime y creativa."</div>
-      <div class="profile-grid">
-        <div class="profile-box">
-          <h4>Métricas de Audiencia (SullyGnome)</h4>
-          <ul class="stats-list">
-            <li><span>Seguidores:</span> <strong>425</strong></li>
-            <li><span>Media (30d):</span> <strong>8 viewers</strong></li>
-            <li><span>Pico Histórico:</span> <strong>24 viewers</strong></li>
-          </ul>
+        <div class="bio-panel">"Artista y cosplayer, el puente mexicano del grupo. Comunidad creativa, anime, charlas amenas y gaming casual."</div>
+        
+        <div class="profile-body-section">
+          <div class="profile-grid">
+            <div class="profile-box">
+              <h4>Métricas de Audiencia (SullyGnome)</h4>
+              <ul class="stats-list">
+                <li><span>Seguidores:</span> <strong>425</strong></li>
+                <li><span>Media (30d):</span> <strong>8 viewers</strong></li>
+                <li><span>Pico Histórico:</span> <strong>24 viewers</strong></li>
+              </ul>
+            </div>
+            <div class="profile-box">
+              <h4>Categorías & Juegos Frecuentes</h4>
+              <div class="games-tags">
+                <span class="game-tag">Just Chatting</span>
+                <span class="game-tag">Valorant</span>
+                <span class="game-tag">Arte & Cosplay</span>
+              </div>
+            </div>
+          </div>
+          <div class="profile-box" style="margin-bottom: 25px;">
+            <h4>Aporte Estratégico al Grupo</h4>
+            <p>Conexión internacional con México, estética visual, arte, cosplay y streams conversacionales.</p>
+          </div>
+          <a href="https://twitch.tv/ardipii" target="_blank" class="btn-twitch-lg">Visitar Canal Oficial en Twitch</a>
         </div>
-        <div class="profile-box">
-          <h4>Juegos & Contenido Destacado</h4>
-          <ul class="stats-list">
-            <li><span>Principal:</span> <strong>Just Chatting / Valorant</strong></li>
-            <li><span>Enfoque:</span> <strong>Arte, cosplay y comunidad</strong></li>
-          </ul>
-        </div>
       </div>
-      <div class="profile-box">
-        <h4>Aporte Estratégico al Grupo</h4>
-        <p>Conexión internacional con México, estética visual, arte, cosplay y streams conversacionales.</p>
-      </div>
-      <a href="https://twitch.tv/ardipii" target="_blank" class="btn-twitch-lg">Visitar Canal Oficial en Twitch</a>
     </div>
 
     <!-- 6. Akumazoldyck -->
-    <div id="profile-akuma" class="single-profile card">
+    <div id="profile-akuma" class="single-profile">
       <button class="back-btn" onclick="closeProfile()">← Volver al listado de Streamers</button>
-      <div class="profile-header">
-        <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/akumazoldyck-profile_image-300x300.png" alt="Akumazoldyck" class="profile-avatar" onerror="this.src='https://via.placeholder.com/110/9146ff/ffffff?text=AKU'">
-        <div class="profile-info">
-          <h2>Akumazoldyck</h2>
-          <span class="preview-country">México • Afiliado</span>
+      <div class="profile-banner-card">
+        <div class="profile-channel-banner" style="background-image: url('https://images.unsplash.com/photo-1579373903781-fd5c0c30c4cd?auto=format&fit=crop&w=1200&q=80');"></div>
+        <div class="profile-header-content">
+          <div style="display: flex; align-items: flex-end; gap: 20px; flex-wrap: wrap;">
+            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/akumazoldyck-profile_image-300x300.png" alt="Akumazoldyck" class="profile-avatar-lg">
+            <div class="profile-titles">
+              <h2>Akumazoldyck</h2>
+              <span class="preview-country">México • Afiliado</span>
+            </div>
+          </div>
           <div class="socials-row">
             <a href="https://twitch.tv/akumazoldyck" target="_blank">Twitch</a>
             <a href="#" target="_blank">Twitter/X</a>
           </div>
         </div>
-      </div>
-      <div class="bio-panel">"Especialista en coop de terror y gran constancia en directos de sustos y risas."</div>
-      <div class="profile-grid">
-        <div class="profile-box">
-          <h4>Métricas de Audiencia (SullyGnome)</h4>
-          <ul class="stats-list">
-            <li><span>Seguidores:</span> <strong>140</strong></li>
-            <li><span>Media (30d):</span> <strong>3 viewers</strong></li>
-            <li><span>Pico Histórico:</span> <strong>41 viewers</strong></li>
-          </ul>
+        <div class="bio-panel">"Especialista en coop de terror, indies caóticos y risas aseguradas con la comunidad en cada directo."</div>
+        
+        <div class="profile-body-section">
+          <div class="profile-grid">
+            <div class="profile-box">
+              <h4>Métricas de Audiencia (SullyGnome)</h4>
+              <ul class="stats-list">
+                <li><span>Seguidores:</span> <strong>140</strong></li>
+                <li><span>Media (30d):</span> <strong>3 viewers</strong></li>
+                <li><span>Pico Histórico:</span> <strong>41 viewers</strong></li>
+              </ul>
+            </div>
+            <div class="profile-box">
+              <h4>Categorías & Juegos Frecuentes</h4>
+              <div class="games-tags">
+                <span class="game-tag">Lethal Company</span>
+                <span class="game-tag">Co-op Indies</span>
+                <span class="game-tag">Terror Multijugador</span>
+              </div>
+            </div>
+          </div>
+          <div class="profile-box" style="margin-bottom: 25px;">
+            <h4>Aporte Estratégico al Grupo</h4>
+            <p>Dinámicas multijugador caóticas, indies de supervivencia y humor fresco en equipo.</p>
+          </div>
+          <a href="https://twitch.tv/akumazoldyck" target="_blank" class="btn-twitch-lg">Visitar Canal Oficial en Twitch</a>
         </div>
-        <div class="profile-box">
-          <h4>Juegos & Contenido Destacado</h4>
-          <ul class="stats-list">
-            <li><span>Principal:</span> <strong>Lethal Company / Co-op</strong></li>
-            <li><span>Enfoque:</span> <strong>Multijugador caótico</strong></li>
-          </ul>
-        </div>
       </div>
-      <div class="profile-box">
-        <h4>Aporte Estratégico al Grupo</h4>
-        <p>Dinámicas multijugador caóticas, indies de supervivencia y humor fresco en equipo.</p>
-      </div>
-      <a href="https://twitch.tv/akumazoldyck" target="_blank" class="btn-twitch-lg">Visitar Canal Oficial en Twitch</a>
     </div>
 
     <!-- 7. elgabii090 -->
-    <div id="profile-gabii" class="single-profile card">
+    <div id="profile-gabii" class="single-profile">
       <button class="back-btn" onclick="closeProfile()">← Volver al listado de Streamers</button>
-      <div class="profile-header">
-        <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/elgabii090-profile_image-300x300.png" alt="elgabii090" class="profile-avatar" onerror="this.src='https://via.placeholder.com/110/9146ff/ffffff?text=GAB'">
-        <div class="profile-info">
-          <h2>elgabii090</h2>
-          <span class="preview-country">Argentina • Afiliado</span>
+      <div class="profile-banner-card">
+        <div class="profile-channel-banner" style="background-image: url('https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1200&q=80');"></div>
+        <div class="profile-header-content">
+          <div style="display: flex; align-items: flex-end; gap: 20px; flex-wrap: wrap;">
+            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/elgabii090-profile_image-300x300.png" alt="elgabii090" class="profile-avatar-lg">
+            <div class="profile-titles">
+              <h2>elgabii090</h2>
+              <span class="preview-country">Argentina • Afiliado</span>
+            </div>
+          </div>
           <div class="socials-row">
             <a href="https://twitch.tv/elgabii090" target="_blank">Twitch</a>
             <a href="#" target="_blank">Instagram</a>
           </div>
         </div>
-      </div>
-      <div class="bio-panel">"Mecánicas y control. Rocket League y simuladores con versatilidad para el Team."</div>
-      <div class="profile-grid">
-        <div class="profile-box">
-          <h4>Métricas de Audiencia (SullyGnome)</h4>
-          <ul class="stats-list">
-            <li><span>Seguidores:</span> <strong>594</strong></li>
-            <li><span>Media (30d):</span> <strong>11 viewers</strong></li>
-            <li><span>Pico Histórico:</span> <strong>19 viewers</strong></li>
-          </ul>
+        <div class="bio-panel">"Mecánicas y control absoluto. Rocket League, simuladores de conducción y adrenalina sobre ruedas."</div>
+        
+        <div class="profile-body-section">
+          <div class="profile-grid">
+            <div class="profile-box">
+              <h4>Métricas de Audiencia (SullyGnome)</h4>
+              <ul class="stats-list">
+                <li><span>Seguidores:</span> <strong>594</strong></li>
+                <li><span>Media (30d):</span> <strong>11 viewers</strong></li>
+                <li><span>Pico Histórico:</span> <strong>19 viewers</strong></li>
+              </ul>
+            </div>
+            <div class="profile-box">
+              <h4>Categorías & Juegos Frecuentes</h4>
+              <div class="games-tags">
+                <span class="game-tag">Rocket League</span>
+                <span class="game-tag">Racing Simulators</span>
+                <span class="game-tag">Sports Games</span>
+              </div>
+            </div>
+          </div>
+          <div class="profile-box" style="margin-bottom: 25px;">
+            <h4>Aporte Estratégico al Grupo</h4>
+            <p>Destreza en simuladores de conducción y deportes electrónicos, aportando torneos y dinamismo.</p>
+          </div>
+          <a href="https://twitch.tv/elgabii090" target="_blank" class="btn-twitch-lg">Visitar Canal Oficial en Twitch</a>
         </div>
-        <div class="profile-box">
-          <h4>Juegos & Contenido Destacado</h4>
-          <ul class="stats-list">
-            <li><span>Principal:</span> <strong>Rocket League / Racing</strong></li>
-            <li><span>Enfoque:</span> <strong>Simulación y deportes</strong></li>
-          </ul>
-        </div>
       </div>
-      <div class="profile-box">
-        <h4>Aporte Estratégico al Grupo</h4>
-        <p>Destreza en simuladores de conducción y deportes electrónicos, aportando torneos y dinamismo.</p>
-      </div>
-      <a href="https://twitch.tv/elgabii090" target="_blank" class="btn-twitch-lg">Visitar Canal Oficial en Twitch</a>
     </div>
 
     <!-- 8. habitos_atomicos -->
-    <div id="profile-habitos" class="single-profile card">
+    <div id="profile-habitos" class="single-profile">
       <button class="back-btn" onclick="closeProfile()">← Volver al listado de Streamers</button>
-      <div class="profile-header">
-        <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/habitos_atomicos-profile_image-300x300.png" alt="habitos_atomicos" class="profile-avatar" onerror="this.src='https://via.placeholder.com/110/9146ff/ffffff?text=HAB'">
-        <div class="profile-info">
-          <h2>habitos_atomicos</h2>
-          <span class="preview-country">Argentina • Afiliado</span>
+      <div class="profile-banner-card">
+        <div class="profile-channel-banner" style="background-image: url('https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1200&q=80');"></div>
+        <div class="profile-header-content">
+          <div style="display: flex; align-items: flex-end; gap: 20px; flex-wrap: wrap;">
+            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/habitos_atomicos-profile_image-300x300.png" alt="habitos_atomicos" class="profile-avatar-lg">
+            <div class="profile-titles">
+              <h2>habitos_atomicos</h2>
+              <span class="preview-country">Argentina • Afiliado</span>
+            </div>
+          </div>
           <div class="socials-row">
             <a href="https://twitch.tv/habitos_atomicos" target="_blank">Twitch</a>
             <a href="#" target="_blank">Instagram</a>
           </div>
         </div>
-      </div>
-      <div class="bio-panel">"Lifestyle, productividad y el 1% diario. Uniendo el gaming con el desarrollo personal."</div>
-      <div class="profile-grid">
-        <div class="profile-box">
-          <h4>Métricas de Audiencia (SullyGnome)</h4>
-          <ul class="stats-list">
-            <li><span>Seguidores:</span> <strong>300+</strong></li>
-            <li><span>Media (30d):</span> <strong>7 viewers</strong></li>
-            <li><span>Pico Histórico:</span> <strong>26 viewers</strong></li>
-          </ul>
+        <div class="bio-panel">"Lifestyle, productividad y el 1% diario. Uniendo el gaming y la construcción de comunidades sanas."</div>
+        
+        <div class="profile-body-section">
+          <div class="profile-grid">
+            <div class="profile-box">
+              <h4>Métricas de Audiencia (SullyGnome)</h4>
+              <ul class="stats-list">
+                <li><span>Seguidores:</span> <strong>300+</strong></li>
+                <li><span>Media (30d):</span> <strong>7 viewers</strong></li>
+                <li><span>Pico Histórico:</span> <strong>26 viewers</strong></li>
+              </ul>
+            </div>
+            <div class="profile-box">
+              <h4>Categorías & Juegos Frecuentes</h4>
+              <div class="games-tags">
+                <span class="game-tag">Minecraft</span>
+                <span class="game-tag">Just Chatting</span>
+                <span class="game-tag">Productividad & Bienestar</span>
+              </div>
+            </div>
+          </div>
+          <div class="profile-box" style="margin-bottom: 25px;">
+            <h4>Aporte Estratégico al Grupo</h4>
+            <p>Enfoque reflexivo, charlas motivacionales y construcción de comunidades sanas unidas por el bienestar.</p>
+          </div>
+          <a href="https://twitch.tv/habitos_atomicos" target="_blank" class="btn-twitch-lg">Visitar Canal Oficial en Twitch</a>
         </div>
-        <div class="profile-box">
-          <h4>Juegos & Contenido Destacado</h4>
-          <ul class="stats-list">
-            <li><span>Principal:</span> <strong>Minecraft / Just Chatting</strong></li>
-            <li><span>Enfoque:</span> <strong>Bienestar y comunidad sana</strong></li>
-          </ul>
-        </div>
       </div>
-      <div class="profile-box">
-        <h4>Aporte Estratégico al Grupo</h4>
-        <p>Enfoque reflexivo, charlas motivacionales y construcción de comunidades sanas unidas por el bienestar.</p>
-      </div>
-      <a href="https://twitch.tv/habitos_atomicos" target="_blank" class="btn-twitch-lg">Visitar Canal Oficial en Twitch</a>
     </div>
 
   </div>
@@ -799,41 +929,30 @@
 
 <script>
   function switchTab(tabId) {
-    // Cerrar perfiles individuales si estaban abiertos al cambiar de solapa
     closeProfile();
-
-    // Ocultar todas las solapas
     const contents = document.querySelectorAll('.tab-content');
     contents.forEach(c => c.classList.remove('active'));
     
-    // Quitar clase active a los botones
     const buttons = document.querySelectorAll('.tab-btn');
     buttons.forEach(b => b.classList.remove('active'));
     
-    // Activar la solapa elegida y su botón correspondiente
     document.getElementById(tabId).classList.add('active');
     event.currentTarget.classList.add('active');
   }
 
   function openProfile(profileId) {
-    // Ocultar la cuadrícula general de streamers
     document.getElementById('streamers-list-view').style.display = 'none';
-    
-    // Ocultar todas las fichas individuales
     const profiles = document.querySelectorAll('.single-profile');
     profiles.forEach(p => p.classList.remove('active'));
     
-    // Mostrar la ficha seleccionada
     document.getElementById(profileId).classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   function closeProfile() {
-    // Ocultar todas las fichas individuales
     const profiles = document.querySelectorAll('.single-profile');
     profiles.forEach(p => p.classList.remove('active'));
     
-    // Mostrar nuevamente la lista general de streamers
     const listView = document.getElementById('streamers-list-view');
     if (listView) listView.style.display = 'block';
   }
