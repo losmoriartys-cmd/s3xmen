@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LOS S3X-MEN | Twitch Team Oficial</title>
+<title>LOS S3X-MEN | Twitch Team Oficial & Media Kit</title>
 <style>
   :root {
     --bg-dark: #0f0f11;
@@ -16,7 +16,7 @@
   }
   * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
   body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; padding: 20px; }
-  .container { max-width: 1150px; margin: 0 auto; }
+  .container { max-width: 1200px; margin: 0 auto; }
   
   header { text-align: center; margin-bottom: 30px; border-bottom: 2px solid var(--accent); padding-bottom: 20px; }
   h1 { font-size: 2.8rem; color: var(--text-main); letter-spacing: 2px; margin-bottom: 5px; }
@@ -35,7 +35,7 @@
     background: var(--bg-card);
     border: 1px solid var(--border);
     color: var(--text-muted);
-    padding: 10px 20px;
+    padding: 10px 18px;
     border-radius: 8px;
     cursor: pointer;
     font-weight: 600;
@@ -60,26 +60,17 @@
   }
   
   h2 { color: var(--accent); margin-bottom: 20px; font-size: 1.8rem; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+  h3 { color: var(--text-main); margin: 15px 0 10px 0; font-size: 1.3rem; }
   p { margin-bottom: 15px; color: var(--text-muted); font-size: 1.05rem; }
   
   .manifesto-box {
     background: linear-gradient(135deg, #18181b, #27272a);
     border-left: 4px solid var(--accent);
   }
-  
-  .schedule-highlight {
-    background: rgba(145, 70, 255, 0.1);
-    border: 1px solid rgba(145, 70, 255, 0.3);
-    padding: 15px 20px;
-    border-radius: 8px;
-    color: var(--text-main);
-    font-weight: 600;
-    margin-top: 20px;
-  }
 
   .grid-team {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 25px;
     margin-top: 20px;
   }
@@ -117,6 +108,7 @@
   .streamer-info h3 {
     font-size: 1.35rem;
     color: var(--text-main);
+    margin: 0;
   }
   
   .badge {
@@ -130,11 +122,20 @@
     margin-top: 4px;
   }
   
+  .bio-box {
+    font-style: italic;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+    border-left: 2px solid var(--border);
+    padding-left: 10px;
+  }
+
   .stats-list {
     list-style: none;
     font-size: 0.9rem;
     color: var(--text-muted);
-    margin: 15px 0;
+    margin: 12px 0;
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
     padding: 10px 0;
@@ -143,11 +144,21 @@
   .stats-list li {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 6px;
+    margin-bottom: 5px;
   }
   
   .stats-list strong {
     color: var(--text-main);
+  }
+
+  .team-value-box {
+    background: rgba(145, 70, 255, 0.05);
+    border-left: 3px solid var(--accent);
+    padding: 10px 12px;
+    font-size: 0.9rem;
+    color: var(--text-main);
+    border-radius: 0 6px 6px 0;
+    margin: 12px 0;
   }
   
   .btn-twitch {
@@ -160,17 +171,19 @@
     border-radius: 6px;
     font-weight: bold;
     transition: background 0.2s;
+    margin-top: 15px;
   }
   .btn-twitch:hover { background: var(--accent-hover); }
 
-  .obs-guide ul {
-    margin-left: 20px;
-    color: var(--text-muted);
-    margin-bottom: 15px;
-  }
-  .obs-guide li {
-    margin-bottom: 8px;
-  }
+  /* Tablas pro */
+  .table-container { overflow-x: auto; margin-top: 15px; }
+  table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
+  th, td { padding: 12px 15px; border-bottom: 1px solid var(--border); color: var(--text-muted); }
+  th { background: #121215; color: var(--text-main); font-weight: 600; }
+  td strong { color: var(--text-main); }
+
+  .obs-guide ul { margin-left: 20px; color: var(--text-muted); margin-bottom: 15px; }
+  .obs-guide li { margin-bottom: 8px; }
 </style>
 </head>
 <body>
@@ -178,35 +191,34 @@
 <div class="container">
   <header>
     <h1>LOS S3X-<span>MEN</span></h1>
-    <p class="subtitle">Twitch Team Oficial • Familia Latinoamericana (Argentina, Bolivia, México)</p>
+    <p class="subtitle">Twitch Team Oficial & Media Kit • Creadores de Contenido en LATAM</p>
   </header>
 
-  <!-- Navegación de Solapas -->
+  <!-- Navegación por Solapas -->
   <div class="tabs">
-    <button class="tab-btn active" onclick="switchTab(event, 'tab-inicio')">Inicio / Familia</button>
+    <button class="tab-btn active" onclick="switchTab(event, 'tab-inicio')">Presentación / Familia</button>
     <button class="tab-btn" onclick="switchTab(event, 'tab-streamers')">Streamers (8)</button>
-    <button class="tab-btn" onclick="switchTab(event, 'tab-coop')">Juegos Coop & Keys</button>
+    <button class="tab-btn" onclick="switchTab(event, 'tab-tutorial')">Tutorial Lurkit & Keymailer</button>
+    <button class="tab-btn" onclick="switchTab(event, 'tab-partners')">Partners & Requisitos</button>
     <button class="tab-btn" onclick="switchTab(event, 'tab-obs')">Config OBS</button>
   </div>
 
   <!-- SOLAPA 1: INICIO -->
   <div id="tab-inicio" class="tab-content active">
     <div class="card manifesto-box">
-      <h2>Nuestra Esencia como Twitch Team</h2>
-      <p>Somos <strong>LOS S3X-MEN</strong>, un Twitch Team oficial. Una familia latinoamericana de colegas de plataforma de Argentina, Bolivia y México. Nos une que nos gustan los mismos juegos y que priorizamos la colaboración y el crecimiento genuino en conjunto.</p>
-      <p>No somos un grupo de apoyo ni una agencia fría; somos compañeros de camino dentro de Twitch. Nos juntamos porque disfrutamos jugar juntos y crear contenido que nos representa, manteniendo siempre la total independencia de cada canal.</p>
-      
-      <div class="schedule-highlight">
-        📅 Horario central sugerido e ideal: Sábados 21:00 ARG / 20:00 BOL / 18:00 MX (CDMX) — Un punto de referencia voluntario y flexible para coincidir y hacer contenido en equipo, sin obligaciones rígidas.
-      </div>
+      <h2>Nuestra Esencia & Media Kit Profesional</h2>
+      <p>Somos <strong>LOS S3X-MEN</strong>, un Twitch Team oficial concebido como un gran escuadrón internacional de creadores. Una noche de charlas y visión compartida cruzamos fronteras entre <strong>Argentina, Bolivia y México</strong> para armar nuestro propio equipo de colegas, operando con la mística de un grupo de superhéroes unidos para llevar entretenimiento de alta calidad a toda la audiencia hispanohablante.</p>
+      <p><strong>Nuestros Pilares:</strong> Lejos de ser una agencia fría o un grupo de apoyo informal, somos 8 creadores independientes, maduros y profesionales que elegimos caminar a la par. Nos une el respeto mutuo, la pasión por los videojuegos y el compromiso inquebrantable con la excelencia en nuestros respectivos canales.</p>
+      <p><strong>El Valor de la Variedad:</strong> Cada integrante aporta un nicho único y especializado (terror, competitivo, simuladores, arte, lifestyle y retro). Esta diversidad temática nos permite potenciar campañas multiplataforma, lanzamientos de desarrolladores y propuestas con marcas, cubriendo un abanico gigantesco de la industria del gaming con llegada orgánica real en LATAM.</p>
     </div>
   </div>
 
   <!-- SOLAPA 2: STREAMERS -->
   <div id="tab-streamers" class="tab-content">
     <div class="card">
-      <h2>Fichas Oficiales del Team</h2>
-      <p>Conocé a los integrantes que forman parte de nuestra familia de creadores en Twitch.</p>
+      <h2>Fichas Oficiales del Team (Dossier de Creadores)</h2>
+      <p>Conocé en detalle a los 8 integrantes que conforman el escuadrón, sus métricas verificadas de SullyGnome, su biografía de canal y el valor diferencial que aportan al grupo.</p>
+      
       <div class="grid-team">
         
         <!-- LosMoriartys -->
@@ -219,18 +231,21 @@
                 <span class="badge">ARG • Afiliado</span>
               </div>
             </div>
-            <p>Pareja gamer y videoclub nerd caótico con humor VHS, pelis, cómics y mucha charla.</p>
+            <div class="bio-box">"Pareja gamer y videoclub nerd caótico con humor VHS, pelis, cómics y mucha charla."</div>
             <ul class="stats-list">
               <li><span>Seguidores:</span> <strong>1,143</strong></li>
               <li><span>Media (30d):</span> <strong>22 viewers</strong></li>
               <li><span>Pico Histórico:</span> <strong>101 viewers</strong></li>
-              <li><span>Juego Principal:</span> <strong>Fortnite / Sims</strong></li>
+              <li><span>Juego Principal:</span> <strong>Fortnite / Sims / Retro</strong></li>
             </ul>
+            <div class="team-value-box">
+              <strong>Aporte al Grupo:</strong> Dirección creativa, liderazgo de comunidad y cobertura de juegos narrativos y multijugador con enfoque nostálgico.
+            </div>
           </div>
           <a href="https://twitch.tv/losmoriartys" target="_blank" class="btn-twitch">Visitar Canal</a>
         </div>
 
-        <!-- LadyMoriarty01 (Yamila / 1ra Dama) -->
+        <!-- LadyMoriarty01 -->
         <div class="streamer-card">
           <div>
             <div class="streamer-header">
@@ -240,13 +255,16 @@
                 <span class="badge">ARG • Afiliado</span>
               </div>
             </div>
-            <p>La primera dama del Team y co-pilota de LosMoriartys. Minecraft, simuladores y calidez de hogar.</p>
+            <div class="bio-box">"La primera dama del Team. Minecraft, simuladores de gestión y calidez de hogar."</div>
             <ul class="stats-list">
               <li><span>Seguidores:</span> <strong>179</strong></li>
               <li><span>Media (30d):</span> <strong>10 viewers</strong></li>
               <li><span>Pico Histórico:</span> <strong>388 viewers</strong></li>
-              <li><span>Juego Principal:</span> <strong>Minecraft / Aniimo</strong></li>
+              <li><span>Juego Principal:</span> <strong>Minecraft / Simulators</strong></li>
             </ul>
+            <div class="team-value-box">
+              <strong>Aporte al Grupo:</strong> Especialista en mundos abiertos, construcción cooperativa y gestión de simuladores con gran fidelidad de chat.
+            </div>
           </div>
           <a href="https://twitch.tv/ladymoriarty01" target="_blank" class="btn-twitch">Visitar Canal</a>
         </div>
@@ -261,13 +279,16 @@
                 <span class="badge">BOL • Partner</span>
               </div>
             </div>
-            <p>Músico boliviano, pilar competitivo y ancla del Team. Código de creador Fortnite.</p>
+            <div class="bio-box">"Músico boliviano, pilar competitivo y ancla del Team. Código de creador Fortnite."</div>
             <ul class="stats-list">
               <li><span>Seguidores:</span> <strong>5,181</strong></li>
               <li><span>Media (30d):</span> <strong>23 viewers</strong></li>
               <li><span>Pico Histórico:</span> <strong>78 viewers</strong></li>
               <li><span>Juego Principal:</span> <strong>Fortnite / Valorant</strong></li>
             </ul>
+            <div class="team-value-box">
+              <strong>Aporte al Grupo:</strong> Solidez competitiva, estatus de Partner en plataformas y tracción en títulos de alta exigencia de mecánicas.
+            </div>
           </div>
           <a href="https://twitch.tv/ther0d3r1k" target="_blank" class="btn-twitch">Visitar Canal</a>
         </div>
@@ -282,13 +303,16 @@
                 <span class="badge">ARG • Afiliado</span>
               </div>
             </div>
-            <p>Especialista en horror asimétrico y Dead by Daylight. Vibe relajada e intensa a la vez.</p>
+            <div class="bio-box">"Especialista en horror asimétrico y Dead by Daylight. Vibe relajada e intensa."</div>
             <ul class="stats-list">
               <li><span>Seguidores:</span> <strong>682</strong></li>
               <li><span>Media (30d):</span> <strong>9 viewers</strong></li>
               <li><span>Pico Histórico:</span> <strong>28 viewers</strong></li>
-              <li><span>Juego Principal:</span> <strong>Dead by Daylight</strong></li>
+              <li><span>Juego Principal:</span> <strong>Dead by Daylight / Horror</strong></li>
             </ul>
+            <div class="team-value-box">
+              <strong>Aporte al Grupo:</strong> Expercripto en el género de terror, aportando la cuota de tensión, adrenalina y dinámicas nocturnas de sustos.
+            </div>
           </div>
           <a href="https://twitch.tv/capyunaplay" target="_blank" class="btn-twitch">Visitar Canal</a>
         </div>
@@ -303,13 +327,16 @@
                 <span class="badge">MX • Afiliado</span>
               </div>
             </div>
-            <p>Artista y cosplayer, puente mexicano del grupo. Gran crecimiento y comunidad anime.</p>
+            <div class="bio-box">"Artista y cosplayer, puente mexicano del grupo. Gran comunidad anime y creativa."</div>
             <ul class="stats-list">
               <li><span>Seguidores:</span> <strong>425</strong></li>
               <li><span>Media (30d):</span> <strong>8 viewers</strong></li>
               <li><span>Pico Histórico:</span> <strong>24 viewers</strong></li>
               <li><span>Juego Principal:</span> <strong>Just Chatting / Valorant</strong></li>
             </ul>
+            <div class="team-value-box">
+              <strong>Aporte al Grupo:</strong> Conexión internacional con México, estética visual, arte, cosplay y streams conversacionales de gran empatía.
+            </div>
           </div>
           <a href="https://twitch.tv/ardipii" target="_blank" class="btn-twitch">Visitar Canal</a>
         </div>
@@ -324,13 +351,16 @@
                 <span class="badge">MX • Afiliado</span>
               </div>
             </div>
-            <p>Especialista en coop de terror y gran constancia en directos de sustos y risas.</p>
+            <div class="bio-box">"Especialista en coop de terror y gran constancia en directos de sustos y risas."</div>
             <ul class="stats-list">
               <li><span>Seguidores:</span> <strong>140</strong></li>
               <li><span>Media (30d):</span> <strong>3 viewers</strong></li>
               <li><span>Pico Histórico:</span> <strong>41 viewers</strong></li>
-              <li><span>Juego Principal:</span> <strong>Lethal Company / Horror</strong></li>
+              <li><span>Juego Principal:</span> <strong>Lethal Company / Co-op</strong></li>
             </ul>
+            <div class="team-value-box">
+              <strong>Aporte al Grupo:</strong> Dinámicas multijugador caóticas, juegos indies de supervivencia y humor fresco en equipo.
+            </div>
           </div>
           <a href="https://twitch.tv/akumazoldyck" target="_blank" class="btn-twitch">Visitar Canal</a>
         </div>
@@ -345,13 +375,16 @@
                 <span class="badge">ARG • Afiliado</span>
               </div>
             </div>
-            <p>Mecánicas y control. Rocket League y simuladores con versatilidad para el Team.</p>
+            <div class="bio-box">"Mecánicas y control. Rocket League y simuladores con versatilidad para el Team."</div>
             <ul class="stats-list">
               <li><span>Seguidores:</span> <strong>594</strong></li>
               <li><span>Media (30d):</span> <strong>11 viewers</strong></li>
               <li><span>Pico Histórico:</span> <strong>19 viewers</strong></li>
-              <li><span>Juego Principal:</span> <strong>Rocket League</strong></li>
+              <li><span>Juego Principal:</span> <strong>Rocket League / Racing</strong></li>
             </ul>
+            <div class="team-value-box">
+              <strong>Aporte al Grupo:</strong> Destreza en simuladores de conducción y deportes electrónicos, aportando torneos y diversión dinámica.
+            </div>
           </div>
           <a href="https://twitch.tv/elgabii090" target="_blank" class="btn-twitch">Visitar Canal</a>
         </div>
@@ -366,13 +399,16 @@
                 <span class="badge">ARG • Afiliado</span>
               </div>
             </div>
-            <p>Lifestyle, productividad y el 1% diario. Uniendo el gaming con el desarrollo personal.</p>
+            <div class="bio-box">"Lifestyle, productividad y el 1% diario. Uniendo el gaming con el desarrollo personal."</div>
             <ul class="stats-list">
               <li><span>Seguidores:</span> <strong>300+</strong></li>
               <li><span>Media (30d):</span> <strong>7 viewers</strong></li>
               <li><span>Pico Histórico:</span> <strong>26 viewers</strong></li>
               <li><span>Juego Principal:</span> <strong>Minecraft / Just Chatting</strong></li>
             </ul>
+            <div class="team-value-box">
+              <strong>Aporte al Grupo:</strong> Enfoque reflexivo, charlas motivacionales y construcción de comunidades sanas unidas por el bienestar y el juego.
+            </div>
           </div>
           <a href="https://twitch.tv/habitos_atomicos" target="_blank" class="btn-twitch">Visitar Canal</a>
         </div>
@@ -381,26 +417,113 @@
     </div>
   </div>
 
-  <!-- SOLAPA 3: JUEGOS COOP -->
-  <div id="tab-coop" class="tab-content">
+  <!-- SOLAPA 3: TUTORIAL LURKIT & KEYMAILER -->
+  <div id="tab-tutorial" class="tab-content">
     <div class="card">
-      <h2>Juegos Cooperativos & Solicitud de Keys</h2>
-      <p>Espacio reservado para coordinar juegos cooperativos a través de plataformas de creadores como <strong>Lurkit</strong> y <strong>Keymailer</strong>. Ideal para conseguir accesos y organizar dinámicas conjuntas en familia.</p>
+      <h2>Tutorial de Lurkit & Keymailer</h2>
+      <p>Guía operativa interna para gestionar campañas de creadores y solicitar accesos anticipados o claves de videojuegos de forma profesional:</p>
+      
+      <h3>1. Lurkit (Plataforma de Partners y Campañas)</h3>
+      <p>• Registrarse vinculando el canal de Twitch verificado.<br>
+      • Mantener actualizadas las métricas reales de espectadores y seguidores.<br>
+      • Explorar el catálogo de campañas activas y postularse para cubrir lanzamientos en directo de manera individual o en equipo.</p>
+
+      <h3>2. Keymailer (Solicitud Directa de Keys)</h3>
+      <p>• Crear perfil de creador conectando Steam y Twitch.<br>
+      • Configurar preferencias de géneros para recibir alertas de publishers.<br>
+      • Enviar solicitudes de claves para juegos cooperativos que se alineen con la media de espectadores del canal.</p>
     </div>
   </div>
 
-  <!-- SOLAPA 4: OBS -->
+  <!-- SOLAPA 4: PARTNERS & REQUISITOS -->
+  <div id="tab-partners" class="tab-content">
+    <div class="card">
+      <h2>Programas de Partners por Media & Requisitos</h2>
+      <p>Esquema de programas de creadores y desarrolladores según métricas de audiencia, facilitando la selección de integrantes para campañas específicas:</p>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Programa / Desarrollador</th>
+              <th>Avg Requerido</th>
+              <th>Seguidores Min</th>
+              <th>Integrantes Habilitados</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>THQ Nordic Creator Portal</strong></td>
+              <td>0 - 5+</td>
+              <td>100</td>
+              <td><strong>TODOS</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Raw Fury Creator Program</strong></td>
+              <td>0 - 10+</td>
+              <td>100</td>
+              <td><strong>TODOS</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Solasta II Partner Program</strong></td>
+              <td>5+</td>
+              <td>200</td>
+              <td>ArdiPii, Capyunaplay, elgabii090, LosMoriartys, TheR0D3R1K</td>
+            </tr>
+            <tr>
+              <td><strong>LotR: Return to Moria</strong></td>
+              <td>5 - 10+</td>
+              <td>200</td>
+              <td>Capyunaplay, Gabi, Moriartys, TheR0D3R1K</td>
+            </tr>
+            <tr>
+              <td><strong>DayZ Creator Program</strong></td>
+              <td>10+</td>
+              <td>300</td>
+              <td>elgabii090, LosMoriartys, TheR0D3R1K</td>
+            </tr>
+            <tr>
+              <td><strong>Ready or Not Creator Program</strong></td>
+              <td>10 - 15+</td>
+              <td>300</td>
+              <td>elgabii090, LosMoriartys, TheR0D3R1K</td>
+            </tr>
+            <tr>
+              <td><strong>Sea of Thieves Programme</strong></td>
+              <td>10+</td>
+              <td>300</td>
+              <td>elgabii090, LosMoriartys, TheR0D3R1K</td>
+            </tr>
+            <tr>
+              <td><strong>Funcom Creator Program (Dune / Conan)</strong></td>
+              <td>15 - 20+</td>
+              <td>500</td>
+              <td>LosMoriartys, TheR0D3R1K</td>
+            </tr>
+            <tr>
+              <td><strong>Kinetic Games (Phasmophobia)</strong></td>
+              <td>20 - 50+</td>
+              <td>500+</td>
+              <td>LosMoriartys, TheR0D3R1K (Ideal para duplas / equipo)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOLAPA 5: OBS -->
   <div id="tab-obs" class="tab-content">
     <div class="card obs-guide">
-      <h2>Configuración Sugerida para OBS (Colaboraciones)</h2>
-      <p>Para asegurar que todos los directos en equipo fluyan sin cortes y con excelente calidad visual y de audio:</p>
+      <h2>Configuración Técnica para OBS (Colaboraciones)</h2>
+      <p>Estándares recomendados para asegurar directos en equipo fluidos, estables y con excelente calidad audiovisual:</p>
       <ul>
-        <li><strong>Codificador:</strong> NVIDIA NVENC H.264 (si usás placa gráfica dedicada) o x264.</li>
+        <li><strong>Codificador:</strong> NVIDIA NVENC H.264 (con placa dedicada) o x264.</li>
         <li><strong>Control de Frecuencia:</strong> CBR (Bitrate constante).</li>
-        <li><strong>Bitrate:</strong> 6000 Kbps (óptimo para 720p/1080p estables).</li>
+        <li><strong>Bitrate:</strong> 6000 Kbps (óptimo para estabilidad en transmisiones simultáneas).</li>
         <li><strong>Preset de Rendimiento:</strong> P5 o Slower (Calidad equilibrada).</li>
-        <li><strong>Resolución de Salida:</strong> 720p a 60fps (ideal para evitar caídas de frames en collabs multitudinarias).</li>
-        <li><strong>Audio:</strong> Pista de 160 kbps para mantener las voces nítidas en Discord durante el streaming.</li>
+        <li><strong>Resolución de Salida:</strong> 720p a 60fps (garantiza cero caídas de frames en collabs multitudinarias).</li>
+        <li><strong>Audio:</strong> Pista de 160 kbps para mantener las voces nítidas en Discord y juego.</li>
       </ul>
     </div>
   </div>
