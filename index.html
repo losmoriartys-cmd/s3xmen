@@ -67,7 +67,7 @@
     <!-- CONTENIDO PRINCIPAL -->
     <main class="flex-grow max-w-7xl mx-auto px-4 py-8 w-full">
 
-        <!-- 1. PORTADA — CON LA ILUSTRACIÓN GRUPAL OFICIAL -->
+        <!-- 1. PORTADA — CON BANNER GRUPAL OFICIAL -->
         <section id="chapter-portada" class="chapter-container text-center py-4">
             <div class="max-w-5xl mx-auto bg-black/90 p-4 md:p-8 comic-border relative overflow-hidden rounded-lg">
                 <div class="absolute top-4 left-4 bg-yellow-400 text-black font-comic px-4 py-1 comic-border rotate-[-3deg] z-10 text-sm md:text-base">
@@ -75,15 +75,16 @@
                 </div>
                 <h2 class="font-comic text-5xl md:text-7xl text-yellow-400 mt-6 mb-4 drop-shadow-[4px_4px_0px_#ff0055]">THE MULTIVERSE</h2>
                 
-                <!-- PORTADA GRUPAL INTEGRADA -->
+                <!-- BANNER GRUPAL DE LOS 8 SUPERHÉROES -->
                 <div class="my-6 comic-border overflow-hidden bg-gray-900 rounded relative">
-                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop" 
-                         alt="Los S3X-Men Ilustración Grupal" 
-                         class="w-full h-auto max-h-[550px] object-cover mx-auto">
+                    <img src="portada-grupal.jpg" 
+                         alt="Los S3X-Men Banner Principal" 
+                         class="w-full h-auto max-h-[550px] object-cover mx-auto"
+                         onerror="this.onerror=null; this.src='https://i.ibb.co/L519p4f/los-s3x-men-portada.jpg';">
                 </div>
 
                 <p class="text-base md:text-lg text-gray-200 italic mb-6 max-w-3xl mx-auto">
-                    "Una noche cualquiera de directos y charlas de medianoche, tiramos sobre la mesa una idea casi de película: ¿y si cruzamos las fronteras y armamos nuestro propio escuadrón?"
+                    "Una noche cualquiera de directos y charlas de medianoche, tiramos sobre la mesa una idea casi de película: ¿y si cruzamos las fronteras y armamos nuestro propio escuadrón?"[cite: 6]
                 </p>
 
                 <button onclick="switchChapter('origen')" class="bg-yellow-400 text-black font-comic text-2xl px-8 py-3 comic-border hover:bg-yellow-300 transform hover:scale-105 transition">
@@ -99,7 +100,7 @@
                 <h2 class="font-comic text-4xl text-yellow-400 mt-4 mb-6">EL NACIMIENTO DEL ESCUADRÓN</h2>
                 <div class="grid md:grid-cols-2 gap-6 items-center">
                     <div class="space-y-4 text-gray-300 text-base">
-                        <p>Somos un <strong>Twitch Team oficial</strong> compuesto por 8 creadores independientes de Argentina, Bolivia y México.</p>
+                        <p>Somos un <strong>Twitch Team oficial</strong> compuesto por 8 creadores independientes de Argentina, Bolivia y México[cite: 6].</p>
                         <p>Ofrecemos un estándar de colaboración genuina, multicanal y con llegada orgánica real en toda Latinoamérica[cite: 6].</p>
                     </div>
                     <div class="bg-black p-6 comic-border relative">
@@ -118,16 +119,16 @@
             </div>
         </section>
 
-        <!-- 3. CAPÍTULO 02 — ROSTER CON LAS CARTAS DE SUPERHÉROES -->
+        <!-- 3. CAPÍTULO 02 & 03 — ROSTER INTERACTIVO CON FICHAS DE CÓMIC -->
         <section id="chapter-heroes" class="chapter-container hidden">
             <div class="text-center mb-6">
                 <span class="bg-purple-600 text-white font-comic px-3 py-1 comic-border text-lg">CAPÍTULO 02 & 03</span>
                 <h2 class="font-comic text-4xl md:text-5xl text-yellow-400 mt-2">EL ROSTER DE MUTANTES</h2>
-                <p class="text-gray-300 text-sm mt-1">Usa los botones de cada tarjeta para alternar entre el <strong>Personaje (Página A)</strong> y el <strong>Expediente Profesional (SullyGnome) (Página B)</strong>.</p>
+                <p class="text-gray-300 text-sm mt-1">Usa los botones de cada tarjeta para alternar entre el <strong>Personaje (Página A)</strong> y el <strong>Expediente Profesional (SullyGnome) (Página B)</strong>[cite: 6].</p>
             </div>
 
             <div id="roster-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Inyección dinámica de los 8 héroes -->
+                <!-- Inyección dinámica de las 8 fichas -->
             </div>
 
             <div class="mt-8 flex justify-between">
@@ -208,136 +209,6 @@
         <p>© 2026 The Multiverse Experience. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- SCRIPT CON DATOS DE LOS 8 HÉROES Y SUS TARJETAS -->
+    <!-- SCRIPT CON EL MAPEO EXACTO DE LAS 8 CARTAS COLECCIONABLES Y EXPEDIENTES -->
     <script>
-        const heroesData = [
-            { 
-                id: 'moriartys', name: 'MORIARTYS', country: 'AR • ARG', pwr: 'PWR 90', 
-                twitch: 'losmoriartys', img: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=600&auto=format&fit=crop', 
-                avg: 22, peak: 101, followers: 1143, role: 'Dirección creativa y liderazgo de comunidad', 
-                games: 'Fortnite, Los Sims, Minecraft', bio: 'Mente maestra boca, táctica pura. Lentes de genio, goatee calculado. Tres jugadas adelante, siempre.' 
-            },
-            { 
-                id: 'ladymoriarty', name: 'LADYMORIARTY', country: 'AR • ARG', pwr: 'PWR 92', 
-                twitch: 'ladymoriarty01', img: 'https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=600&auto=format&fit=crop', 
-                avg: 10, peak: 388, followers: 179, role: 'Especialista en mundos abiertos y gestión', 
-                games: 'Minecraft, Simuladores de Gestión, Cozy Games', bio: 'Hechicera carmesí, caos & control. Palo rojo fuego, mirada que encanta.' 
-            },
-            { 
-                id: 'r0d3r1k', name: 'ROD3R1K', country: 'AR • ARG', pwr: 'PWR 94', 
-                twitch: 'ther0d3r1k', img: 'https://images.unsplash.com/photo-1566492031773-4f4e44671857?q=80&w=600&auto=format&fit=crop', 
-                avg: 23, peak: 78, followers: 5181, role: 'Solidez competitiva y Partner oficial', 
-                games: 'Fortnite, Valorant, Shooters Competitivos', bio: 'Pelo pincho real + cámara, fuerza sónica. Armadura roja-amarilla con X dorada.' 
-            },
-            { 
-                id: 'capyuna', name: 'CAPYUNAPLAY', country: 'UY • URY', pwr: 'PWR 89', 
-                twitch: 'capyunaplay', img: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=600&auto=format&fit=crop', 
-                avg: 9, peak: 28, followers: 682, role: 'Experto en terror y dinámicas nocturnas', 
-                games: 'Dead by Daylight, Juegos de Horror', bio: 'Buzz + candado, velocidad extrema. Buzz cut letal, candado de acero.' 
-            },
-            { 
-                id: 'ardipii', name: 'ARDIPII', country: 'MX • MEX', pwr: 'PWR 90', 
-                twitch: 'ardipii', img: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=600&auto=format&fit=crop', 
-                avg: 8, peak: 24, followers: 425, role: 'Puente mexicano, arte y cosplay', 
-                games: 'Just Chatting, Valorant, Arte & Cosplay', bio: 'Fantasmagórico, traslúcido encapuchado. Estética visual y arte.' 
-            },
-            { 
-                id: 'akuma', name: 'AKUMAZOLDYCK', country: 'CL • CHL', pwr: 'PWR 95', 
-                twitch: 'akumazoldyck', img: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=600&auto=format&fit=crop', 
-                avg: 3, peak: 41, followers: 140, role: 'Dinámicas multijugador caóticas e indies', 
-                games: 'Lethal Company, Co-op Indies', bio: 'Cuernos, demonio de combate, bestia imparable en coop de terror.' 
-            },
-            { 
-                id: 'gabii', name: 'ELGABII090', country: 'AR • ARG', pwr: 'PWR 88', 
-                twitch: 'elgabii090', img: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=600&auto=format&fit=crop', 
-                avg: 11, peak: 19, followers: 594, role: 'Destreza en simuladores de conducción', 
-                games: 'Rocket League, Racing Simulators', bio: 'Habilidoso, naranja & púrpura, trickster letal sobre ruedas.' 
-            },
-            { 
-                id: 'habitos', name: 'HABITOS ATOMICOS', country: 'CO • COL', pwr: 'PWR 91', 
-                twitch: 'habitos_atomicos', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop', 
-                avg: 7, peak: 26, followers: 300, role: 'Productividad y comunidades sanas', 
-                games: 'Minecraft, Just Chatting, Bienestar', bio: 'Rastas atómicas, energía nuclear, uniendo el gaming con hábitos diarios.' 
-            }
-        ];
-
-        function switchChapter(chapterId) {
-            document.querySelectorAll('main > section').forEach(sec => sec.classList.add('hidden'));
-            document.getElementById('chapter-' + chapterId).classList.remove('hidden');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function toggleCardFace(heroId) {
-            const pageA = document.getElementById(`page-a-${heroId}`);
-            const pageB = document.getElementById(`page-b-${heroId}`);
-            const btn = document.getElementById(`btn-toggle-${heroId}`);
-
-            if (pageA.classList.contains('hidden')) {
-                pageA.classList.remove('hidden');
-                pageB.classList.add('hidden');
-                btn.innerText = "VER EXPEDIENTE SULLYGNOME 📊";
-            } else {
-                pageA.classList.add('hidden');
-                pageB.classList.remove('hidden');
-                btn.innerText = "VER PERSONAJE CÓMIC 🦸‍♂️";
-            }
-        }
-
-        function renderHeroes() {
-            const grid = document.getElementById('roster-grid');
-            grid.innerHTML = '';
-
-            heroesData.forEach(h => {
-                const card = document.createElement('div');
-                card.className = 'comic-card bg-black p-3 flex flex-col justify-between relative rounded-md';
-                card.innerHTML = `
-                    <div class="absolute top-2 left-2 bg-black text-white text-[10px] font-bold px-2 py-0.5 comic-border z-10">${h.country}</div>
-                    <div class="absolute top-2 right-2 bg-yellow-400 text-black text-[10px] font-bold px-2 py-0.5 comic-border z-10">${h.pwr}</div>
-                    <div>
-                        <!-- IMAGEN INDIVIDUAL DE CADA HÉROE -->
-                        <div class="h-52 bg-purple-900 comic-border mb-3 mt-6 overflow-hidden flex items-center justify-center relative">
-                            <img src="${h.img}" 
-                                 alt="${h.name}" 
-                                 class="w-full h-full object-cover object-top">
-                        </div>
-
-                        <!-- PÁGINA A: PERSONAJE NARRATIVO -->
-                        <div id="page-a-${h.id}">
-                            <h3 class="font-comic text-2xl text-yellow-400">${h.name}</h3>
-                            <p class="text-[11px] text-gray-400 font-semibold mb-2">${h.role}</p>
-                            <p class="text-xs text-gray-200 italic mb-3">"${h.bio}"</p>
-                        </div>
-
-                        <!-- PÁGINA B: EXPEDIENTE PROFESIONAL (SULLYGNOME) -->
-                        <div id="page-b-${h.id}" class="hidden bg-gray-900 p-3 comic-border text-xs space-y-1.5 mb-3">
-                            <h4 class="font-comic text-lg text-yellow-400 border-b border-gray-700 pb-1">MÉTRICAS VERIFICADAS</h4>
-                            <div class="flex justify-between"><span>Seguidores:</span> <strong class="text-yellow-400">${h.followers}</strong></div>
-                            <div class="flex justify-between"><span>Media (30d):</span> <strong class="text-blue-400">${h.avg} views</strong></div>
-                            <div class="flex justify-between"><span>Pico Histórico:</span> <strong class="text-green-400">${h.peak} views</strong></div>
-                            <div class="pt-1 border-t border-gray-700 text-[10px] text-gray-300"><strong>Rol:</strong> ${h.role}</div>
-                            <div class="text-[10px] text-yellow-300"><strong>Juegos:</strong> ${h.games}</div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <button id="btn-toggle-${h.id}" onclick="toggleCardFace('${h.id}')" class="w-full mb-2 bg-yellow-400 hover:bg-yellow-300 text-black font-comic text-xs py-1.5 comic-card">
-                            VER EXPEDIENTE SULLYGNOME 📊
-                        </button>
-                        <a href="https://twitch.tv/${h.twitch}" target="_blank" class="block text-center bg-purple-600 hover:bg-purple-500 text-white font-comic py-1.5 comic-border text-xs">
-                            VISITAR TWITCH ⚡
-                        </a>
-                    </div>
-                `;
-                grid.appendChild(card);
-            });
-        }
-
-        function handleRecruitment(e) {
-            e.preventDefault();
-            alert("Postulación generada con éxito.");
-        }
-
-        window.onload = () => { renderHeroes(); };
-    </script>
-</body>
-</html>
+        const
