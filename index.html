@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LOS S3X-MEN — THE MULTIVERSE | Twitch Team Oficial LATAM</title>
+    <title>LOS S3X-MEN — THE MULTIVERSE | Interactive Digital Comic</title>
     <!-- Tailwind CSS & Google Fonts -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: #0c0a1d;
+            background-color: #0a0817;
             color: #f3f4f6;
             overflow-x: hidden;
         }
         .font-comic {
             font-family: 'Bangers', cursive;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
         }
         .comic-border {
             border: 4px solid #111;
@@ -25,106 +25,123 @@
         .comic-card {
             border: 3px solid #111;
             box-shadow: 4px 4px 0px #000;
-            transition: all 0.2s ease;
+            transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         .comic-card:hover {
-            transform: translate(-2px, -2px);
-            box-shadow: 6px 6px 0px #fbbf24;
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 8px 8px 0px #fbbf24;
         }
         .halftone-bg {
             background-image: radial-gradient(#3b82f6 1.5px, transparent 1.5px);
             background-size: 16px 16px;
         }
-        @keyframes popIn {
-            0% { transform: scale(0.97); opacity: 0; }
+        .scanlines {
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+            background-size: 100% 4px;
+        }
+        @keyframes pageTurn {
+            0% { transform: scale(0.96); opacity: 0; }
             100% { transform: scale(1); opacity: 1; }
         }
-        .chapter-container {
-            animation: popIn 0.3s ease-out forwards;
+        .chapter-page {
+            animation: pageTurn 0.35s ease-out forwards;
         }
     </style>
 </head>
 <body class="halftone-bg min-h-screen flex flex-col justify-between">
 
-    <!-- HEADER / NAVEGACIÓN -->
-    <header class="bg-yellow-400 border-b-4 border-black sticky top-0 z-50 shadow-lg">
-        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center">
+    <!-- HEADER / NAVEGACIÓN PRINCIPAL -->
+    <header class="bg-yellow-400 border-b-4 border-black sticky top-0 z-50 shadow-xl">
+        <div class="max-w-7xl mx-auto px-4 py-2.5 flex flex-wrap justify-between items-center">
             <div class="flex items-center space-x-3 cursor-pointer" onclick="switchChapter('portada')">
-                <span class="bg-purple-900 text-yellow-300 px-3 py-1 comic-border text-xl font-comic">ISSUE #1</span>
-                <h1 class="font-comic text-3xl md:text-4xl text-black drop-shadow-[2px_2px_0px_#fff]">LOS S3X-MEN</h1>
+                <span class="bg-purple-900 text-yellow-300 px-3 py-1 comic-border text-lg font-comic">ISSUE #1</span>
+                <h1 class="font-comic text-2xl md:text-3xl text-black drop-shadow-[2px_2px_0px_#fff]">LOS S3X-MEN</h1>
             </div>
-            <nav class="flex flex-wrap gap-2 mt-2 md:mt-0 font-bold text-xs md:text-sm">
-                <button onclick="switchChapter('portada')" class="bg-white text-black px-3 py-1.5 comic-card hover:bg-yellow-200">PORTADA</button>
-                <button onclick="switchChapter('origen')" class="bg-blue-600 text-white px-3 py-1.5 comic-card hover:bg-blue-500">01. ORIGEN</button>
-                <button onclick="switchChapter('heroes')" class="bg-purple-600 text-white px-3 py-1.5 comic-card hover:bg-purple-500">02. HÉROES</button>
-                <button onclick="switchChapter('database')" class="bg-green-600 text-white px-3 py-1.5 comic-card hover:bg-green-500">03. DATABASE</button>
-                <button onclick="switchChapter('misiones')" class="bg-red-600 text-white px-3 py-1.5 comic-card hover:bg-red-500">04. MISIONES</button>
-                <button onclick="switchChapter('reclutamiento')" class="bg-pink-600 text-white px-3 py-1.5 comic-card hover:bg-pink-500">05. RECLUTAMIENTO</button>
+            <nav class="flex flex-wrap gap-1.5 mt-2 md:mt-0 font-bold text-xs">
+                <button onclick="switchChapter('portada')" class="bg-white text-black px-2.5 py-1 comic-card hover:bg-yellow-200">PORTADA</button>
+                <button onclick="switchChapter('origen')" class="bg-blue-600 text-white px-2.5 py-1 comic-card hover:bg-blue-500">01. ORIGEN</button>
+                <button onclick="switchChapter('heroes')" class="bg-purple-600 text-white px-2.5 py-1 comic-card hover:bg-purple-500">02. HÉROES</button>
+                <button onclick="switchChapter('database')" class="bg-green-600 text-white px-2.5 py-1 comic-card hover:bg-green-500">04. DATABASE</button>
+                <button onclick="switchChapter('misiones')" class="bg-red-600 text-white px-2.5 py-1 comic-card hover:bg-red-500">05. MISIONES</button>
+                <button onclick="switchChapter('reclutamiento')" class="bg-pink-600 text-white px-2.5 py-1 comic-card hover:bg-pink-500">06. RECLUTAMIENTO</button>
             </nav>
         </div>
     </header>
 
-    <!-- CONTENIDO PRINCIPAL -->
-    <main class="flex-grow max-w-7xl mx-auto px-4 py-8 w-full">
+    <!-- CONTENIDO DE LAS PÁGINAS DEL CÓMIC -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 py-6 w-full">
 
-        <!-- 1. PORTADA — CON EL BANNER GRUPAL OFICIAL -->
-        <section id="chapter-portada" class="chapter-container text-center py-4">
-            <div class="max-w-5xl mx-auto bg-black/90 p-4 md:p-8 comic-border relative overflow-hidden rounded-lg">
-                <div class="absolute top-4 left-4 bg-yellow-400 text-black font-comic px-4 py-1 comic-border rotate-[-3deg] z-10 text-sm md:text-base">
-                    FAMILIA LATAM • 8 MUTANTES
+        <!-- PORTADA — EL EQUIPO INTEGRADO -->
+        <section id="page-portada" class="chapter-page text-center py-2">
+            <div class="max-w-5xl mx-auto bg-black/95 p-4 md:p-8 comic-border relative overflow-hidden rounded-lg">
+                <div class="absolute top-4 left-4 bg-yellow-400 text-black font-comic px-4 py-1 comic-border rotate-[-2deg] z-10 text-xs md:text-sm">
+                    MULTIVERSO LATAM • 8 MUTANTES UNIDOS
                 </div>
-                <h2 class="font-comic text-5xl md:text-7xl text-yellow-400 mt-6 mb-4 drop-shadow-[4px_4px_0px_#ff0055]">THE MULTIVERSE</h2>
+                <h2 class="font-comic text-5xl md:text-7xl text-yellow-400 mt-4 mb-2 drop-shadow-[4px_4px_0px_#ff0055]">THE MULTIVERSE</h2>
                 
-                <!-- BANNER GRUPAL OFICIAL -->
-                <div class="my-6 comic-border overflow-hidden bg-gray-900 rounded relative flex items-center justify-center">
+                <!-- ILUSTRACIÓN GRUPAL OFICIAL -->
+                <div class="my-4 comic-border overflow-hidden bg-gray-900 rounded relative flex items-center justify-center">
                     <img src="banner-grupal.jpg" 
-                         alt="Los S3X-Men Banner Principal" 
-                         class="w-full h-auto max-h-[550px] object-cover mx-auto"
+                         alt="Los S3X-Men Ilustración Grupal" 
+                         class="w-full h-auto max-h-[500px] object-cover mx-auto"
                          onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop';">
                 </div>
 
-                <p class="text-base md:text-lg text-gray-200 italic mb-6 max-w-3xl mx-auto">
+                <p class="text-sm md:text-base text-gray-200 italic mb-6 max-w-3xl mx-auto">
                     "Una noche cualquiera de directos y charlas de medianoche, armamos como un cómic nuestra propia historia cruzando fronteras."
                 </p>
 
-                <button onclick="switchChapter('origen')" class="bg-yellow-400 text-black font-comic text-2xl px-8 py-3 comic-border hover:bg-yellow-300 transform hover:scale-105 transition">
-                    ⚡ ABRIR EL CÓMIC / LEER CAPÍTULOS
-                </button>
+                <div class="flex justify-center gap-4">
+                    <button onclick="switchChapter('origen')" class="bg-yellow-400 text-black font-comic text-2xl px-8 py-3 comic-border hover:bg-yellow-300 transform hover:scale-105 transition">
+                        ⚡ ABRIR EL CÓMIC
+                    </button>
+                    <button onclick="switchChapter('heroes')" class="bg-purple-600 text-white font-comic text-2xl px-8 py-3 comic-border hover:bg-purple-500 transform hover:scale-105 transition">
+                        🃏 VER HÉROES
+                    </button>
+                </div>
             </div>
         </section>
 
-        <!-- 2. CAPÍTULO 01 — ORIGEN -->
-        <section id="chapter-origen" class="chapter-container hidden">
-            <div class="bg-gray-900 p-6 md:p-10 comic-border max-w-4xl mx-auto rounded-lg">
-                <span class="bg-blue-600 text-white font-comic px-3 py-1 comic-border text-lg">CAPÍTULO 01</span>
-                <h2 class="font-comic text-4xl text-yellow-400 mt-4 mb-6">EL NACIMIENTO DEL ESCUADRÓN</h2>
+        <!-- CAPÍTULO 01 — EL ORIGEN Y VALORES -->
+        <section id="page-origen" class="chapter-page hidden">
+            <div class="bg-gray-900 p-6 md:p-10 comic-border max-w-4xl mx-auto rounded-lg space-y-6">
+                <div class="flex justify-between items-center border-b-2 border-yellow-400 pb-3">
+                    <span class="bg-blue-600 text-white font-comic px-3 py-1 comic-border text-lg">CAPÍTULO 01</span>
+                    <span class="text-xs text-gray-400 font-mono">PÁGINA 1 DE 6</span>
+                </div>
+                
+                <h2 class="font-comic text-4xl text-yellow-400">EL NACIMIENTO DEL ESCUADRÓN Y NUESTROS VALORES</h2>
+
                 <div class="grid md:grid-cols-2 gap-6 items-center">
-                    <div class="space-y-4 text-gray-300 text-base">
-                        <p>Somos un <strong>Twitch Team oficial</strong> compuesto por 8 creadores independientes de Argentina, Bolivia, México, Uruguay, Chile y Colombia.</p>
-                        <p>Ofrecemos un estándar de colaboración genuina, multicanal y con llegada orgánica real en toda Latinoamérica.</p>
+                    <div class="space-y-4 text-gray-300 text-sm leading-relaxed">
+                        <p>Somos un <strong>Twitch Team oficial</strong> compuesto por 8 creadores independientes unidos a través de Argentina, Bolivia, México, Uruguay, Chile y Colombia.</p>
+                        <p><strong>¿Cómo nos conocimos?</strong> En directos cruzados y charlas de medianoche descubrimos que compartíamos la misma pasión por desafiar los límites del streaming tradicional. Lo que empezó como una idea alocada de cruzar fronteras virtuales se transformó en un escuadrón consolidado con identidad propia.</p>
+                        <p><strong>Nuestros Valores:</strong> Fomentamos la <em>colaboración genuina por encima de la competencia tóxica</em>, brindando apoyo multicanal real y una llegada orgánica transparente hacia audiencias de toda Latinoamérica.</p>
                     </div>
+
                     <div class="bg-black p-6 comic-border relative">
-                        <div class="absolute -top-3 -right-3 bg-yellow-400 text-black font-comic px-3 py-1 text-xs comic-border">MANIFIESTO</div>
-                        <ul class="space-y-3 font-semibold text-sm">
-                            <li class="flex items-center space-x-2"><span>🛡️</span> <span>8 Creadores con cartas y roles únicos.</span></li>
-                            <li class="flex items-center space-x-2"><span>📊</span> <span>Datos transparentes y verificados.</span></li>
-                            <li class="flex items-center space-x-2"><span>🎮</span> <span>Cobertura multicanal para desarrolladores.</span></li>
+                        <div class="absolute -top-3 -right-3 bg-yellow-400 text-black font-comic px-3 py-1 text-xs comic-border">MANIFIESTO MUTANTE</div>
+                        <ul class="space-y-3 font-semibold text-xs text-gray-200">
+                            <li class="flex items-center space-x-2"><span>🛡️</span> <span>8 Creadores con identidades y roles únicos.</span></li>
+                            <li class="flex items-center space-x-2"><span>📊</span> <span>Métricas transparentes y sincronización constante.</span></li>
+                            <li class="flex items-center space-x-2"><span>🎮</span> <span>Cobertura multicanal orgánica para estudios y publishers.</span></li>
                         </ul>
                     </div>
                 </div>
-                <div class="mt-8 flex justify-between">
+
+                <div class="pt-4 flex justify-between">
                     <button onclick="switchChapter('portada')" class="bg-gray-700 text-white px-4 py-2 font-comic comic-border">← Portada</button>
-                    <button onclick="switchChapter('heroes')" class="bg-yellow-400 text-black px-6 py-2 font-comic comic-border hover:bg-yellow-300">Ver Héroes →</button>
+                    <button onclick="switchChapter('heroes')" class="bg-yellow-400 text-black px-6 py-2 font-comic comic-border hover:bg-yellow-300">Capítulo 02: Los Héroes →</button>
                 </div>
             </div>
         </section>
 
-        <!-- 3. CAPÍTULO 02 & 03 — ROSTER INTERACTIVO CON CARTAS DE CÓMIC -->
-        <section id="chapter-heroes" class="chapter-container hidden">
+        <!-- CAPÍTULO 02 — LOS HÉROES (GRILLA DE VIÑETAS 4X2) -->
+        <section id="page-heroes" class="chapter-page hidden">
             <div class="text-center mb-6">
-                <span class="bg-purple-600 text-white font-comic px-3 py-1 comic-border text-lg">CAPÍTULO 02 & 03</span>
+                <span class="bg-purple-600 text-white font-comic px-3 py-1 comic-border text-lg">CAPÍTULO 02</span>
                 <h2 class="font-comic text-4xl md:text-5xl text-yellow-400 mt-2">EL ROSTER DE MUTANTES</h2>
-                <p class="text-gray-300 text-sm mt-1">Pasa de hoja en cada tarjeta para ver la <strong>Carta Coleccionable de Cómic (Página A)</strong> o el <strong>Expediente Profesional con Estadísticas (Página B)</strong>.</p>
+                <p class="text-gray-300 text-xs md:text-sm mt-1">Haz clic en cualquier viñeta para abrir su <strong>Ficha Individual Completa (Capítulo 03)</strong> con su historia y métricas reales.</p>
             </div>
 
             <div id="roster-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -132,43 +149,68 @@
             </div>
 
             <div class="mt-8 flex justify-between">
-                <button onclick="switchChapter('origen')" class="bg-gray-700 text-white px-4 py-2 font-comic comic-border">← El Origen</button>
-                <button onclick="switchChapter('database')" class="bg-yellow-400 text-black px-6 py-2 font-comic comic-border hover:bg-yellow-300">Database del Equipo →</button>
+                <button onclick="switchChapter('origen')" class="bg-gray-700 text-white px-4 py-2 font-comic comic-border">← Cap 01: El Origen</button>
+                <button onclick="switchChapter('database')" class="bg-yellow-400 text-black px-6 py-2 font-comic comic-border hover:bg-yellow-300">Cap 04: Team Database →</button>
             </div>
         </section>
 
-        <!-- 4. CAPÍTULO 04 — DATABASE -->
-        <section id="chapter-database" class="chapter-container hidden">
+        <!-- CAPÍTULO 03 — LAS FICHAS INDIVIDUALES (PÁGINA EXCLUSIVA POR INTEGRANTE) -->
+        <section id="page-expediente" class="chapter-page hidden">
+            <div class="bg-gray-900 p-4 md:p-8 comic-border max-w-5xl mx-auto rounded-lg">
+                <div class="flex justify-between items-center border-b-2 border-yellow-400 pb-3 mb-6">
+                    <span class="bg-yellow-400 text-black font-comic px-3 py-1 comic-border text-lg">CAPÍTULO 03</span>
+                    <button onclick="switchChapter('heroes')" class="bg-purple-600 text-white px-3 py-1 font-comic comic-border hover:bg-purple-500 text-xs">
+                        ← VOLVER AL ÍNDICE DE HÉROES
+                    </button>
+                </div>
+
+                <!-- CONTENEDOR DE LA FICHA INDIVIDUAL -->
+                <div id="hero-profile-container">
+                    <!-- Se inyecta dinámicamente según el héroe seleccionado -->
+                </div>
+
+                <div class="mt-8 flex justify-between pt-4 border-t border-gray-800">
+                    <button onclick="navigateHero(-1)" class="bg-gray-800 text-yellow-400 px-4 py-2 font-comic comic-border hover:bg-gray-700">← Héroe Anterior</button>
+                    <button onclick="navigateHero(1)" class="bg-yellow-400 text-black px-4 py-2 font-comic comic-border hover:bg-yellow-300">Siguiente Héroe →</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- CAPÍTULO 04 — DATABASE DEL EQUIPO -->
+        <section id="page-database" class="chapter-page hidden">
             <div class="bg-gray-900 p-6 md:p-10 comic-border max-w-4xl mx-auto rounded-lg">
                 <span class="bg-green-600 text-white font-comic px-3 py-1 comic-border text-lg">CAPÍTULO 04</span>
                 <h2 class="font-comic text-4xl text-yellow-400 mt-4 mb-2">THE TEAM DATABASE</h2>
+                <p class="text-gray-400 text-xs mb-6">Métricas globales y alcance colectivo en Latinoamérica.</p>
+
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-6">
-                    <div class="bg-black p-4 comic-border text-center">
-                        <span class="text-3xl font-comic text-yellow-400">8 / 8</span>
-                        <h4 class="font-bold text-xs mt-1">Creadores Activos</h4>
+                    <div class="bg-black p-5 comic-border text-center">
+                        <span class="text-4xl font-comic text-yellow-400">8 / 8</span>
+                        <h4 class="font-bold text-xs mt-1 text-gray-300">Creadores Activos</h4>
                     </div>
-                    <div class="bg-black p-4 comic-border text-center">
-                        <span class="text-3xl font-comic text-blue-400">Multiregión</span>
-                        <h4 class="font-bold text-xs mt-1">LATAM Unida</h4>
+                    <div class="bg-black p-5 comic-border text-center">
+                        <span class="text-4xl font-comic text-blue-400">6 Países</span>
+                        <h4 class="font-bold text-xs mt-1 text-gray-300">LATAM Unida</h4>
                     </div>
-                    <div class="bg-black p-4 comic-border text-center">
-                        <span class="text-3xl font-comic text-green-400">Transparencia</span>
-                        <h4 class="font-bold text-xs mt-1">Sincronización SullyGnome</h4>
+                    <div class="bg-black p-5 comic-border text-center">
+                        <span class="text-4xl font-comic text-green-400">Verificado</span>
+                        <h4 class="font-bold text-xs mt-1 text-gray-300">Sincronización SullyGnome</h4>
                     </div>
                 </div>
+
                 <div class="mt-8 flex justify-between">
-                    <button onclick="switchChapter('heroes')" class="bg-gray-700 text-white px-4 py-2 font-comic comic-border">← Los Héroes</button>
-                    <button onclick="switchChapter('misiones')" class="bg-yellow-400 text-black px-6 py-2 font-comic comic-border hover:bg-yellow-300">Misiones y Partners →</button>
+                    <button onclick="switchChapter('heroes')" class="bg-gray-700 text-white px-4 py-2 font-comic comic-border">← Cap 02: Los Héroes</button>
+                    <button onclick="switchChapter('misiones')" class="bg-yellow-400 text-black px-6 py-2 font-comic comic-border hover:bg-yellow-300">Cap 05: Misiones →</button>
                 </div>
             </div>
         </section>
 
-        <!-- 5. CAPÍTULO 05 — MISIONES -->
-        <section id="chapter-misiones" class="chapter-container hidden">
+        <!-- CAPÍTULO 05 — MISIONES Y PARTNERS -->
+        <section id="page-misiones" class="chapter-page hidden">
             <div class="bg-gray-900 p-6 md:p-10 comic-border max-w-4xl mx-auto rounded-lg">
                 <span class="bg-red-600 text-white font-comic px-3 py-1 comic-border text-lg">CAPÍTULO 05</span>
                 <h2 class="font-comic text-4xl text-yellow-400 mt-4 mb-2">GESTIÓN DE CAMPAÑAS & PARTNERS</h2>
-                <p class="text-gray-400 mb-6 text-sm">Operativa directa vía Lurkit y Keymailer.</p>
+                <p class="text-gray-400 mb-6 text-xs">Operativa directa vía Lurkit y Keymailer para creadores.</p>
                 <div class="space-y-4">
                     <div class="bg-black p-4 comic-border flex flex-col md:flex-row justify-between items-center">
                         <div>
@@ -179,14 +221,14 @@
                     </div>
                 </div>
                 <div class="mt-8 flex justify-between">
-                    <button onclick="switchChapter('database')" class="bg-gray-700 text-white px-4 py-2 font-comic comic-border">← Database</button>
-                    <button onclick="switchChapter('reclutamiento')" class="bg-yellow-400 text-black px-6 py-2 font-comic comic-border hover:bg-yellow-300">Reclutamiento →</button>
+                    <button onclick="switchChapter('database')" class="bg-gray-700 text-white px-4 py-2 font-comic comic-border">← Cap 04: Database</button>
+                    <button onclick="switchChapter('reclutamiento')" class="bg-yellow-400 text-black px-6 py-2 font-comic comic-border hover:bg-yellow-300">Cap 06: Reclutamiento →</button>
                 </div>
             </div>
         </section>
 
-        <!-- 6. CAPÍTULO 06 — RECLUTAMIENTO -->
-        <section id="chapter-reclutamiento" class="chapter-container hidden">
+        <!-- CAPÍTULO 06 — RECLUTAMIENTO -->
+        <section id="page-reclutamiento" class="chapter-page hidden">
             <div class="bg-gray-900 p-6 md:p-10 comic-border max-w-2xl mx-auto rounded-lg text-center">
                 <span class="bg-pink-600 text-white font-comic px-3 py-1 comic-border text-lg">CAPÍTULO 06</span>
                 <h2 class="font-comic text-4xl text-yellow-400 mt-4 mb-2">CUARTEL DE RECLUTAMIENTO</h2>
@@ -200,141 +242,204 @@
                     </button>
                 </form>
                 <div class="mt-8 flex justify-start">
-                    <button onclick="switchChapter('misiones')" class="bg-gray-700 text-white px-4 py-2 font-comic comic-border">← Misiones</button>
+                    <button onclick="switchChapter('misiones')" class="bg-gray-700 text-white px-4 py-2 font-comic comic-border">← Cap 05: Misiones</button>
                 </div>
             </div>
         </section>
 
     </main>
 
-    <footer class="bg-black border-t-4 border-yellow-400 py-6 text-center text-xs text-gray-400 mt-12">
-        <p class="font-comic text-lg text-yellow-400 mb-1">LOS S3X-MEN — TWITCH TEAM OFICIAL</p>
+    <footer class="bg-black border-t-4 border-yellow-400 py-4 text-center text-xs text-gray-400 mt-8">
+        <p class="font-comic text-base text-yellow-400 mb-1">LOS S3X-MEN — DIGITAL COMIC EXPERIENCE</p>
         <p>© 2026 The Multiverse Experience. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- SCRIPT CON LAS RUTAS DIRECTAS A LAS IMÁGENES EN LA RAÍZ -->
+    <!-- SCRIPT DEL CÓMIC INTERACTIVO Y LOS FICHIS INDIVIDUALES -->
     <script>
         const heroesData = [
             { 
-                id: 'rod3r1k', name: 'ROD3R1K', classTitle: 'EL FUERTE', country: 'AR • ARG', pwr: 'PWR 94', 
+                id: 'rod3r1k', name: 'ROD3R1K', heroName: 'EL FUERTE', country: '🇦🇷 ARGENTINA', pwr: 'PWR 94', 
                 twitch: 'ther0d3r1k', img: 'rod3r1k.jpg', 
                 avg: 23, peak: 78, followers: 5181, role: 'Solidez competitiva y Partner oficial', 
-                games: 'Fortnite, Valorant, Shooters Competitivos', bio: 'Pelo pincho real + cámara, fuerza sónica. Armadura roja-amarilla con X dorada.' 
+                games: 'Fortnite, Valorant, Shooters Competitivos', 
+                lore: 'Con su pelo pincho real y armadura carmesí, canaliza ondas sónicas para proteger el frente en batallas tácticas.',
+                quote: 'La fuerza sin disciplina no sirve de nada.'
             },
             { 
-                id: 'moriartys', name: 'MORIARTYS', classTitle: 'EL ESTRATEGA', country: 'AR • ARG', pwr: 'PWR 90', 
+                id: 'moriartys', name: 'MORIARTYS', heroName: 'EL ESTRATEGA', country: '🇦🇷 ARGENTINA', pwr: 'PWR 90', 
                 twitch: 'losmoriartys', img: 'moriartys.jpg', 
                 avg: 22, peak: 101, followers: 1143, role: 'Dirección creativa y liderazgo de comunidad', 
-                games: 'Fortnite, Los Sims, Minecraft, Sims de Tienda', bio: 'Mente maestra boca, táctica pura. Lentes de genio, goatee calculado.' 
+                games: 'Fortnite, Los Sims, Minecraft, Sims de Tienda', 
+                lore: 'Mente brillante con anteojos calculadores. Diseña cada jugada y estrategia antes de que el enemigo siquiera parpadee.',
+                quote: 'Un buen plan ejecutado hoy es mejor que uno perfecto mañana.'
             },
             { 
-                id: 'ladymoriarty', name: 'LADYMORIARTY', classTitle: 'LA BRUJA', country: 'AR • ARG', pwr: 'PWR 92', 
+                id: 'ladymoriarty', name: 'LADYMORIARTY', heroName: 'LA BRUJA', country: '🇦🇷 ARGENTINA', pwr: 'PWR 92', 
                 twitch: 'ladymoriarty01', img: 'ladymoriarty.jpg', 
                 avg: 10, peak: 388, followers: 179, role: 'Mundos abiertos y construcción cooperativa', 
-                games: 'Minecraft, Simuladores de Gestión, Cozy Games', bio: 'Hechicera carmesí, caos & control. Palo rojo fuego, mirada que encanta.' 
+                games: 'Minecraft, Simuladores de Gestión, Cozy Games', 
+                lore: 'Hechicera carmesí que combina magia caótica y control espacial. Su báculo de fuego ilumina y guía al equipo.',
+                quote: 'El caos también tiene su propia armonía.'
             },
             { 
-                id: 'capyuna', name: 'CAPY', classTitle: 'EL RÁPIDO ASTUTO', country: 'UY • URY', pwr: 'PWR 88', 
+                id: 'capyuna', name: 'CAPY', heroName: 'EL RÁPIDO ASTUTO', country: '🇺🇾 URUGUAY', pwr: 'PWR 88', 
                 twitch: 'capyunaplay', img: 'capy.jpg', 
                 avg: 9, peak: 28, followers: 682, role: 'Experto en terror y dinámicas nocturnas', 
-                games: 'Dead by Daylight, Juegos de Horror, Survival Co-op', bio: 'Speed, stealth & tactical. Agilidad extrema y reflejos letales.' 
+                games: 'Dead by Daylight, Juegos de Horror, Survival Co-op', 
+                lore: 'Agilidad extrema y reflejos felinos. Capaz de infiltrarse en las sombras antes de lanzar un ataque sorpresivo.',
+                quote: 'Si me viste, ya es demasiado tarde.'
             },
             { 
-                id: 'ardipii', name: 'ARDIPII', classTitle: 'EL FANTASMA', country: 'MX • MEX', pwr: 'PWR 90', 
+                id: 'ardipii', name: 'ARDIPII', heroName: 'EL FANTASMA', country: '🇲🇽 MÉXICO', pwr: 'PWR 90', 
                 twitch: 'ardipii', img: 'ardipii.jpg', 
                 avg: 8, peak: 24, followers: 425, role: 'Puente mexicano, arte y cosplay', 
-                games: 'Just Chatting, Valorant, Arte & Cosplay', bio: 'Fantasmagórico, traslúcido encapuchado. Guardián de las sombras.' 
+                games: 'Just Chatting, Valorant, Arte & Cosplay', 
+                lore: 'Encapuchado traslúcido que domina la teletransportación astral. Su creatividad es el puente de unión en el Multiverso.',
+                quote: 'El arte y el misterio son dos caras de la misma moneda.'
             },
             { 
-                id: 'akuma', name: 'AKUMA', classTitle: 'CUERNOS', country: 'CL • CHL', pwr: 'PWR 95', 
+                id: 'akuma', name: 'AKUMA', heroName: 'CUERNOS', country: '🇨🇱 CHILE', pwr: 'PWR 95', 
                 twitch: 'akumazoldyck', img: 'akuma.jpg', 
                 avg: 3, peak: 41, followers: 140, role: 'Indies caóticos y humor multijugador', 
-                games: 'Lethal Company, Co-op Indies, Terror Multijugador', bio: 'Demonio de combate, bestia imparable. Hellflame & flight.' 
+                games: 'Lethal Company, Co-op Indies, Terror Multijugador', 
+                lore: 'Demonio de combate envuelto en llamas infernales. Imparable cuando se despliega en el campo de batalla.',
+                quote: 'Que el caos empiece ahora mismo.'
             },
             { 
-                id: 'gabii', name: 'ELGABII', classTitle: 'HABILIDOSO', country: 'AR • ARG', pwr: 'PWR 90', 
+                id: 'gabii', name: 'ELGABII', heroName: 'HABILIDOSO', country: '🇦🇷 ARGENTINA', pwr: 'PWR 90', 
                 twitch: 'elgabii090', img: 'elgabii.jpg', 
                 avg: 11, peak: 19, followers: 594, role: 'Destreza en simuladores de conducción', 
-                games: 'Rocket League, Racing Simulators, Sports', bio: 'Kinetic energy manipulator. Naranja & púrpura, trickster letal.' 
+                games: 'Rocket League, Racing Simulators, Sports', 
+                lore: 'Manipulador de energía cinética a alta velocidad. Nadie lo supera en reflejos sobre ruedas o en el aire.',
+                quote: 'La velocidad lo es todo.'
             },
             { 
-                id: 'habitos', name: 'HABITOS', classTitle: 'FILÓSOFO JUSTICIERO', country: 'CO • COL', pwr: 'PWR 91', 
+                id: 'habitos', name: 'HABITOS', heroName: 'FILÓSOFO JUSTICIERO', country: '🇨🇴 COLOMBIA', pwr: 'PWR 91', 
                 twitch: 'habitos_atomicos', img: 'habitos.jpg', 
                 avg: 7, peak: 26, followers: 300, role: 'Productividad y comunidades sanas', 
-                games: 'Minecraft, Just Chatting, Productividad & Bienestar', bio: 'Rastas negras, energía nuclear. Maestría en física atómica.' 
+                games: 'Minecraft, Just Chatting, Productividad & Bienestar', 
+                lore: 'Maestro de la energía atómica y la sabiduría ancestral. Mantiene el equilibrio mental y moral del grupo.',
+                quote: 'Construye buenos hábitos y conquistarás mundos.'
             }
         ];
 
-        function switchChapter(chapterId) {
-            const sections = document.querySelectorAll('main > section');
-            sections.forEach(sec => sec.classList.add('hidden'));
+        let currentHeroIndex = 0;
+
+        function switchChapter(pageId) {
+            const pages = document.querySelectorAll('main > section');
+            pages.forEach(p => p.classList.add('hidden'));
             
-            const target = document.getElementById('chapter-' + chapterId);
+            const target = document.getElementById('page-' + pageId);
             if (target) {
                 target.classList.remove('hidden');
-                window.location.hash = chapterId;
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             }
         }
 
-        function toggleCardFace(heroId) {
-            const pageA = document.getElementById(`page-a-${heroId}`);
-            const pageB = document.getElementById(`page-b-${heroId}`);
-            const btn = document.getElementById(`btn-toggle-${heroId}`);
+        function openHeroProfile(index) {
+            currentHeroIndex = index;
+            const hero = heroesData[index];
+            const container = document.getElementById('hero-profile-container');
+            if (!container) return;
 
-            if (pageA && pageB && btn) {
-                if (pageA.classList.contains('hidden')) {
-                    pageA.classList.remove('hidden');
-                    pageB.classList.add('hidden');
-                    btn.innerText = "VER EXPEDIENTE SULLYGNOME 📊";
-                } else {
-                    pageA.classList.add('hidden');
-                    pageB.classList.remove('hidden');
-                    btn.innerText = "VER CARTA DE CÓMIC 🃏";
-                }
-            }
+            container.innerHTML = `
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                    
+                    <!-- PÁGINA A: EL PERSONAJE (LORE & ARTE) -->
+                    <div class="bg-black p-5 comic-border rounded relative">
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="bg-purple-600 text-white font-comic text-sm px-3 py-1 comic-border">PÁGINA A — EL PERSONAJE</span>
+                            <span class="bg-yellow-400 text-black font-comic text-sm px-3 py-1 comic-border">${hero.pwr}</span>
+                        </div>
+
+                        <div class="h-[420px] bg-purple-950 comic-border overflow-hidden mb-4 relative">
+                            <img src="${hero.img}" alt="${hero.name}" class="w-full h-full object-cover object-top"
+                                 onerror="this.onerror=null; this.src='https://via.placeholder.com/400x550/2e1065/facc15?text=${hero.name}';">
+                        </div>
+
+                        <h3 class="font-comic text-4xl text-yellow-400">${hero.name} <span class="text-xl text-gray-400">(${hero.heroName})</span></h3>
+                        <p class="text-xs text-blue-400 font-bold mb-3">${hero.country}</p>
+                        
+                        <div class="bg-gray-900 p-3 comic-border text-xs mb-3">
+                            <p class="text-gray-300 italic mb-2">"${hero.lore}"</p>
+                            <p class="text-yellow-300 font-bold">Lema: "${hero.quote}"</p>
+                        </div>
+                    </div>
+
+                    <!-- PÁGINA B: EL CREADOR (SULLYGNOME & MÉTRICAS DEDICADAS) -->
+                    <div class="bg-gray-950 p-5 comic-border rounded relative space-y-4">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="bg-green-600 text-white font-comic text-sm px-3 py-1 comic-border">PÁGINA B — EL CREADOR REAL</span>
+                            <span class="text-xs text-gray-400 font-mono">Dossier SULLYGNOME</span>
+                        </div>
+
+                        <h4 class="font-comic text-3xl text-green-400 border-b border-gray-800 pb-2">${hero.name} — CANAL OFICIAL</h4>
+                        
+                        <div class="grid grid-cols-3 gap-3 text-center my-4">
+                            <div class="bg-black p-3 comic-border">
+                                <span class="text-2xl font-comic text-yellow-400">${hero.followers}</span>
+                                <p class="text-[10px] text-gray-400 uppercase mt-1">Seguidores</p>
+                            </div>
+                            <div class="bg-black p-3 comic-border">
+                                <span class="text-2xl font-comic text-blue-400">${hero.avg}</span>
+                                <p class="text-[10px] text-gray-400 uppercase mt-1">Avg Viewers</p>
+                            </div>
+                            <div class="bg-black p-3 comic-border">
+                                <span class="text-2xl font-comic text-green-400">${hero.peak}</span>
+                                <p class="text-[10px] text-gray-400 uppercase mt-1">Pico Max</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-2 text-xs">
+                            <div class="bg-black p-3 comic-border">
+                                <span class="font-bold text-yellow-400">Rol & Aporte en Campañas:</span>
+                                <p class="text-gray-300 mt-1">${hero.role}</p>
+                            </div>
+                            <div class="bg-black p-3 comic-border">
+                                <span class="font-bold text-yellow-400">Especialidad Gamer / Juegos Top:</span>
+                                <p class="text-gray-300 mt-1">${hero.games}</p>
+                            </div>
+                        </div>
+
+                        <a href="https://twitch.tv/${hero.twitch}" target="_blank" 
+                           class="block text-center w-full bg-purple-600 hover:bg-purple-500 text-white font-comic text-xl py-3 comic-border transition mt-4">
+                            ⚡ VISITAR CANAL DE TWITCH (EN VIVO)
+                        </a>
+                    </div>
+
+                </div>
+            `;
+            switchChapter('expediente');
         }
 
-        function renderHeroes() {
+        function navigateHero(direction) {
+            currentHeroIndex = (currentHeroIndex + direction + heroesData.length) % heroesData.length;
+            openHeroProfile(currentHeroIndex);
+        }
+
+        function renderRoster() {
             const grid = document.getElementById('roster-grid');
             if (!grid) return;
             grid.innerHTML = '';
 
-            heroesData.forEach(h => {
+            heroesData.forEach((h, index) => {
                 const card = document.createElement('div');
-                card.className = 'comic-card bg-black p-3 flex flex-col justify-between relative rounded-md';
+                card.className = 'comic-card bg-black p-3 flex flex-col justify-between cursor-pointer rounded-md';
+                card.onclick = () => openHeroProfile(index);
                 card.innerHTML = `
                     <div>
-                        <!-- PÁGINA A: CARTA DE CÓMIC OFICIAL -->
-                        <div id="page-a-${h.id}">
-                            <div class="h-[380px] bg-purple-900 comic-border mb-3 overflow-hidden flex items-center justify-center relative">
-                                <img src="${h.img}" 
-                                     alt="${h.name}" 
-                                     class="w-full h-full object-cover object-top"
-                                     onerror="this.onerror=null; this.src='https://via.placeholder.com/300x450/2e1065/facc15?text=${h.name}';">
-                            </div>
+                        <div class="h-[320px] bg-purple-950 comic-border mb-3 overflow-hidden relative">
+                            <img src="${h.img}" alt="${h.name}" class="w-full h-full object-cover object-top"
+                                 onerror="this.onerror=null; this.src='https://via.placeholder.com/300x450/2e1065/facc15?text=${h.name}';">
+                            <span class="absolute top-2 right-2 bg-yellow-400 text-black font-comic text-xs px-2 py-0.5 comic-border">${h.pwr}</span>
                         </div>
-
-                        <!-- PÁGINA B: EXPEDIENTE SULLYGNOME -->
-                        <div id="page-b-${h.id}" class="hidden bg-gray-900 p-4 comic-border text-xs space-y-2 mb-3 min-h-[380px] flex flex-col justify-center">
-                            <h4 class="font-comic text-xl text-yellow-400 border-b border-gray-700 pb-1 text-center">${h.name} — EXPEDIENTE</h4>
-                            <div class="flex justify-between py-1 border-b border-gray-800"><span>Seguidores:</span> <strong class="text-yellow-400">${h.followers}</strong></div>
-                            <div class="flex justify-between py-1 border-b border-gray-800"><span>Media (30d):</span> <strong class="text-blue-400">${h.avg} views</strong></div>
-                            <div class="flex justify-between py-1 border-b border-gray-800"><span>Pico Histórico:</span> <strong class="text-green-400">${h.peak} views</strong></div>
-                            <div class="pt-1 text-[11px] text-gray-300"><strong>Rol / Aporte:</strong> ${h.role}</div>
-                            <div class="text-[11px] text-yellow-300 pt-1"><strong>Juegos Frecuentes:</strong> ${h.games}</div>
-                            <p class="text-[10px] text-gray-400 italic pt-2">"${h.bio}"</p>
-                        </div>
+                        <h4 class="font-comic text-2xl text-yellow-400 text-center">${h.name}</h4>
+                        <p class="text-[11px] text-center text-gray-400">${h.heroName} • ${h.country}</p>
                     </div>
 
-                    <div>
-                        <button id="btn-toggle-${h.id}" onclick="toggleCardFace('${h.id}')" class="w-full mb-2 bg-yellow-400 hover:bg-yellow-300 text-black font-comic text-xs py-2 comic-card">
-                            VER EXPEDIENTE SULLYGNOME 📊
-                        </button>
-                        <a href="https://twitch.tv/${h.twitch}" target="_blank" class="block text-center bg-purple-600 hover:bg-purple-500 text-white font-comic py-2 comic-border text-xs">
-                            VISITAR TWITCH ⚡
-                        </a>
-                    </div>
+                    <button class="w-full mt-3 bg-yellow-400 hover:bg-yellow-300 text-black font-comic text-xs py-2 comic-card">
+                        ABRIR DOSSIER COMPLETO 📂
+                    </button>
                 `;
                 grid.appendChild(card);
             });
@@ -346,15 +451,8 @@
         }
 
         window.onload = () => {
-            renderHeroes();
-            const hash = window.location.hash.replace('#', '');
-            if (hash === 'tab-streamers' || hash === 'heroes') {
-                switchChapter('heroes');
-            } else if (hash && document.getElementById('chapter-' + hash)) {
-                switchChapter(hash);
-            } else {
-                switchChapter('portada');
-            }
+            renderRoster();
+            switchChapter('portada');
         };
     </script>
 </body>
