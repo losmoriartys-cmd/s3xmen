@@ -230,61 +230,42 @@
             margin-bottom: 5px;
         }
 
-        /* Roster de Héroes con Solapas (Capítulo 2) */
+        /* Roster de Héroes: Tarjetas de Cómic Originales con Solapas Integradas */
         .roster-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
             margin-top: 20px;
         }
 
         .hero-card {
             background: #1a202c;
             border: 4px solid var(--border-color);
-            box-shadow: 6px 6px 0 var(--border-color);
+            box-shadow: 8px 8px 0 var(--border-color);
             display: flex;
             flex-direction: column;
             overflow: hidden;
         }
 
-        .hero-card-header {
-            background: var(--yellow-accent);
-            color: #000;
-            padding: 10px;
-            border-bottom: 4px solid var(--border-color);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .hero-card-header h3 {
-            font-family: 'Bangers', cursive;
-            font-size: 1.5rem;
-        }
-
-        .pwr-badge {
-            background: var(--red-accent);
-            color: #fff;
-            padding: 2px 8px;
-            font-family: 'Bangers', cursive;
-            font-size: 1rem;
-            border: 2px solid var(--border-color);
-        }
-
-        .hero-img-box {
-            height: 220px;
+        .hero-card-img-wrapper {
+            width: 100%;
             background: #000;
             border-bottom: 4px solid var(--border-color);
             overflow: hidden;
         }
 
-        .hero-img-box img {
+        .hero-card-img-wrapper img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto;
+            display: block;
+            transition: transform 0.2s;
         }
 
-        /* Solapas internas de la carta */
+        .hero-card-img-wrapper img:hover {
+            transform: scale(1.02);
+        }
+
+        /* Sistema de Solapas A B C (BIO, STATS, LOG) */
         .hero-tabs {
             display: flex;
             background: #0b0f19;
@@ -294,40 +275,58 @@
         .hero-tab-btn {
             flex: 1;
             background: #1a202c;
-            color: #a0aec0;
+            color: #8892b0;
             border: none;
             border-right: 2px solid var(--border-color);
-            padding: 6px 4px;
+            padding: 10px 5px;
             font-family: 'Bangers', cursive;
-            font-size: 0.9rem;
+            font-size: 1.1rem;
             cursor: pointer;
             text-align: center;
+            letter-spacing: 1px;
+            transition: all 0.1s;
         }
 
         .hero-tab-btn:last-child { border-right: none; }
 
+        .hero-tab-btn:hover {
+            color: var(--yellow-accent);
+        }
+
         .hero-tab-btn.active {
             background: var(--yellow-accent);
             color: #000;
-            font-weight: bold;
+            font-weight: 900;
+            box-shadow: inset 0 3px 0 rgba(0,0,0,0.3);
         }
 
         .hero-tab-content {
             display: none;
-            padding: 15px;
+            padding: 20px;
             flex-grow: 1;
-            background: #1a202c;
+            background: #121824;
             flex-direction: column;
-            gap: 8px;
+            gap: 12px;
+            border-bottom: 4px solid var(--border-color);
         }
 
         .hero-tab-content.active {
             display: flex;
         }
 
-        .hero-body p {
-            font-size: 0.88rem;
-            color: #cbd5e0;
+        .hero-tab-content h4 {
+            font-family: 'Bangers', cursive;
+            font-size: 1.3rem;
+            color: var(--yellow-accent);
+            letter-spacing: 1px;
+            border-bottom: 2px dashed rgba(255,255,255,0.1);
+            padding-bottom: 5px;
+        }
+
+        .hero-tab-content p {
+            font-size: 0.92rem;
+            color: #e2e8f0;
+            line-height: 1.5;
         }
 
         .hero-footer-btn {
@@ -335,18 +334,22 @@
             color: #000;
             border: 3px solid var(--border-color);
             font-family: 'Bangers', cursive;
-            font-size: 1.2rem;
-            padding: 8px;
+            font-size: 1.4rem;
+            padding: 10px;
             text-align: center;
             cursor: pointer;
             text-decoration: none;
             display: block;
             margin-top: auto;
+            box-shadow: 0 4px 0 var(--border-color);
+            transition: all 0.1s;
         }
 
         .hero-footer-btn:hover {
             background: var(--red-accent);
             color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 0 var(--border-color);
         }
 
         /* Tablas y Listados Genéricos */
@@ -537,14 +540,14 @@
             </div>
         </section>
 
-        <!-- CAPÍTULO 2: ROSTER DE HÉROES CON 3 SOLAPAS CADA UNO -->
+        <!-- CAPÍTULO 2: ROSTER DE HÉROES CON CARTAS COLECCIONABLES Y SOLAPAS A/B/C -->
         <section id="chapter-2" class="chapter-panel">
             <div class="chapter-tag">CAPÍTULO 02</div>
             <h2 class="comic-title">ROSTER DE HÉROES (LOS 8 INTEGRANTES)</h2>
-            <p style="margin-bottom: 20px; color: #a0aec0;">Cartas de presentación oficiales con solapas interactivas de biografía, métricas e historial.</p>
+            <p style="margin-bottom: 20px; color: #a0aec0;">Explora las cartas coleccionables oficiales y navega por sus solapas de información.</p>
             
             <div class="roster-grid" id="roster-container">
-                <!-- Se inyectarán los 8 héroes con 3 solapas interactivas -->
+                <!-- Se inyectarán dinámicamente las 8 tarjetas oficiales con sus solapas -->
             </div>
         </section>
 
@@ -590,27 +593,25 @@
             <p style="margin-bottom: 20px; color: #a0aec0;">Guía oficial completa extraída de los documentos del escuadrón para conseguir juegos gratis.</p>
             
             <div class="comic-grid-list">
-                <!-- LURKIT -->
                 <div class="comic-item-card">
                     <h3>1. LURKIT.COM</h3>
                     <p>Plataforma all-in-one para Key Campaigns, Creator Programs y Paid Quests oficiales.</p>
                     <ul>
-                        <li><strong>Tipos:</strong> Key Campaigns (keys gratis), Creator Programs (largo plazo con DLCs/Discord devs), Paid Quests (¡te pagan por jugar como Jotunnslayer o Den of Wolves!).</li>
-                        <li><strong>Registro:</strong> Entrá a lurkit.com, conectá tu canal de Twitch (escanea avg viewers y followers automáticamente). Creá tu Lurkit Page y vinculá Discord.</li>
-                        <li><strong>Cómo pedir:</strong> En 'Browse Key Campaigns', filtrá por Steam y Coop/Horror. Leé requisitos y usá este pitch: <br><em>"Hola, soy creador y formo parte de Los S3X-men (equipo de ARG/BOL/MX que hacemos collabs de 20-23hs ARG). Suelo stremear [género] con media de 22 viewers y 1,143 followers. Me encantaría probar [juego] en grupo."</em></li>
-                        <li><strong>Top Lurkit Coop 4+:</strong> Ready or Not + DLC, Phasmophobia (Kinetic Partner), Dying Light 2, Sea of Thieves, V Rising, DayZ Frostline, Hunt: Showdown, Khazan.</li>
+                        <li><strong>Tipos:</strong> Key Campaigns (keys gratis), Creator Programs (largo plazo), Paid Quests (¡te pagan por jugar!).</li>
+                        <li><strong>Registro:</strong> Entrá a lurkit.com, conectá tu canal de Twitch (escanea avg viewers y followers automáticamente).</li>
+                        <li><strong>Cómo pedir:</strong> En 'Browse Key Campaigns', filtrá por Steam y Coop/Horror. Usá este pitch: <br><em>"Hola, soy creador y formo parte de Los S3X-men (equipo de ARG/BOL/MX que hacemos collabs de 20-23hs ARG). Suelo stremear [género] con media de 22 viewers y 1,143 followers. Me encantaría probar [juego] en grupo."</em></li>
+                        <li><strong>Top Lurkit Coop 4+:</strong> Ready or Not, Phasmophobia, Dying Light 2, Sea of Thieves, V Rising, DayZ Frostline.</li>
                     </ul>
                 </div>
 
-                <!-- KEYMAILER -->
                 <div class="comic-item-card">
                     <h3>2. KEYMAILER.CO</h3>
                     <p>Donde pedís juegos premium y AAA todos los días (60,000 influencers, 2,500 estudios).</p>
                     <ul>
                         <li><strong>Cómo funciona:</strong> Vinculá tu canal, solicitá juegos, cubre más para recibir más keys. Siempre gratis.</li>
-                        <li><strong>Registro:</strong> Entrá a keymailer.co/creators. Conectá Twitch (muy valorado por publishers), completa tu perfil, géneros e idioma (ES). Verificación en 24h.</li>
-                        <li><strong>Cómo pedir:</strong> Click en 'View Campaigns', filtrá por 'Available Now'. Click en 'Request' (¡no necesitas pitch largo, el perfil habla por ti!). Si te aprueban, la key llega por mail.</li>
-                        <li><strong>Top Keymailer AAA:</strong> Avowed (Obsidian), Forza Horizon 6, 007 First Light (IOI), Blades of Fire, Luna Abyss, Mundfish Creator Program (Atomic Heart).</li>
+                        <li><strong>Registro:</strong> Entrá a keymailer.co/creators. Conectá Twitch, completa tu perfil, géneros e idioma (ES). Verificación en 24h.</li>
+                        <li><strong>Cómo pedir:</strong> Click en 'View Campaigns', filtrá por 'Available Now'. Click en 'Request' (¡no necesitas pitch largo!). Si te aprueban, la key llega por mail.</li>
+                        <li><strong>Top Keymailer AAA:</strong> Avowed, Forza Horizon, Mundfish Creator Program (Atomic Heart).</li>
                     </ul>
                 </div>
             </div>
@@ -662,7 +663,7 @@
                     <a href="https://store.steampowered.com" target="_blank" class="btn-link">VER EN STEAM</a>
                 </div>
                 <div class="comic-item-card">
-                    <h3>6. HELDIVERS 2</h3>
+                    <h3>6. HELLDIVERS 2</h3>
                     <p>Jugadores: 1-4<br>Action Shooter</p>
                     <a href="https://store.steampowered.com" target="_blank" class="btn-link">VER EN STEAM</a>
                 </div>
@@ -709,16 +710,88 @@
     </main>
 
     <script>
-        // Datos completos de los 8 héroes con sus 3 solapas (Biografía, Métricas, Historial)
+        // Datos con las tarjetas oficiales de cómic y sus respectivas solapas A (BIO), B (STATS), C (LOG)
         const heroesData = [
-            { name: "LOSMORIARTYS", pwr: "90", img: "https://images.unsplash.com/photo-1566492031773-4f4e44671857?w=500&auto=format&fit=crop&q=60", bio: "Rol: Estratega / Fundador\nPaís: Argentina 🇦🇷\nJuego Principal: Estrategia / Shooter\nLema: 'La estrategia rige el caos nocturno.'", metrics: "Avg Viewers: 25\nSeguidores: 1,500+\nHoras Stream/Mes: 90h\nRendimiento: Nivel Alfa", history: "Fundador de la iniciativa Turno Noche. Pionero en colaboraciones cruzadas LATAM." },
-            { name: "THER0D3R1K", pwr: "94", img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=60", bio: "Rol: El Fuerte / Co-Fundador\nPaís: Argentina 🇦🇷\nJuego Principal: Acción / Coop\nLema: 'Fuerza bruta y directos sin freno.'", metrics: "Avg Viewers: 30\nSeguidores: 2,100+\nHoras Stream/Mes: 100h\nRendimiento: Nivel Élite", history:conductor="Impulsor de eventos masivos y torneos multicanal del escuadrón." },
-            { name: "LADYMORIARTY01", pwr: "89", img: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=500&auto=format&fit=crop&q=60", bio: "Rol: Hechicera Táctica\nPaís: Argentina 🇦🇷\nJuego Principal: Terror / Variedad\nLema: 'Magia y precisión en cada partida.'", metrics: "Avg Viewers: 20\nSeguidores: 1,200+\nHoras Stream/Mes: 80h\nRendimiento: Nivel Operativo", history: "Especialista en supervivencia y coordinación de escuadrones de terror." },
-            { name: "CAPYUNAPLAY", pwr: "88", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=60", bio: "Rol: Agente de Asalto\nPaís: Bolivia 🇧🇴\nJuego Principal: Shooters / Survival\nLema: 'Resistencia pura ante el terror.'", metrics: "Avg Viewers: 18\nSeguidores: 980+\nHoras Stream/Mes: 75h\nRendimiento: Nivel Estable", history: "Representante clave de Bolivia en las misiones nocturnas cooperativas." },
-            { name: "ARDIPII", pwr: "87", img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&auto=format&fit=crop&q=60", bio: "Rol: Artillería Rápida\nPaís: México 🇲🇽\nJuego Principal: Battle Royale\nLema: 'Velocidad y reflejos en la madrugada.'", metrics: "Avg Viewers: 22\nSeguidores: 1,350+\nHoras Stream/Mes: 85h\nRendimiento: Nivel Avanzado", history: "Enlace directo con la base operativa de México en directos intensivos." },
-            { name: "AKUMAZOLDYCK", pwr: "91", img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&auto=format&fit=crop&q=60", bio: "Rol: Asesino de Sombras\nPaís: México 🇲🇽\nJuego Principal: Competitivo / Shooters\nLema: 'Maestría táctica en juegos competitivos.'", metrics: "Avg Viewers: 28\nSeguidores: 1,800+\nHoras Stream/Mes: 95h\nRendimiento: Nivel Elite", history: "Veterano en partidas competitivas y torneos de alta exigencia." },
-            { name: "ELGABII090", pwr: "86", img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=500&auto=format&fit=crop&q=60", bio: "Rol: Ingeniero de Campo\nPaís: Argentina 🇦🇷\nJuego Principal: Sandbox / Coop\nLema: 'Construyendo la victoria bloque a bloque.'", metrics: "Avg Viewers: 15\nSeguidores: 850+\nHoras Stream/Mes: 70h\nRendimiento: Nivel Estable", history: "Especialista en arquitecturas de servidores y supervivencia en grupo." },
-            { name: "HABITOS_ATOMICOS", pwr: "88", img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=500&auto=format&fit=crop&q=60", bio: "Rol: Cronista Táctico\nPaís: México 🇲🇽\nJuego Principal: Indie / Variedad\nLema: 'Progreso diario y transmisiones constantes.'", metrics: "Avg Viewers: 19\nSeguidores: 1,100+\nHoras Stream/Mes: 85h\nRendimiento: Nivel Constante", history: "Impulsor de hábitos de crecimiento y análisis de métricas comunitarias." }
+            { 
+                name: "MORIARTYS", 
+                img: "moriartys.jpg", 
+                bioTitle: "BIOGRAFÍA TÁCTICA",
+                bioText: "Rol: Tactical Strategist\nClase: X-Men (Fundador)\nPoder: Psionic Analysis & Master Tactics\nLema: 'La estrategia rige el caos nocturno.'", 
+                statsTitle: "ESTADÍSTICAS & JUEGOS",
+                statsText: "Avg Viewers: 25\nSeguidores: 1,500+\nJuegos Principales: Estrategia / Shooter / Coop\nRendimiento: Nivel Alfa (95%)", 
+                logTitle: "REGISTRO DE MISIÓN",
+                logText: "Fundador de la iniciativa Turno Noche. Pionero en colaboraciones cruzadas LATAM y organización de directos en conjunto." 
+            },
+            { 
+                name: "ROD3R1K", 
+                img: "rod3r1k.jpg", 
+                bioTitle: "BIOGRAFÍA TÁCTICA",
+                bioText: "Rol: El Fuerte / Co-Fundador\nClase: X-Men Op (Sonic Engineer)\nPoder: Power: 9 | Speed: 6 | Sonic: 8\nLema: 'Fuerza bruta y directos sin freno.'", 
+                statsTitle: "ESTADÍSTICAS & JUEGOS",
+                statsText: "Avg Viewers: 30\nSeguidores: 2,100+\nJuegos Principales: Acción / Coop / Shooters\nRendimiento: Nivel Élite (98%)", 
+                logTitle: "REGISTRO DE MISIÓN",
+                logText: "Impulsor de eventos masivos, torneos multicanal y coordinación técnica del escuadrón." 
+            },
+            { 
+                name: "LADYMORIARTY", 
+                img: "ladymoriarty.jpg", 
+                bioTitle: "BIOGRAFÍA TÁCTICA",
+                bioText: "Rol: Sorceress / La Bruja\nClase: Mutant - Occult Magic\nPoder: Mystic / Hex Magic\nLema: 'Magia y precisión en cada partida.'", 
+                statsTitle: "ESTADÍSTICAS & JUEGOS",
+                statsText: "Avg Viewers: 20\nSeguidores: 1,200+\nJuegos Principales: Terror / Variedad / Coop\nRendimiento: Nivel Operativo (92%)", 
+                logTitle: "REGISTRO DE MISIÓN",
+                logText: "Especialista en supervivencia, juegos de terror y coordinación táctica de escuadrones nocturnos." 
+            },
+            { 
+                name: "CAPY", 
+                img: "capy.jpg", 
+                bioTitle: "BIOGRAFÍA TÁCTICA",
+                bioText: "Rol: El Rápido Astuto\nClase: Tactical Agent\nPoder: Speed • Stealth • Tactical\nLema: 'Resistencia pura ante el terror.'", 
+                statsTitle: "ESTADÍSTICAS & JUEGOS",
+                statsText: "Avg Viewers: 18\nSeguidores: 980+\nJuegos Principales: Shooters / Survival\nRendimiento: Nivel Estable (90%)", 
+                logTitle: "REGISTRO DE MISIÓN",
+                logText: "Representante clave de Bolivia en las misiones nocturnas cooperativas y de alta velocidad." 
+            },
+            { 
+                name: "ARDIPII", 
+                img: "ardipii.jpg", 
+                bioTitle: "BIOGRAFÍA TÁCTICA",
+                bioText: "Rol: El Fantasma\nClase: Spectral Guardian\nPoder: Spectral Phase | Intangibility\nLema: 'Velocidad y reflejos en la madrugada.'", 
+                statsTitle: "ESTADÍSTICAS & JUEGOS",
+                statsText: "Avg Viewers: 22\nSeguidores: 1,350+\nJuegos Principales: Battle Royale / Variedad\nRendimiento: Nivel Avanzado (93%)", 
+                logTitle: "REGISTRO DE MISIÓN",
+                logText: "Enlace directo con la base operativa de México en directos intensivos y soporte de equipo." 
+            },
+            { 
+                name: "AKUMA", 
+                img: "akuma.jpg", 
+                bioTitle: "BIOGRAFÍA TÁCTICA",
+                bioText: "Rol: Cuernos / Demon Tactical\nClase: Demon / Tactical\nPoder: Hellflame • Flight (9/10)\nLema: 'Maestría táctica en juegos competitivos.'", 
+                statsTitle: "ESTADÍSTICAS & JUEGOS",
+                statsText: "Avg Viewers: 28\nSeguidores: 1,800+\nJuegos Principales: Competitivo / Shooters\nRendimiento: Nivel Elite (96%)", 
+                logTitle: "REGISTRO DE MISIÓN",
+                logText: "Veterano en partidas competitivas, torneos de alta exigencia y maestría en combate." 
+            },
+            { 
+                name: "ELGABII", 
+                img: "elgabii.jpg", 
+                bioTitle: "BIOGRAFÍA TÁCTICA",
+                bioText: "Rol: Habilidoso / Kinetic Manipulator\nClase: Mutant - Kinetic Energy\nPoder: Power: 7/10 | Speed: 8/10 | Energy: 9/10\nLema: 'Construyendo la victoria bloque a bloque.'", 
+                statsTitle: "ESTADÍSTICAS & JUEGOS",
+                statsText: "Avg Viewers: 15\nSeguidores: 850+\nJuegos Principales: Sandbox / Coop / Variedad\nRendimiento: Nivel Estable (89%)", 
+                logTitle: "REGISTRO DE MISIÓN",
+                logText: "Especialista en arquitecturas de servidores, construcciones y supervivencia en grupo." 
+            },
+            { 
+                name: "HABITOS", 
+                img: "habitos.jpg", 
+                bioTitle: "BIOGRAFÍA TÁCTICA",
+                bioText: "Rol: Filósofo Justiciero\nClase: Rayo Atómico\nPoder: Maestría en Física Atómica • Combate\nLema: 'Progreso diario y transmisiones constantes.'", 
+                statsTitle: "ESTADÍSTICAS & JUEGOS",
+                statsText: "Avg Viewers: 19\nSeguidores: 1,100+\nJuegos Principales: Indie / Simuladores / Variedad\nRendimiento: Nivel 9 | Energía: 100%", 
+                logTitle: "REGISTRO DE MISIÓN",
+                logText: "Impulsor de hábitos de crecimiento, constancia y análisis de métricas comunitarias." 
+            }
         ];
 
         function renderRoster() {
@@ -728,11 +801,7 @@
                 const card = document.createElement('div');
                 card.className = 'hero-card';
                 card.innerHTML = `
-                    <div class="hero-card-header">
-                        <h3>${hero.name}</h3>
-                        <span class="pwr-badge">PWR ${hero.pwr}</span>
-                    </div>
-                    <div class="hero-img-box">
+                    <div class="hero-card-img-wrapper">
                         <img src="${hero.img}" alt="${hero.name}">
                     </div>
                     <div class="hero-tabs">
@@ -741,15 +810,18 @@
                         <button class="hero-tab-btn" onclick="switchHeroTab(${index}, 2)">LOG</button>
                     </div>
                     <div class="hero-tab-content active" id="hero-${index}-tab-0">
+                        <h4>${hero.bioTitle}</h4>
                         <p style="white-space: pre-line;">${hero.bio}</p>
                     </div>
                     <div class="hero-tab-content" id="hero-${index}-tab-1">
-                        <p style="white-space: pre-line;">${hero.metrics}</p>
+                        <h4>${hero.statsTitle}</h4>
+                        <p style="white-space: pre-line;">${hero.stats}</p>
                     </div>
                     <div class="hero-tab-content" id="hero-${index}-tab-2">
-                        <p style="white-space: pre-line;">${hero.history}</p>
+                        <h4>${hero.logTitle}</h4>
+                        <p style="white-space: pre-line;">${hero.log}</p>
                     </div>
-                    <a href="https://twitch.tv" target="_blank" class="hero-footer-btn">VER TWITCH</a>
+                    <a href="https://twitch.tv" target="_blank" class="hero-footer-btn">VER CANAL TWITCH</a>
                 `;
                 container.appendChild(card);
             });
