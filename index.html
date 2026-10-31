@@ -35,7 +35,6 @@
             background-image: radial-gradient(#3b82f6 1px, transparent 1px);
             background-size: 16px 16px;
         }
-        /* Efecto de viñetas animadas */
         @keyframes popIn {
             0% { transform: scale(0.95); opacity: 0; }
             100% { transform: scale(1); opacity: 1; }
@@ -59,7 +58,7 @@
                 <button onclick="switchChapter('portada')" class="bg-white text-black px-3 py-1.5 comic-card hover:bg-yellow-200">PORTADA</button>
                 <button onclick="switchChapter('origen')" class="bg-blue-600 text-white px-3 py-1.5 comic-card hover:bg-blue-500">01. ORIGEN</button>
                 <button onclick="switchChapter('heroes')" class="bg-purple-600 text-white px-3 py-1.5 comic-card hover:bg-purple-500">02. HÉROES</button>
-                <button onclick="switchChapter('estadisticas')" class="bg-green-600 text-white px-3 py-1.5 comic-card hover:bg-green-500">03. DATABASE</button>
+                <button onclick="switchChapter('database')" class="bg-green-600 text-white px-3 py-1.5 comic-card hover:bg-green-500">03. DATABASE</button>
                 <button onclick="switchChapter('misiones')" class="bg-red-600 text-white px-3 py-1.5 comic-card hover:bg-red-500">04. MISIONES</button>
                 <button onclick="switchChapter('reclutamiento')" class="bg-pink-600 text-white px-3 py-1.5 comic-card hover:bg-pink-500">05. RECLUTAMIENTO</button>
             </nav>
@@ -69,15 +68,15 @@
     <!-- CONTENIDO PRINCIPAL / CAPÍTULOS -->
     <main class="flex-grow max-w-7xl mx-auto px-4 py-8 w-full">
 
-        <!-- 1. PORTADA — EL EQUIPO -->
+        <!-- 1. PORTADA — EL EQUIPO (Con Banner Oficial Integrado) -->
         <section id="chapter-portada" class="chapter-container text-center py-6">
-            <div class="max-w-4xl mx-auto bg-black/80 p-6 md:p-10 comic-border relative overflow-hidden rounded-lg">
-                <div class="absolute top-4 left-4 bg-yellow-400 text-black font-comic px-4 py-1 comic-border rotate-[-3deg]">FAMILIA LATAM • 8 MUTANTES</div>
+            <div class="max-w-5xl mx-auto bg-black/90 p-6 md:p-10 comic-border relative overflow-hidden rounded-lg">
+                <div class="absolute top-4 left-4 bg-yellow-400 text-black font-comic px-4 py-1 comic-border rotate-[-3deg] z-10">FAMILIA LATAM • 8 MUTANTES</div>
                 <h2 class="font-comic text-5xl md:text-7xl text-yellow-400 mt-6 mb-4 drop-shadow-[4px_4px_0px_#ff0055]">THE MULTIVERSE</h2>
                 
-                <!-- Imagen de Portada -->
-                <div class="my-6 comic-border overflow-hidden bg-purple-900">
-                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop" alt="Los S3X-Men Portada" class="w-full h-80 md:h-[450px] object-cover hover:scale-105 transition duration-500">
+                <!-- Imagen de Portada / Banner Oficial -->
+                <div class="my-6 comic-border overflow-hidden bg-purple-900 rounded">
+                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop" alt="Los S3X-Men Banner Principal" class="w-full h-80 md:h-[480px] object-cover hover:scale-105 transition duration-500">
                 </div>
 
                 <p class="text-lg md:text-xl text-gray-200 italic mb-8 max-w-2xl mx-auto">
@@ -105,7 +104,7 @@
                         <div class="absolute -top-3 -right-3 bg-yellow-400 text-black font-comic px-3 py-1 text-xs comic-border">MANIFIESTO</div>
                         <ul class="space-y-3 font-semibold text-sm">
                             <li class="flex items-center space-x-2"><span>🛡️</span> <span>8 Creadores con roles y nichos únicos.</span></li>
-                            <li class="flex items-center space-x-2"><span>📊</span> <span>Datos transparentes y verificados.</span></li>
+                            <li class="flex items-center space-x-2"><span>📊</span> <span>Datos transparentes y verificados sin inventar métricas.</span></li>
                             <li class="flex items-center space-x-2"><span>🎮</span> <span>Cobertura multicanal para publishers y estudios.</span></li>
                         </ul>
                     </div>
@@ -117,31 +116,31 @@
             </div>
         </section>
 
-        <!-- 3. CAPÍTULO 02 — LOS HÉROES & EXPEDIENTES -->
+        <!-- 3. CAPÍTULO 02 — LOS HÉROES & FICHAS DE DOBLE CARA -->
         <section id="chapter-heroes" class="chapter-container hidden">
             <div class="text-center mb-8">
                 <span class="bg-purple-600 text-white font-comic px-3 py-1 comic-border text-lg">CAPÍTULO 02 & 03</span>
                 <h2 class="font-comic text-4xl md:text-5xl text-yellow-400 mt-2">EL ROSTER DE MUTANTES</h2>
-                <p class="text-gray-300 mt-2">Hacé clic en cualquier tarjeta para alternar entre el **Personaje** y el **Expediente Profesional** del creador.</p>
+                <p class="text-gray-300 mt-2">Cada tarjeta cuenta con doble cara: alterná entre el **Personaje** y el **Expediente Profesional (SullyGnome)**.</p>
             </div>
 
             <!-- Grilla de 8 Tarjetas -->
             <div id="roster-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Se inyecta dinámicamente desde JS o tarjetas preconfiguradas -->
+                <!-- Se inyecta dinámicamente con JS -->
             </div>
 
             <div class="mt-8 flex justify-between">
                 <button onclick="switchChapter('origen')" class="bg-gray-700 text-white px-4 py-2 font-comic comic-border">← El Origen</button>
-                <button onclick="switchChapter('estadisticas')" class="bg-yellow-400 text-black px-6 py-2 font-comic comic-border hover:bg-yellow-300">Database del Equipo →</button>
+                <button onclick="switchChapter('database')" class="bg-yellow-400 text-black px-6 py-2 font-comic comic-border hover:bg-yellow-300">Database del Equipo →</button>
             </div>
         </section>
 
-        <!-- 4. CAPÍTULO 04 — DATABASE DEL EQUIPO -->
-        <section id="chapter-estadisticas" class="chapter-container hidden">
+        <!-- 4. CAPÍTULO 03 — DATABASE DEL EQUIPO -->
+        <section id="chapter-database" class="chapter-container hidden">
             <div class="bg-gray-900 p-6 md:p-10 comic-border max-w-4xl mx-auto rounded-lg">
                 <span class="bg-green-600 text-white font-comic px-3 py-1 comic-border text-lg">CAPÍTULO 04</span>
                 <h2 class="font-comic text-4xl text-yellow-400 mt-4 mb-2">THE TEAM DATABASE</h2>
-                <p class="text-gray-400 mb-6 text-sm">Métricas consolidadas y análisis de audiencia del escuadrón.</p>
+                <p class="text-gray-400 mb-6 text-sm">Métricas consolidadas y análisis de audiencia con fuentes verificables.</p>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                     <div class="bg-black p-4 comic-border text-center">
@@ -154,18 +153,18 @@
                     </div>
                     <div class="bg-black p-4 comic-border text-center">
                         <span class="text-3xl font-comic text-green-400">Verificadas</span>
-                        <h4 class="font-bold mt-1 text-sm">Integración Oficial SullyGnome</h4>
+                        <h4 class="font-bold mt-1 text-sm">Sincronización SullyGnome</h4>
                     </div>
                 </div>
 
-                <div class="bg-black/60 p-6 comic-border">
+                <div class="bg-black/60 p-6 comic-border mb-6">
                     <h3 class="font-comic text-xl text-yellow-400 mb-4">🎮 Categorías Principales del Team</h3>
                     <div class="flex flex-wrap gap-2">
                         <span class="bg-purple-900 px-3 py-1 text-xs font-bold comic-border">Dead by Daylight</span>
                         <span class="bg-blue-900 px-3 py-1 text-xs font-bold comic-border">Fortnite & Valorant</span>
                         <span class="bg-green-900 px-3 py-1 text-xs font-bold comic-border">Minecraft & Gestión</span>
                         <span class="bg-red-900 px-3 py-1 text-xs font-bold comic-border">Simuladores de Conducción</span>
-                        <span class="bg-yellow-900 px-3 py-1 text-xs font-bold comic-border">Terror Co-op / Indie</span>
+                        <span class="bg-yellow-900 px-3 py-1 text-xs font-bold comic-border">Terror Co-op / Indies</span>
                     </div>
                 </div>
 
@@ -176,14 +175,14 @@
             </div>
         </section>
 
-        <!-- 5. CAPÍTULO 05 — MISIONES & PARTNERS -->
+        <!-- 5. CAPÍTULO 04 — MISIONES & PARTNERS -->
         <section id="chapter-misiones" class="chapter-container hidden">
             <div class="bg-gray-900 p-6 md:p-10 comic-border max-w-4xl mx-auto rounded-lg">
                 <span class="bg-red-600 text-white font-comic px-3 py-1 comic-border text-lg">CAPÍTULO 05</span>
                 <h2 class="font-comic text-4xl text-yellow-400 mt-4 mb-2">GESTIÓN DE CAMPAÑAS & PARTNERS</h2>
                 <p class="text-gray-400 mb-6 text-sm">Operativa directa a través de **Lurkit** y **Keymailer** con segmentación por requisitos de audiencia.</p>
 
-                <div class="space-y-4">
+                <div class="space-y-4 mb-6">
                     <div class="bg-black p-4 comic-border flex flex-col md:flex-row justify-between items-center">
                         <div>
                             <h4 class="font-comic text-xl text-yellow-400">THQ Nordic & Raw Fury Creator Programs</h4>
@@ -201,13 +200,13 @@
                 </div>
 
                 <div class="mt-8 flex justify-between">
-                    <button onclick="switchChapter('estadisticas')" class="bg-gray-700 text-white px-4 py-2 font-comic comic-border">← Database</button>
+                    <button onclick="switchChapter('database')" class="bg-gray-700 text-white px-4 py-2 font-comic comic-border">← Database</button>
                     <button onclick="switchChapter('reclutamiento')" class="bg-yellow-400 text-black px-6 py-2 font-comic comic-border hover:bg-yellow-300">Reclutamiento →</button>
                 </div>
             </div>
         </section>
 
-        <!-- 6. CAPÍTULO 06 — RECLUTAMIENTO -->
+        <!-- 6. CAPÍTULO 05 — RECLUTAMIENTO -->
         <section id="chapter-reclutamiento" class="chapter-container hidden">
             <div class="bg-gray-900 p-6 md:p-10 comic-border max-w-2xl mx-auto rounded-lg text-center">
                 <span class="bg-pink-600 text-white font-comic px-3 py-1 comic-border text-lg">CAPÍTULO 06</span>
@@ -253,19 +252,107 @@
 
     <!-- SCRIPT DE NAVEGACIÓN Y DATOS DE HÉROES -->
     <script>
-        // Datos de los 8 integrantes del equipo
+        // Datos de los 8 integrantes del equipo con sus expedientes profesionales
         const heroesData = [
-            { id: 'moriartys', name: 'LosMoriartys', country: 'ARG • Afiliado', twitch: 'losmoriartys', avg: 22, peak: 101, followers: 1143, role: 'Dirección creativa y liderazgo de comunidad', games: 'Fortnite, Los Sims, Minecraft', bio: 'Pareja gamer y orgullosos nerds. Sims de tienda, coop caótico y pelis.' },
-            { id: 'ladymoriarty', name: 'LadyMoriarty01', country: 'ARG • Afiliado', twitch: 'ladymoriarty01', avg: 10, peak: 388, followers: 179, role: 'Mundos abiertos y construcción cooperativa', games: 'Minecraft, Gestión, Cozy Games', bio: 'La primera dama del Team. Calidez de hogar en cada directo.' },
-            { id: 'r0d3r1k', name: 'TheR0D3R1K', country: 'BOL • Partner', twitch: 'ther0d3r1k', avg: 23, peak: 78, followers: 5181, role: 'Solidez competitiva y Partner oficial', games: 'Fortnite, Valorant, Shooters', bio: 'Músico boliviano, pilar competitivo y ancla del Team.' },
-            { id: 'capyuna', name: 'Capyunaplay', country: 'ARG • Afiliado', twitch: 'capyunaplay', avg: 9, peak: 28, followers: 682, role: 'Experto en terror y dinámicas nocturnas', games: 'Dead by Daylight, Horror, Co-op', bio: 'Directos nocturnos cargados de tensión, sustos y muy buena compañía.' },
-            { id: 'ardipii', name: 'ArdiPii', country: 'MX • Afiliado', twitch: 'ardipii', avg: 8, peak: 24, followers: 425, role: 'Puente mexicano, arte y cosplay', games: 'Just Chatting, Valorant, Arte', bio: 'Comunidad creativa, anime, charlas amenas y gaming casual.' },
-            { id: 'akuma', name: 'Akumazoldyck', country: 'MX • Afiliado', twitch: 'akumazoldyck', avg: 3, peak: 41, followers: 140, role: 'Indies caóticos y humor multijugador', games: 'Lethal Company, Co-op Indies', bio: 'Especialista en coop de terror y risas aseguradas.' },
-            { id: 'gabii', name: 'elgabii090', country: 'ARG • Afiliado', twitch: 'elgabii090', avg: 11, peak: 19, followers: 594, role: 'Destreza en simuladores de conducción', games: 'Rocket League, Racing Sims', bio: 'Mecánicas y control absoluto sobre ruedas.' },
-            { id: 'habitos', name: 'habitos_atomicos', country: 'ARG • Afiliado', twitch: 'habitos_atomicos', avg: 7, peak: 26, followers: 300, role: 'Productividad y comunidades sanas', games: 'Minecraft, Just Chatting, Bienestar', bio: 'Uniendo el gaming y la construcción de hábitos diarios.' }
+            { 
+                id: 'moriartys', 
+                name: 'LosMoriartys', 
+                country: 'ARG • Afiliado', 
+                twitch: 'losmoriartys', 
+                avg: 22, 
+                peak: 101, 
+                followers: 1143, 
+                role: 'Dirección creativa y liderazgo de comunidad', 
+                games: 'Fortnite, Los Sims, Minecraft', 
+                bio: 'Pareja gamer y orgullosos nerds. Sims de tienda, coop caótico, pelis y cómics.' 
+            },
+            { 
+                id: 'ladymoriarty', 
+                name: 'LadyMoriarty01', 
+                country: 'ARG • Afiliado', 
+                twitch: 'ladymoriarty01', 
+                avg: 10, 
+                peak: 388, 
+                followers: 179, 
+                role: 'Mundos abiertos y construcción cooperativa', 
+                games: 'Minecraft, Gestión, Cozy Games', 
+                bio: 'La primera dama del Team. Calidez de hogar en cada directo.' 
+            },
+            { 
+                id: 'r0d3r1k', 
+                name: 'TheR0D3R1K', 
+                country: 'BOL • Partner', 
+                twitch: 'ther0d3r1k', 
+                avg: 23, 
+                peak: 78, 
+                followers: 5181, 
+                role: 'Solidez competitiva y Partner oficial', 
+                games: 'Fortnite, Valorant, Shooters', 
+                bio: 'Músico boliviano, pilar competitivo y ancla del Team.' 
+            },
+            { 
+                id: 'capyuna', 
+                name: 'Capyunaplay', 
+                country: 'ARG • Afiliado', 
+                twitch: 'capyunaplay', 
+                avg: 9, 
+                peak: 28, 
+                followers: 682, 
+                role: 'Experto en terror y dinámicas nocturnas', 
+                games: 'Dead by Daylight, Horror, Co-op', 
+                bio: 'Directos nocturnos cargados de tensión, sustos y muy buena compañía.' 
+            },
+            { 
+                id: 'ardipii', 
+                name: 'ArdiPii', 
+                country: 'MX • Afiliado', 
+                twitch: 'ardipii', 
+                avg: 8, 
+                peak: 24, 
+                followers: 425, 
+                role: 'Puente mexicano, arte y cosplay', 
+                games: 'Just Chatting, Valorant, Arte', 
+                bio: 'Comunidad creativa, anime, charlas amenas y gaming casual.' 
+            },
+            { 
+                id: 'akuma', 
+                name: 'Akumazoldyck', 
+                country: 'MX • Afiliado', 
+                twitch: 'akumazoldyck', 
+                avg: 3, 
+                peak: 41, 
+                followers: 140, 
+                role: 'Indies caóticos y humor multijugador', 
+                games: 'Lethal Company, Co-op Indies', 
+                bio: 'Especialista en coop de terror y risas aseguradas.' 
+            },
+            { 
+                id: 'gabii', 
+                name: 'elgabii090', 
+                country: 'ARG • Afiliado', 
+                twitch: 'elgabii090', 
+                avg: 11, 
+                peak: 19, 
+                followers: 594, 
+                role: 'Destreza en simuladores de conducción', 
+                games: 'Rocket League, Racing Sims', 
+                bio: 'Mecánicas y control absoluto sobre ruedas.' 
+            },
+            { 
+                id: 'habitos', 
+                name: 'habitos_atomicos', 
+                country: 'ARG • Afiliado', 
+                twitch: 'habitos_atomicos', 
+                avg: 7, 
+                peak: 26, 
+                followers: 300, 
+                role: 'Productividad y comunidades sanas', 
+                games: 'Minecraft, Just Chatting, Bienestar', 
+                bio: 'Uniendo el gaming y la construcción de hábitos diarios.' 
+            }
         ];
 
-        // Función para cambiar capítulos
+        // Función para cambiar de capítulo de cómic
         function switchChapter(chapterId) {
             document.querySelectorAll('main > section').forEach(sec => {
                 sec.classList.add('hidden');
@@ -274,7 +361,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Renderizar las tarjetas de héroes con doble cara (Página A y Página B)
+        // Renderizar las tarjetas de héroes con doble cara (Página A: Personaje / Página B: Creador)
         function renderHeroes() {
             const grid = document.getElementById('roster-grid');
             grid.innerHTML = '';
@@ -283,21 +370,24 @@
                 const card = document.createElement('div');
                 card.className = 'comic-card bg-black p-4 flex flex-col justify-between relative rounded-md';
                 card.innerHTML = `
-                    <div class="absolute top-2 right-2 bg-yellow-400 text-black text-xs font-bold px-2 py-0.5 comic-border">MUTANTE</div>
+                    <div class="absolute top-2 right-2 bg-yellow-400 text-black text-xs font-bold px-2 py-0.5 comic-border z-10">MUTANTE</div>
                     <div>
-                        <div class="h-36 bg-purple-900 comic-border mb-3 overflow-hidden flex items-center justify-center">
-                            <span class="font-comic text-2xl text-yellow-300">#${h.name}</span>
+                        <!-- Contenedor de la ilustración individual del superhéroe -->
+                        <div class="h-40 bg-purple-900 comic-border mb-3 overflow-hidden flex items-center justify-center relative group">
+                            <span class="font-comic text-xl text-yellow-300 drop-shadow">${h.name}</span>
+                            <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition"></div>
                         </div>
                         <h3 class="font-comic text-xl text-yellow-400">${h.name}</h3>
                         <p class="text-xs text-gray-400 font-semibold mb-2">${h.country}</p>
                         <p class="text-xs text-gray-300 italic mb-4">"${h.bio}"</p>
                         
-                        <!-- Pestaña de Datos (Página B toggle) -->
-                        <div id="stats-${h.id}" class="bg-gray-900 p-3 comic-border text-xs space-y-1 mb-3">
+                        <!-- Expediente Profesional / Métricas SullyGnome (Página B) -->
+                        <div class="bg-gray-900 p-3 comic-border text-xs space-y-1.5 mb-3">
                             <div class="flex justify-between"><span>Seguidores:</span> <strong class="text-yellow-400">${h.followers}</strong></div>
                             <div class="flex justify-between"><span>Media (30d):</span> <strong class="text-blue-400">${h.avg} views</strong></div>
                             <div class="flex justify-between"><span>Pico Histórico:</span> <strong class="text-green-400">${h.peak} views</strong></div>
-                            <div class="pt-1 border-t border-gray-700 text-[10px] text-gray-400"><strong>Rol:</strong> ${h.role}</div>
+                            <div class="pt-1.5 border-t border-gray-700 text-[10px] text-gray-300"><strong>Rol:</strong> ${h.role}</div>
+                            <div class="text-[10px] text-yellow-300/80"><strong>Juegos:</strong> ${h.games}</div>
                         </div>
                     </div>
                     <a href="https://twitch.tv/${h.twitch}" target="_blank" class="block text-center bg-purple-600 hover:bg-purple-500 text-white font-comic py-2 comic-border text-sm">
@@ -313,10 +403,10 @@
             const name = document.getElementById('rec-name').value;
             const country = document.getElementById('rec-country').value;
             const avg = document.getElementById('rec-avg').value;
-            alert(`¡Postulación generada con éxito, ${name} (${country}) con ${avg} de media! Copia este resumen y envíaselo a los administradores del escuadrón.`);
+            alert(`¡Postulación generada con éxito, ${name} (${country}) con ${avg} de media! Copia este resumen y envíaselo al equipo de administración.`);
         }
 
-        // Inicializar al cargar
+        // Inicializar al cargar la página
         window.onload = () => {
             renderHeroes();
         };
